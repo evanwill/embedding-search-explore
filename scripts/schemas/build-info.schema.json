@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/build-info.schema.json",
+  "title": "BuildInfoArtifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generated_at", "config", "source", "counts", "unmatched_metadata_filenames", "skipped"],
+  "properties": {
+    "version": { "const": 2 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model", "preprocessing"],
+      "properties": {
+        "model": { "enum": ["dinov2", "clip", "mobilenet"] },
+        "preprocessing": { "enum": ["standard", "lineart", "binary"] }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["objects_dir", "metadata_csv"],
+      "properties": {
+        "objects_dir": { "type": "string", "minLength": 1 },
+        "metadata_csv": { "type": "string", "minLength": 1 }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["images_found", "metadata_rows", "embeddings_built", "skipped_images", "unmatched_metadata_rows"],
+      "properties": {
+        "images_found": { "type": "integer", "minimum": 0 },
+        "metadata_rows": { "type": "integer", "minimum": 0 },
+        "embeddings_built": { "type": "integer", "minimum": 0 },
+        "skipped_images": { "type": "integer", "minimum": 0 },
+        "unmatched_metadata_rows": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "unmatched_metadata_filenames": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "skipped": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["filename", "reason"],
+        "properties": {
+          "filename": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

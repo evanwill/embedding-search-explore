@@ -17,3 +17,10 @@ Gemfile.lock
 # Ignore objects directory to avoid committing binary files (other than demo files)
 # if you would like to commit your objects to github, delete the line below!
 #objects/
+
+node_modules/
+scripts/.cache/
+
+# pnpm-lock.yaml is the canonical committed lockfile; ignore the lockfile
+# npm generates when a user installs with npm instead.
+scripts/package-lock.json

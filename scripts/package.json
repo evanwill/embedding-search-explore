@@ -1,0 +1,20 @@
+{
+  "name": "collection-reverse-lookup-scripts",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Preprocessing pipeline: builds browser-ready image embedding artifacts with Transformers.js",
+  "type": "module",
+  "scripts": {
+    "build": "node build_embeddings.mjs",
+    "eval": "node eval_retrieval.mjs"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "3.7.6",
+    "ajv": "8.17.1",
+    "csv-parse": "6.1.0",
+    "yaml": "2.8.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/manifest.schema.json",
+  "title": "ManifestArtifact",
+  "description": "Build configuration export read by the search page. Row i of embeddings.bin belongs to filenames[i].",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generated_at", "library", "model", "preprocessing", "embeddings", "filenames", "score_calibration", "top_k"],
+  "properties": {
+    "version": { "const": 2 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "library": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "@huggingface/transformers" },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "hf_id", "dim", "dtype", "embedding_source"],
+      "properties": {
+        "key": { "enum": ["dinov2", "clip", "mobilenet"] },
+        "hf_id": { "type": "string", "minLength": 1 },
+        "dim": { "type": "integer", "minimum": 1 },
+        "dtype": { "type": "string", "minLength": 1 },
+        "embedding_source": { "enum": ["cls_token", "image_embeds"] }
+      }
+    },
+    "preprocessing": { "enum": ["standard", "lineart", "binary"] },
+    "embeddings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "count", "dtype", "scale", "normalized"],
+      "properties": {
+        "file": { "type": "string", "minLength": 1 },
+        "count": { "type": "integer", "minimum": 0 },
+        "dtype": { "const": "int8" },
+        "scale": { "const": 127 },
+        "normalized": { "const": "l2" }
+      }
+    },
+    "filenames": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "score_calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["floor", "ceiling"],
+      "properties": {
+        "floor": { "type": "number", "minimum": -1, "maximum": 1 },
+        "ceiling": { "type": "number", "minimum": -1, "maximum": 1 }
+      }
+    },
+    "top_k": { "type": "integer", "minimum": 1 }
+  }
+}

@@ -1,0 +1,70 @@
+---
+title: Explore Search
+layout: page
+permalink: /image-search.html
+---
+
+<h2>Find matching printer's marks from a sample image</h2>
+
+<div id="rl-intro" class="card mb-4">
+    <div class="card-body">
+        <h2 class="h5">About this search</h2>
+        <p>
+        Have a printer's mark you can't identify? Upload a photo, scan, or screenshot of it and
+        this page will show you the most visually similar marks in the collection, with their
+        metadata — a quick way to put a name to an unknown mark, or to find related marks worth
+        comparing by eye.
+        </p>
+        <p>
+        The search runs entirely in your web browser: it computes a compact visual "fingerprint"
+        of your image and compares it against pre-computed fingerprints for every mark in the
+        collection. Your image is never uploaded — it stays on your device.
+        </p>
+        <p id="rl-download-note" class="text-body-secondary small">
+        Starting the search downloads the image-analysis model and collection index to your
+        browser. This happens once; your browser caches the files for future visits.
+        </p>
+        <button id="rl-start-button" class="btn btn-primary" type="button" disabled>
+        Start image search
+        </button>
+        <div id="rl-intro-status" class="alert alert-danger mt-3 mb-0 py-2" role="status" hidden></div>
+    </div>
+</div>
+
+<div id="rl-search-ui" class="card mb-4" hidden>
+    <div class="card-body">
+        <div class="row g-3 align-items-end">
+            <div class="col-md">
+                <label for="rl-image-input" class="form-label">Choose an image</label>
+                <input id="rl-image-input" class="form-control" type="file" accept="image/*" disabled />
+            </div>
+            <div class="col-md-auto">
+                <button id="rl-search-button" class="btn btn-primary" type="button" disabled>
+                Search Similar Marks
+                </button>
+            </div>
+        </div>
+
+        <div id="rl-status" class="alert alert-secondary mt-3 mb-0 py-2" role="status">
+        Loading collection data ...
+        </div>
+        <div id="rl-progress-wrap" class="progress mt-2" style="height: 6px" hidden>
+            <div id="rl-progress" class="progress-bar" style="width: 0%"></div>
+        </div>
+
+        <div id="rl-preview-wrap" class="mt-3" hidden>
+            <span class="form-label d-block">Query preview</span>
+            <img id="rl-preview" class="img-thumbnail" style="max-height: 160px" alt="Uploaded query preview" />
+        </div>
+    </div>
+</div>
+
+<section id="rl-results-section" aria-live="polite" hidden>
+    <div class="d-flex justify-content-between align-items-baseline mb-2">
+        <h2 class="h5 mb-0">Closest matches</h2>
+        <p id="rl-results-meta" class="text-body-secondary small mb-0">Waiting for your search.</p>
+    </div>
+    <div id="rl-results" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3"></div>
+</section>
+
+<script type="module" src="js/app.js"></script>

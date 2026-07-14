@@ -1,0 +1,6 @@
+# pnpm dependency build approvals: these packages have postinstall scripts
+# that fetch/build native binaries needed by Transformers.js.
+allowBuilds:
+  onnxruntime-node: true
+  protobufjs: true
+  sharp: true
