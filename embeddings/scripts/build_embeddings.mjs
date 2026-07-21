@@ -29,7 +29,7 @@ import {
   loadEmbedder,
   embedImage,
   quantize,
-} from "../docs/js/embedding-core.mjs";
+} from "../assets/embeddings/embedding-core.mjs";
 
 const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SCHEMAS_DIR = join(PROJECT_ROOT, "scripts", "schemas");
