@@ -42,6 +42,7 @@ let blob = null;
 let indexByFilename = new Map();
 let embedder = null;
 let selectedFile = null;
+let activeDevice = "wasm";
 
 function normalizeBase(value) {
   return value.endsWith("/") ? value : `${value}/`;
@@ -131,7 +132,7 @@ async function loadArtifacts() {
   }
 }
 
-async function loadModel() {
+async function loadModel(devicePreference = "auto") {
   const perFile = new Map();
   const progressCallback = (report) => {
     if (report.status === "progress" && report.total) {
@@ -148,19 +149,76 @@ async function loadModel() {
   // up front: a failed session creation poisons backend state, so catching
   // afterwards is not a reliable fallback. Weights are always the same
   // quantized files the build used, so embeddings stay comparable.
-  const options = { progress_callback: progressCallback };
-  if (navigator.gpu) {
+  const options = { progress_callback: progressCallback, device: "wasm" };
+  if (devicePreference === "webgpu" && navigator.gpu) {
     const adapter = await navigator.gpu.requestAdapter().catch(() => null);
     if (adapter) {
       options.device = "webgpu";
     }
   }
   embedder = await loadEmbedder(transformers, manifest.model.key, options);
+  activeDevice = options.device;
 }
 
-function metadataLine(item) {
-  const parts = [item.active_years, item.printers || item.publishers].filter(Boolean);
-  return parts.join(" · ");
+function scoreQueryVector(queryVector) {
+  const scores = scoreAll(queryVector, blob, manifest.embeddings.count, manifest.model.dim);
+  const matches = topK(scores, manifest.top_k).map((row) => ({
+    filename: manifest.filenames[row],
+    score: scores[row],
+    percent: calibratedPercent(scores[row], manifest.score_calibration),
+  }));
+  return { scores, matches };
+}
+
+function hasDegenerateScores(scores) {
+  let min = Infinity;
+  let max = -Infinity;
+  for (const score of scores) {
+    if (!Number.isFinite(score)) {
+      return true;
+    }
+    min = Math.min(min, score);
+    max = Math.max(max, score);
+  }
+  return max - min < 1e-6;
+}
+
+async function verifyBackend() {
+  const seedFilename = manifest.filenames[0];
+  const seedItem = indexByFilename.get(seedFilename);
+  const seedImagePath = seedItem?.image_path;
+  if (!seedImagePath) {
+    return true;
+  }
+
+  const response = await fetch(seedImagePath);
+  if (!response.ok) {
+    return true;
+  }
+  const seedBlob = await response.blob();
+  const image = await transformers.RawImage.fromBlob(seedBlob);
+  const queryVector = await embedImage(embedder, image, manifest.preprocessing);
+  const { matches, scores } = scoreQueryVector(queryVector);
+
+  if (hasDegenerateScores(scores)) {
+    return false;
+  }
+  return matches.length > 0 && matches[0].filename === seedFilename;
+}
+
+async function ensureWorkingBackend() {
+  await loadModel("webgpu");
+  const ok = await verifyBackend();
+  if (ok) {
+    return;
+  }
+
+  setStatus("WebGPU backend produced unstable results, switching to WASM ...", "warning");
+  await loadModel("wasm");
+  const wasmOk = await verifyBackend();
+  if (!wasmOk) {
+    throw new Error("model backend self-check failed; search results may be unreliable");
+  }
 }
 
 function renderResults(matches, elapsedMs) {
@@ -206,11 +264,7 @@ function renderResults(matches, elapsedMs) {
       title.textContent = item.title || item.filename;
     }
 
-    const line = document.createElement("p");
-    line.className = "card-text small text-body-secondary mb-1";
-    line.textContent = metadataLine(item) || "No further metadata.";
-
-    body.append(badge, title, line);
+    body.append(badge, title);
 
     const links = document.createElement("div");
     links.className = "d-flex flex-wrap gap-2 small";
@@ -221,16 +275,6 @@ function renderResults(matches, elapsedMs) {
       itemLink.className = "link-primary";
       itemLink.textContent = "View item";
       links.appendChild(itemLink);
-    }
-
-    if (item.website) {
-      const link = document.createElement("a");
-      link.href = item.website;
-      link.target = "_blank";
-      link.rel = "noreferrer noopener";
-      link.className = "link-secondary";
-      link.textContent = "Source";
-      links.appendChild(link);
     }
 
     if (links.childElementCount > 0) {
@@ -257,12 +301,7 @@ async function runSearch() {
     const image = await transformers.RawImage.fromBlob(selectedFile);
     const queryVector = await embedImage(embedder, image, manifest.preprocessing);
 
-    const scores = scoreAll(queryVector, blob, manifest.embeddings.count, manifest.model.dim);
-    const matches = topK(scores, manifest.top_k).map((row) => ({
-      filename: manifest.filenames[row],
-      score: scores[row],
-      percent: calibratedPercent(scores[row], manifest.score_calibration),
-    }));
+    const { matches } = scoreQueryVector(queryVector);
 
     renderResults(matches, performance.now() - start);
     setStatus("Done. Select another image to search again.", "success");
@@ -309,12 +348,12 @@ async function startSearch() {
     await loadArtifacts();
 
     const spec = getModelSpec(manifest.model.key);
-    setStatus(`Downloading ${spec.label} model (cached by your browser after the first visit) ...`, "secondary");
-    await loadModel();
+    setStatus(`Loading ${spec.label} model (cached by your browser after the first visit) ...`, "secondary");
+    await ensureWorkingBackend();
     hideProgress();
 
     setStatus(
-      `Ready. ${manifest.embeddings.count} images indexed with ${spec.label}, "${manifest.preprocessing}" preprocessing.`,
+      `Ready. ${manifest.embeddings.count} images indexed with ${spec.label}, "${manifest.preprocessing}" preprocessing (backend: ${activeDevice}).`,
       "success",
     );
     imageInput.disabled = false;

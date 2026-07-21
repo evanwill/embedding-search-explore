@@ -20,11 +20,7 @@
           "image_path": { "type": "string", "minLength": 1 },
           "item_url": { "type": "string", "minLength": 1 },
           "thumb_path": { "type": "string", "minLength": 1 },
-          "title": { "type": "string", "minLength": 1 },
-          "active_years": { "type": "string", "minLength": 1 },
-          "printers": { "type": "string", "minLength": 1 },
-          "publishers": { "type": "string", "minLength": 1 },
-          "website": { "type": "string", "minLength": 1 }
+          "title": { "type": "string", "minLength": 1 }
         }
       }
     }

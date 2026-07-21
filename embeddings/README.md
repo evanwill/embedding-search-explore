@@ -25,23 +25,24 @@ Your updated exclude will look like:
 ## how it works
 
 ```
-config.yml ──▶ rake build_embeddings ──▶ assets/embeddings/data/
- (model +        (Node + Transformers.js)   manifest.json    ── build config export
-  preprocessing                             embeddings.bin   ── int8 vectors
-  choice)                                   index.json       ── card metadata
-                                            build-info.json  ── build report
+embeddings/config-embeddings.yml + _config.yml(metadata)
+   └──▶ rake build_embeddings ──▶ assets/embeddings/data/
+       (Node + Transformers.js)   manifest.json    ── build config export
+                         embeddings.bin   ── int8 vectors
+                         index.json       ── card metadata + item_url
+                         build-info.json  ── build report
 
 pages/embeddings.html + assets/embeddings/app.js  ◀── reads manifest.json, loads the SAME model
  (Bootstrap 5.3.8, Transformers.js)   and preprocessing the build used
 ```
 
-Both the desktop pipeline and the browser run the same library ([Transformers.js](https://huggingface.co/docs/transformers.js)) and the same shared code (`docs/js/embedding-core.mjs`) for preprocessing, embedding extraction, and scoring — so collection vectors and query vectors are guaranteed to live in the same embedding space. The build writes its configuration into `data/manifest.json`; the search page configures itself from that manifest, so switching models is a one-line `config.yml` edit plus a rebuild.
+Both the desktop pipeline and the browser run the same library ([Transformers.js](https://huggingface.co/docs/transformers.js)) and the same shared code (`assets/embeddings/embedding-core.mjs`) for preprocessing, embedding extraction, and scoring, so collection vectors and query vectors are guaranteed to live in the same embedding space. The build writes its configuration into `assets/embeddings/data/manifest.json`; the search page configures itself from that manifest, so switching models is a one-line `embeddings/config-embeddings.yml` edit plus a rebuild.
 
 See [get-started.md](get-started.md) for setup and usage.
 
 ## model options
 
-Set in `config.yml`; all run fully client-side via ONNX (WebGPU when available, WASM otherwise):
+Set in `embeddings/config-embeddings.yml`; all run fully client-side via ONNX (WebGPU when available, WASM otherwise):
 
 | key | model | embedding | browser download | notes |
 |---|---|---|---|---|
@@ -86,14 +87,68 @@ The demo is a digital collection of printer's marks: ~196 images of unique marks
 
 ## integrating into a CollectionBuilder site
 
-The demo page is deliberately minimal and uses stock [Bootstrap 5.3.8](https://getbootstrap.com/) components (CollectionBuilder already ships Bootstrap). To add the search to an existing site:
+The migrated implementation is deliberately minimal and uses stock [Bootstrap 5.3.8](https://getbootstrap.com/) components (CollectionBuilder already ships Bootstrap).
 
-1. Copy the `<div id="reverse-lookup-app">…</div>` container from `docs/index.html` into a page or include.
-2. Copy `docs/js/app.js` and `docs/js/embedding-core.mjs`, and keep the single `<script type="module" src="js/app.js"></script>` include.
-3. Generate and copy the `data/` folder (`manifest.json`, `embeddings.bin`, `index.json`) so it sits next to the page.
-4. `app.js` assumes the data at `data/` relative to the page; adjust `DATA_BASE` if yours lives elsewhere.
+### configuration contract
 
-All result-card fields (`title`, `active_years`, `printers`, `publishers`, `website`) come from the metadata CSV via `index.json`; adapt `indexRecord()` in `scripts/build_embeddings.mjs` to surface different columns.
+- `embeddings/config-embeddings.yml` controls model, preprocessing, `objects_dir`, output directory, and top-k.
+- `_config.yml` controls which metadata CSV is active via `metadata: <name>`.
+- build reads metadata from `_data/<metadata>.csv` (derived from `_config.yml`).
+
+### required metadata columns
+
+The active metadata CSV must include these columns:
+
+- `objectid`
+- `display_template`
+- `object_location`
+
+Only rows where `display_template == image` are embedded. Image files are read from `object_location`.
+
+### generated item links
+
+`index.json` now includes `item_url` for each image record using CollectionBuilder item URL rules:
+
+- with `parentid`: `/items/<parentid>.html#<objectid>`
+- without `parentid`: `/items/<objectid>.html`
+
+This allows the search page to link directly to the collection item page (and to the child anchor for compound objects).
+
+### page/app wiring
+
+- page route: `pages/embeddings.html`
+- browser app: `assets/embeddings/app.js`
+- shared embedding module: `assets/embeddings/embedding-core.mjs`
+- generated artifacts: `assets/embeddings/data/{manifest.json, embeddings.bin, index.json, build-info.json}`
+
+The page sets runtime path config with `data-data-base` and `data-site-root` attributes on `#reverse-lookup-app` so links and artifact fetches are baseurl-safe.
+
+### runtime backend fallback
+
+At startup, the browser app attempts to initialize the model with a WebGPU-capable backend when available, then runs a quick self-check retrieval using a known indexed image.
+
+If that self-check is unstable (for example, degenerate scores or wrong top-1 on the known sample), the app automatically falls back to WASM and re-verifies before enabling search.
+
+This guard exists because some browser/driver combinations can initialize an execution provider but still produce unreliable retrieval behavior. The startup status message includes the active backend, e.g. `backend: wasm`.
+
+Result cards use `title` from metadata via `index.json` plus the generated `item_url`; adapt `indexRecord()` in `embeddings/scripts/build_embeddings.mjs` if you want to expose additional fields.
+
+## troubleshooting
+
+- Missing metadata key in `_config.yml`:
+    - error: `_config.yml is missing required "metadata" key`
+    - fix: set `metadata: <your-csv-name-without-extension>`
+- Missing required metadata columns:
+    - error lists missing columns from `objectid`, `display_template`, `object_location`
+    - fix: add columns to the active `_data/<metadata>.csv`
+- Missing object files:
+    - warning in build output: `missing object file: ...`
+    - fix: correct `object_location` paths or add the files under `objects/`
+- Search page loads but results do not link correctly:
+    - verify `item_url` exists in `assets/embeddings/data/index.json`
+    - verify page wrapper has `data-site-root="{{ '/' | relative_url }}"`
+- Data/model mismatch after code changes:
+    - rebuild artifacts with `rake build_embeddings` so `manifest.json`, `embeddings.bin`, and `index.json` are in sync
 
 ## future ideas
 

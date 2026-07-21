@@ -33,7 +33,7 @@ import {
 } from "../../assets/embeddings/embedding-core.mjs";
 
 const SUPPORTED_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff", ".gif"]);
-const CARD_FIELDS = ["title", "active_years", "printers", "publishers", "website"];
+const CARD_FIELDS = ["title"];
 const CALIBRATION_FLOOR_PERCENTILE = 0.05;
 const EMBEDDINGS_CONFIG_FILE = "config-embeddings.yml";
 const COLLECTION_CONFIG_FILE = "_config.yml";
