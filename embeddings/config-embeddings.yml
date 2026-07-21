@@ -29,15 +29,15 @@ model: clip
 preprocessing: binary
 
 # Collection inputs.
-objects_dir: docs/objects
-metadata_csv: docs/metadata/cb-pmcarchive.csv
+objects_dir: docs/objects # this should be read from metadata csv "object_location" field instead
+metadata_csv: docs/metadata/cb-pmcarchive.csv # this should be read from project "_config.yml" metadata key instead of here.
 
 # CSV column that holds each image's filename (used to join metadata).
 filename_field: filename
 
 # Where generated artifacts are written. The search page expects to find
 # them at data/ relative to itself.
-output_dir: docs/data
+output_dir: assets/embeddings/data
 
 # Default number of results the search page shows.
 top_k: 12

@@ -2,8 +2,8 @@ require "fileutils"
 require "shellwords"
 
 PROJECT_ROOT = File.expand_path(__dir__)
-SCRIPTS_DIR = File.join(PROJECT_ROOT, "scripts")
-DATA_DIR = File.join(PROJECT_ROOT, "assets", "data")
+SCRIPTS_DIR = File.join(PROJECT_ROOT, "embeddings")
+DATA_DIR = File.join(PROJECT_ROOT, "assets", "embeddings", "data")
 NODE_MODULES = File.join(SCRIPTS_DIR, "node_modules")
 MIN_NODE_MAJOR = 18
 
@@ -67,7 +67,7 @@ end
 
 
 desc "Check Node.js and install JavaScript dependencies"
-task :setup do
+task :setup_embeddings do
   find_node!
   package_manager = find_package_manager!
 
@@ -97,7 +97,7 @@ task :build_embeddings do
 end
 
 
-desc "Remove generated data artifacts in docs/data"
+desc "Remove generated data artifacts"
 task :clean_data do
   artifacts = %w[manifest.json embeddings.bin index.json build-info.json preprocess.log]
     .map { |name| File.join(DATA_DIR, name) }
@@ -109,12 +109,4 @@ task :clean_data do
     FileUtils.rm_f(existing)
     puts "Removed #{existing.length} generated artifact(s)."
   end
-end
-
-
-desc "Serve the demo site locally at http://127.0.0.1:4173/"
-task :serve do
-  docs_dir = File.join(PROJECT_ROOT, "docs")
-  puts "Serving #{docs_dir} at http://127.0.0.1:4173/ (Ctrl-C to stop)"
-  ruby("-run", "-e", "httpd", docs_dir, "-p", "4173")
 end

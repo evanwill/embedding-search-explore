@@ -1,6 +1,7 @@
 # embedding-search-explore
 
 Demo project prototyping static web image embeddings search built into CollectionBuilder.
+See "embeddings/README.md".
 
 ----------
 

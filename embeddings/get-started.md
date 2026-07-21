@@ -14,7 +14,7 @@ Dependencies are installed with npm (bundled with Node) or pnpm — `rake setup`
 2. Install JavaScript dependencies:
 
 ```sh
-rake setup
+rake setup_embeddings
 ```
 
 3. Build the search data (the first run downloads model weights, which are cached for later runs):
@@ -26,16 +26,12 @@ rake build_embeddings
 4. Serve the demo site and open it:
 
 ```sh
-rake serve
+bundle exec jekyll s
 ```
-
-Then open: <http://127.0.0.1:4173/>
-
-Any static server works, e.g. `python3 -m http.server 4173 --directory docs`.
 
 ## configuration
 
-`config.yml` controls the whole pipeline:
+"embeddings/config.yml" controls the whole pipeline:
 
 | setting | values | notes |
 |---|---|---|
