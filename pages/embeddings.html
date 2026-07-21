@@ -4,7 +4,15 @@ layout: page
 permalink: /embeddings.html
 ---
 
-<h2>Find matching printer's marks from a sample image</h2>
+<div
+    id="reverse-lookup-app"
+    data-data-base="{{ '/assets/embeddings/data/' | relative_url }}"
+    data-site-root="{{ '/' | relative_url }}"
+>
+<h1 class="h3 mb-2">Find matching collection images from a sample image</h1>
+<p class="text-body-secondary mb-4">
+    Upload a photo, scan, or screenshot and compare it against the collection.
+</p>
 
 <div id="rl-intro" class="card mb-4">
     <div class="card-body">
@@ -66,5 +74,7 @@ permalink: /embeddings.html
     </div>
     <div id="rl-results" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3"></div>
 </section>
+
+</div>
 
 <script type="module" src="{{ '/assets/embeddings/app.js' | relative_url }}"></script>

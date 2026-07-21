@@ -1,8 +1,8 @@
 require "fileutils"
 require "shellwords"
 
-PROJECT_ROOT = File.expand_path(__dir__)
-SCRIPTS_DIR = File.join(PROJECT_ROOT, "embeddings")
+PROJECT_ROOT = File.expand_path("..", __dir__)
+SCRIPTS_DIR = File.join(PROJECT_ROOT, "embeddings", "scripts")
 DATA_DIR = File.join(PROJECT_ROOT, "assets", "embeddings", "data")
 NODE_MODULES = File.join(SCRIPTS_DIR, "node_modules")
 MIN_NODE_MAJOR = 18
@@ -80,9 +80,9 @@ task :setup_embeddings do
 end
 
 
-desc "Generate embedding artifacts for browser search (edit config.yml first)"
+desc "Generate embedding artifacts for browser search (edit embeddings/config-embeddings.yml first)"
 task :build_embeddings do
-  Rake::Task[:setup].invoke unless File.directory?(NODE_MODULES)
+  Rake::Task[:setup_embeddings].invoke unless File.directory?(NODE_MODULES)
 
   node_cmd = find_node!
   build_script = File.join(SCRIPTS_DIR, "build_embeddings.mjs")

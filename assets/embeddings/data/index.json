@@ -1,0 +1,3359 @@
+{
+  "version": 2,
+  "generated_at": "2026-07-21T23:15:37Z",
+  "items": [
+    {
+      "filename": "89-1163.jpg",
+      "image_path": "objects/89-1163.jpg",
+      "item_url": "/items/watkins0.html",
+      "thumb_path": "objects/thumbs/89-1163_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level East [no. 1163]"
+    },
+    {
+      "filename": "89-1172.jpg",
+      "image_path": "objects/89-1172.jpg",
+      "item_url": "/items/watkins1.html",
+      "thumb_path": "objects/thumbs/89-1172_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level West [no. 1172]"
+    },
+    {
+      "filename": "89-1173.jpg",
+      "image_path": "objects/89-1173.jpg",
+      "item_url": "/items/watkins2.html",
+      "thumb_path": "objects/thumbs/89-1173_th.jpg",
+      "title": "Anaconda Mine 900 ft. level West [no. 1173]"
+    },
+    {
+      "filename": "89-1174.jpg",
+      "image_path": "objects/89-1174.jpg",
+      "item_url": "/items/watkins3.html",
+      "thumb_path": "objects/thumbs/89-1174_th.jpg",
+      "title": "Anaconda Mine 900 ft. level East [no. 1174]"
+    },
+    {
+      "filename": "89-1175.jpg",
+      "image_path": "objects/89-1175.jpg",
+      "item_url": "/items/watkins4.html",
+      "thumb_path": "objects/thumbs/89-1175_th.jpg",
+      "title": "Anaconda Mine 900 ft. level West [no. 1175]"
+    },
+    {
+      "filename": "89-1176.jpg",
+      "image_path": "objects/89-1176.jpg",
+      "item_url": "/items/watkins5.html",
+      "thumb_path": "objects/thumbs/89-1176_th.jpg",
+      "title": "Anaconda Mine 900 ft. level East [no. 1176]"
+    },
+    {
+      "filename": "89-1177.jpg",
+      "image_path": "objects/89-1177.jpg",
+      "item_url": "/items/watkins6.html",
+      "thumb_path": "objects/thumbs/89-1177_th.jpg",
+      "title": "Anaconda Mine 900 ft. level East [no. 1177]"
+    },
+    {
+      "filename": "89-1178.jpg",
+      "image_path": "objects/89-1178.jpg",
+      "item_url": "/items/watkins7.html",
+      "thumb_path": "objects/thumbs/89-1178_th.jpg",
+      "title": "Anaconda Mine 900 ft. level East [no. 1178]"
+    },
+    {
+      "filename": "89-1179.jpg",
+      "image_path": "objects/89-1179.jpg",
+      "item_url": "/items/watkins8.html",
+      "thumb_path": "objects/thumbs/89-1179_th.jpg",
+      "title": "St. Lawrence Mine 800 ft. level West [no. 1179]"
+    },
+    {
+      "filename": "89-1181.jpg",
+      "image_path": "objects/89-1181.jpg",
+      "item_url": "/items/watkins9.html",
+      "thumb_path": "objects/thumbs/89-1181_th.jpg",
+      "title": "St. Lawrence Mine 800 ft. level West [no. 1181]"
+    },
+    {
+      "filename": "89-1180.jpg",
+      "image_path": "objects/89-1180.jpg",
+      "item_url": "/items/watkins10.html",
+      "thumb_path": "objects/thumbs/89-1180_th.jpg",
+      "title": "St. Lawrence Mine 800 ft. level West [no. 1180]"
+    },
+    {
+      "filename": "89-1164.jpg",
+      "image_path": "objects/89-1164.jpg",
+      "item_url": "/items/watkins11.html",
+      "thumb_path": "objects/thumbs/89-1164_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level East [no. 1164]"
+    },
+    {
+      "filename": "89-1182.jpg",
+      "image_path": "objects/89-1182.jpg",
+      "item_url": "/items/watkins12.html",
+      "thumb_path": "objects/thumbs/89-1182_th.jpg",
+      "title": "St. Lawrence Mine 800 ft. level West [no. 1182]"
+    },
+    {
+      "filename": "89-1183.jpg",
+      "image_path": "objects/89-1183.jpg",
+      "item_url": "/items/watkins13.html",
+      "thumb_path": "objects/thumbs/89-1183_th.jpg",
+      "title": "St. Lawrence Mine 700 ft. level East [no. 1183]"
+    },
+    {
+      "filename": "89-1184.jpg",
+      "image_path": "objects/89-1184.jpg",
+      "item_url": "/items/watkins14.html",
+      "thumb_path": "objects/thumbs/89-1184_th.jpg",
+      "title": "St. Lawrence Mine 700 ft. level East [no. 1184]"
+    },
+    {
+      "filename": "89-1185.jpg",
+      "image_path": "objects/89-1185.jpg",
+      "item_url": "/items/watkins15.html",
+      "thumb_path": "objects/thumbs/89-1185_th.jpg",
+      "title": "St. Lawrence Mine 800 ft. level East [no. 1185]"
+    },
+    {
+      "filename": "89-1186.jpg",
+      "image_path": "objects/89-1186.jpg",
+      "item_url": "/items/watkins16.html",
+      "thumb_path": "objects/thumbs/89-1186_th.jpg",
+      "title": "St. Lawrence Mine Pump Station 400' level [no. 1186]"
+    },
+    {
+      "filename": "89-1187.jpg",
+      "image_path": "objects/89-1187.jpg",
+      "item_url": "/items/watkins17.html",
+      "thumb_path": "objects/thumbs/89-1187_th.jpg",
+      "title": "St. Lawrence Mine 600 ft. level East [no. 1187]"
+    },
+    {
+      "filename": "89-1188.jpg",
+      "image_path": "objects/89-1188.jpg",
+      "item_url": "/items/watkins18.html",
+      "thumb_path": "objects/thumbs/89-1188_th.jpg",
+      "title": "St. Lawrence Mine 600 ft. level East [no. 1188]"
+    },
+    {
+      "filename": "89-1189.jpg",
+      "image_path": "objects/89-1189.jpg",
+      "item_url": "/items/watkins19.html",
+      "thumb_path": "objects/thumbs/89-1189_th.jpg",
+      "title": "St. Lawrence Mine 600 ft. level East [no. 1189]"
+    },
+    {
+      "filename": "89-1190.jpg",
+      "image_path": "objects/89-1190.jpg",
+      "item_url": "/items/watkins20.html",
+      "thumb_path": "objects/thumbs/89-1190_th.jpg",
+      "title": "St. Lawrence Mine 600 ft. level East [no. 1190]"
+    },
+    {
+      "filename": "89-1191.jpg",
+      "image_path": "objects/89-1191.jpg",
+      "item_url": "/items/watkins21.html",
+      "thumb_path": "objects/thumbs/89-1191_th.jpg",
+      "title": "St. Lawrence Mine 600 ft. level East [no. 1191]"
+    },
+    {
+      "filename": "89-1165.jpg",
+      "image_path": "objects/89-1165.jpg",
+      "item_url": "/items/watkins22.html",
+      "thumb_path": "objects/thumbs/89-1165_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level East [no. 1165]"
+    },
+    {
+      "filename": "89-1192.jpg",
+      "image_path": "objects/89-1192.jpg",
+      "item_url": "/items/watkins23.html",
+      "thumb_path": "objects/thumbs/89-1192_th.jpg",
+      "title": "St. Lawrence Mine 600 ft. level East [no. 1192]"
+    },
+    {
+      "filename": "89-1193.jpg",
+      "image_path": "objects/89-1193.jpg",
+      "item_url": "/items/watkins24.html",
+      "thumb_path": "objects/thumbs/89-1193_th.jpg",
+      "title": "High Ore Mine 400 ft. level [no. 1193]"
+    },
+    {
+      "filename": "89-1194.jpg",
+      "image_path": "objects/89-1194.jpg",
+      "item_url": "/items/watkins25.html",
+      "thumb_path": "objects/thumbs/89-1194_th.jpg",
+      "title": "High Ore Mine 600 ft. level [no. 1194]"
+    },
+    {
+      "filename": "89-1195.jpg",
+      "image_path": "objects/89-1195.jpg",
+      "item_url": "/items/watkins26.html",
+      "thumb_path": "objects/thumbs/89-1195_th.jpg",
+      "title": "High Ore Mine 500 ft. level [no. 1195]"
+    },
+    {
+      "filename": "89-1196.jpg",
+      "image_path": "objects/89-1196.jpg",
+      "item_url": "/items/watkins27.html",
+      "thumb_path": "objects/thumbs/89-1196_th.jpg",
+      "title": "High Ore Mine 400 ft. level West [no. 1196]"
+    },
+    {
+      "filename": "89-1197.jpg",
+      "image_path": "objects/89-1197.jpg",
+      "item_url": "/items/watkins28.html",
+      "thumb_path": "objects/thumbs/89-1197_th.jpg",
+      "title": "High Ore Mine 300 ft. level East [no. 1197]"
+    },
+    {
+      "filename": "89-1198.jpg",
+      "image_path": "objects/89-1198.jpg",
+      "item_url": "/items/watkins29.html",
+      "thumb_path": "objects/thumbs/89-1198_th.jpg",
+      "title": "High Ore Mine 200 ft. level West [no. 1198]"
+    },
+    {
+      "filename": "89-1199.jpg",
+      "image_path": "objects/89-1199.jpg",
+      "item_url": "/items/watkins30.html",
+      "thumb_path": "objects/thumbs/89-1199_th.jpg",
+      "title": "High Ore Mine 600 ft. level East [no. 1199]"
+    },
+    {
+      "filename": "89-1200.jpg",
+      "image_path": "objects/89-1200.jpg",
+      "item_url": "/items/watkins31.html",
+      "thumb_path": "objects/thumbs/89-1200_th.jpg",
+      "title": "High Ore Mine 600 ft. level West [no. 1200]"
+    },
+    {
+      "filename": "89-1201.jpg",
+      "image_path": "objects/89-1201.jpg",
+      "item_url": "/items/watkins32.html",
+      "thumb_path": "objects/thumbs/89-1201_th.jpg",
+      "title": "High Ore Mine 300 ft. level East [no. 1201]"
+    },
+    {
+      "filename": "89-1166.jpg",
+      "image_path": "objects/89-1166.jpg",
+      "item_url": "/items/watkins33.html",
+      "thumb_path": "objects/thumbs/89-1166_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level East [no. 1166]"
+    },
+    {
+      "filename": "89-1202.jpg",
+      "image_path": "objects/89-1202.jpg",
+      "item_url": "/items/watkins34.html",
+      "thumb_path": "objects/thumbs/89-1202_th.jpg",
+      "title": "High Ore Mine 400 ft. level East [no. 1202]"
+    },
+    {
+      "filename": "89-1203.jpg",
+      "image_path": "objects/89-1203.jpg",
+      "item_url": "/items/watkins35.html",
+      "thumb_path": "objects/thumbs/89-1203_th.jpg",
+      "title": "High Ore Mine 300 ft. level West [no. 1203]"
+    },
+    {
+      "filename": "89-1204.jpg",
+      "image_path": "objects/89-1204.jpg",
+      "item_url": "/items/watkins36.html",
+      "thumb_path": "objects/thumbs/89-1204_th.jpg",
+      "title": "High Ore Mine 500 ft. level West [no. 1204]"
+    },
+    {
+      "filename": "89-1205.jpg",
+      "image_path": "objects/89-1205.jpg",
+      "item_url": "/items/watkins37.html",
+      "thumb_path": "objects/thumbs/89-1205_th.jpg",
+      "title": "High Ore Mine 300 ft. level East [no. 1205]"
+    },
+    {
+      "filename": "89-1206.jpg",
+      "image_path": "objects/89-1206.jpg",
+      "item_url": "/items/watkins38.html",
+      "thumb_path": "objects/thumbs/89-1206_th.jpg",
+      "title": "High Ore Mine 300 ft. level West [no. 1206]"
+    },
+    {
+      "filename": "89-1207.jpg",
+      "image_path": "objects/89-1207.jpg",
+      "item_url": "/items/watkins39.html",
+      "thumb_path": "objects/thumbs/89-1207_th.jpg",
+      "title": "High Ore Mine 300 ft. level West [no. 1207]"
+    },
+    {
+      "filename": "89-1208.jpg",
+      "image_path": "objects/89-1208.jpg",
+      "item_url": "/items/watkins40.html",
+      "thumb_path": "objects/thumbs/89-1208_th.jpg",
+      "title": "High Ore Mine 200 ft. level East [no. 1208]"
+    },
+    {
+      "filename": "89-1209.jpg",
+      "image_path": "objects/89-1209.jpg",
+      "item_url": "/items/watkins41.html",
+      "thumb_path": "objects/thumbs/89-1209_th.jpg",
+      "title": "High Ore Mine 200 ft. level East [no. 1209]"
+    },
+    {
+      "filename": "89-1210.jpg",
+      "image_path": "objects/89-1210.jpg",
+      "item_url": "/items/watkins42.html",
+      "thumb_path": "objects/thumbs/89-1210_th.jpg",
+      "title": "High Ore Mine 200 ft. level East [no. 1210]"
+    },
+    {
+      "filename": "89-1211.jpg",
+      "image_path": "objects/89-1211.jpg",
+      "item_url": "/items/watkins43.html",
+      "thumb_path": "objects/thumbs/89-1211_th.jpg",
+      "title": "High Ore Mine 400 ft. level East still floor [no. 1211]"
+    },
+    {
+      "filename": "89-1168.jpg",
+      "image_path": "objects/89-1168.jpg",
+      "item_url": "/items/watkins44.html",
+      "thumb_path": "objects/thumbs/89-1168_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level West [no. 1168]"
+    },
+    {
+      "filename": "89-1212.jpg",
+      "image_path": "objects/89-1212.jpg",
+      "item_url": "/items/watkins45.html",
+      "thumb_path": "objects/thumbs/89-1212_th.jpg",
+      "title": "Mountain Consolidated Mine 100 ft. level Station (note \"1890\" on beam) [no. 1212]"
+    },
+    {
+      "filename": "89-1214.jpg",
+      "image_path": "objects/89-1214.jpg",
+      "item_url": "/items/watkins46.html",
+      "thumb_path": "objects/thumbs/89-1214_th.jpg",
+      "title": "Mountain Consolidated Mine 100 Station at shaft [no. 1214]"
+    },
+    {
+      "filename": "89-1215.jpg",
+      "image_path": "objects/89-1215.jpg",
+      "item_url": "/items/watkins47.html",
+      "thumb_path": "objects/thumbs/89-1215_th.jpg",
+      "title": "Mountain Consolidated Mine 100 ft. level [no. 1215]"
+    },
+    {
+      "filename": "89-1216.jpg",
+      "image_path": "objects/89-1216.jpg",
+      "item_url": "/items/watkins48.html",
+      "thumb_path": "objects/thumbs/89-1216_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East still floor breast [no. 1216]"
+    },
+    {
+      "filename": "89-1217.jpg",
+      "image_path": "objects/89-1217.jpg",
+      "item_url": "/items/watkins49.html",
+      "thumb_path": "objects/thumbs/89-1217_th.jpg",
+      "title": "Mountain Consolidated Mine 100 ft. level East still floor [no. 1217]"
+    },
+    {
+      "filename": "89-1218.jpg",
+      "image_path": "objects/89-1218.jpg",
+      "item_url": "/items/watkins50.html",
+      "thumb_path": "objects/thumbs/89-1218_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East [no. 1218]"
+    },
+    {
+      "filename": "89-1219.jpg",
+      "image_path": "objects/89-1219.jpg",
+      "item_url": "/items/watkins51.html",
+      "thumb_path": "objects/thumbs/89-1219_th.jpg",
+      "title": "Mountain Consolidated Mine 100 ft. level West still floor [no. 1219]"
+    },
+    {
+      "filename": "89-1220.jpg",
+      "image_path": "objects/89-1220.jpg",
+      "item_url": "/items/watkins52.html",
+      "thumb_path": "objects/thumbs/89-1220_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East still floor [no. 1220]"
+    },
+    {
+      "filename": "89-1221.jpg",
+      "image_path": "objects/89-1221.jpg",
+      "item_url": "/items/watkins53.html",
+      "thumb_path": "objects/thumbs/89-1221_th.jpg",
+      "title": "Mountain Consolidated Mine 550 ft. level East still floor"
+    },
+    {
+      "filename": "89-1222.jpg",
+      "image_path": "objects/89-1222.jpg",
+      "item_url": "/items/watkins54.html",
+      "thumb_path": "objects/thumbs/89-1222_th.jpg",
+      "title": "Mountain Consolidated Mine 550 ft. level East [no. 1222]"
+    },
+    {
+      "filename": "89-1167.jpg",
+      "image_path": "objects/89-1167.jpg",
+      "item_url": "/items/watkins55.html",
+      "thumb_path": "objects/thumbs/89-1167_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level East [no. 1167]"
+    },
+    {
+      "filename": "89-1223.jpg",
+      "image_path": "objects/89-1223.jpg",
+      "item_url": "/items/watkins56.html",
+      "thumb_path": "objects/thumbs/89-1223_th.jpg",
+      "title": "Mountain Consolidated Mine 300 ft. level East still floor  [no. 1223]"
+    },
+    {
+      "filename": "89-1224.jpg",
+      "image_path": "objects/89-1224.jpg",
+      "item_url": "/items/watkins57.html",
+      "thumb_path": "objects/thumbs/89-1224_th.jpg",
+      "title": "Mountain Consolidated Mine 200 ft. level East sill floor  [no. 1224]"
+    },
+    {
+      "filename": "89-1225.jpg",
+      "image_path": "objects/89-1225.jpg",
+      "item_url": "/items/watkins58.html",
+      "thumb_path": "objects/thumbs/89-1225_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East sill floor  [no. 1225]"
+    },
+    {
+      "filename": "89-1226.jpg",
+      "image_path": "objects/89-1226.jpg",
+      "item_url": "/items/watkins59.html",
+      "thumb_path": "objects/thumbs/89-1226_th.jpg",
+      "title": "Mountain Consolidated Mine 200 ft. level East sill floor  [no. 1226]"
+    },
+    {
+      "filename": "89-1227.jpg",
+      "image_path": "objects/89-1227.jpg",
+      "item_url": "/items/watkins60.html",
+      "thumb_path": "objects/thumbs/89-1227_th.jpg",
+      "title": "Mountain Consolidated Mine 100 ft. level West sill floor  [no. 1227]"
+    },
+    {
+      "filename": "89-1228.jpg",
+      "image_path": "objects/89-1228.jpg",
+      "item_url": "/items/watkins61.html",
+      "thumb_path": "objects/thumbs/89-1228_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East sill floor  [no. 1228]"
+    },
+    {
+      "filename": "89-1229.jpg",
+      "image_path": "objects/89-1229.jpg",
+      "item_url": "/items/watkins62.html",
+      "thumb_path": "objects/thumbs/89-1229_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East sill floor  [no. 1229]"
+    },
+    {
+      "filename": "89-1230.jpg",
+      "image_path": "objects/89-1230.jpg",
+      "item_url": "/items/watkins63.html",
+      "thumb_path": "objects/thumbs/89-1230_th.jpg",
+      "title": "Mountain Consolidated Mine 300 ft. level East sill floor  [no. 1230]"
+    },
+    {
+      "filename": "89-1231.jpg",
+      "image_path": "objects/89-1231.jpg",
+      "item_url": "/items/watkins64.html",
+      "thumb_path": "objects/thumbs/89-1231_th.jpg",
+      "title": "Mountain Consolidated Mine 300 ft. level East sill floor  [no. 1231]"
+    },
+    {
+      "filename": "89-1232.jpg",
+      "image_path": "objects/89-1232.jpg",
+      "item_url": "/items/watkins65.html",
+      "thumb_path": "objects/thumbs/89-1232_th.jpg",
+      "title": "Mountain Consolidated Mine 100 ft. level West sill floor  [no. 1232]"
+    },
+    {
+      "filename": "89-1169.jpg",
+      "image_path": "objects/89-1169.jpg",
+      "item_url": "/items/watkins66.html",
+      "thumb_path": "objects/thumbs/89-1169_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level West [no. 1169]"
+    },
+    {
+      "filename": "89-1233.jpg",
+      "image_path": "objects/89-1233.jpg",
+      "item_url": "/items/watkins67.html",
+      "thumb_path": "objects/thumbs/89-1233_th.jpg",
+      "title": "Mountain Consolidated Mine 550 ft. level East sill floor [no. 1233]"
+    },
+    {
+      "filename": "89-1234.jpg",
+      "image_path": "objects/89-1234.jpg",
+      "item_url": "/items/watkins68.html",
+      "thumb_path": "objects/thumbs/89-1234_th.jpg",
+      "title": "Mountain Consolidated Mine 200 ft. level East sill floor [no. 1234]"
+    },
+    {
+      "filename": "89-1235.jpg",
+      "image_path": "objects/89-1235.jpg",
+      "item_url": "/items/watkins69.html",
+      "thumb_path": "objects/thumbs/89-1235_th.jpg",
+      "title": "Mountain Consolidated Mine 550 ft. level East sill floor"
+    },
+    {
+      "filename": "89-1236.jpg",
+      "image_path": "objects/89-1236.jpg",
+      "item_url": "/items/watkins70.html",
+      "thumb_path": "objects/thumbs/89-1236_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East [no. 1236]"
+    },
+    {
+      "filename": "89-1237.jpg",
+      "image_path": "objects/89-1237.jpg",
+      "item_url": "/items/watkins71.html",
+      "thumb_path": "objects/thumbs/89-1237_th.jpg",
+      "title": "Mountain Consolidated Mine 300 ft. level West [no. 1237]"
+    },
+    {
+      "filename": "89-1238.jpg",
+      "image_path": "objects/89-1238.jpg",
+      "item_url": "/items/watkins72.html",
+      "thumb_path": "objects/thumbs/89-1238_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East [no. 1238]"
+    },
+    {
+      "filename": "89-1239.jpg",
+      "image_path": "objects/89-1239.jpg",
+      "item_url": "/items/watkins73.html",
+      "thumb_path": "objects/thumbs/89-1239_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East"
+    },
+    {
+      "filename": "89-1240.jpg",
+      "image_path": "objects/89-1240.jpg",
+      "item_url": "/items/watkins74.html",
+      "thumb_path": "objects/thumbs/89-1240_th.jpg",
+      "title": "Mountain Consolidated Mine 550 ft. level East [no. 1240]"
+    },
+    {
+      "filename": "89-1241.jpg",
+      "image_path": "objects/89-1241.jpg",
+      "item_url": "/items/watkins75.html",
+      "thumb_path": "objects/thumbs/89-1241_th.jpg",
+      "title": "Mountain Consolidated Mine 400 ft. level East [no. 1241]"
+    },
+    {
+      "filename": "89-1242.jpg",
+      "image_path": "objects/89-1242.jpg",
+      "item_url": "/items/watkins76.html",
+      "thumb_path": "objects/thumbs/89-1242_th.jpg",
+      "title": "Mountain Consolidated Mine 550 ft. level East [no. 1242]"
+    },
+    {
+      "filename": "89-1170.jpg",
+      "image_path": "objects/89-1170.jpg",
+      "item_url": "/items/watkins77.html",
+      "thumb_path": "objects/thumbs/89-1170_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level West [no. 1170]"
+    },
+    {
+      "filename": "89-1243.jpg",
+      "image_path": "objects/89-1243.jpg",
+      "item_url": "/items/watkins78.html",
+      "thumb_path": "objects/thumbs/89-1243_th.jpg",
+      "title": "Mountain Consolidated Mine 550 ft. level [no. 1243]"
+    },
+    {
+      "filename": "89-1171.jpg",
+      "image_path": "objects/89-1171.jpg",
+      "item_url": "/items/watkins79.html",
+      "thumb_path": "objects/thumbs/89-1171_th.jpg",
+      "title": "Anaconda Mine 1000 ft. level West [no. 1171]"
+    },
+    {
+      "filename": "mg101_b6_frank_robinson_negatives_009.jpg",
+      "image_path": "objects/mg101_b6_frank_robinson_negatives_009.jpg",
+      "item_url": "/items/psychiana005.html",
+      "thumb_path": "objects/thumbs/mg101_b6_frank_robinson_negatives_009_th.jpg",
+      "title": "I Talked With God Advertisement"
+    },
+    {
+      "filename": "mg101_b6_photographs_26.jpg",
+      "image_path": "objects/mg101_b6_photographs_26.jpg",
+      "item_url": "/items/psychiana008.html",
+      "thumb_path": "objects/thumbs/mg101_b6_photographs_26_th.jpg",
+      "title": "Label of a photograph mailed from Frank B. Robinson to his son, Albert B. Robinson"
+    },
+    {
+      "filename": "mg101_b6_f7_miscellanious_negatives_012.jpg",
+      "image_path": "objects/mg101_b6_f7_miscellanious_negatives_012.jpg",
+      "item_url": "/items/psychiana011.html",
+      "thumb_path": "objects/thumbs/mg101_b6_f7_miscellanious_negatives_012_th.jpg",
+      "title": "Negative photograph of a Psychiana pin"
+    },
+    {
+      "filename": "mg101_b6_f7_miscellanious_negatives_014.jpg",
+      "image_path": "objects/mg101_b6_f7_miscellanious_negatives_014.jpg",
+      "item_url": "/items/psychiana012.html",
+      "thumb_path": "objects/thumbs/mg101_b6_f7_miscellanious_negatives_014_th.jpg",
+      "title": "Negative photograph of the development site of Robinson lake"
+    },
+    {
+      "filename": "mg101_b6_f7_miscellanious_negatives_010.jpg",
+      "image_path": "objects/mg101_b6_f7_miscellanious_negatives_010.jpg",
+      "item_url": "/items/psychiana013.html",
+      "thumb_path": "objects/thumbs/mg101_b6_f7_miscellanious_negatives_010_th.jpg",
+      "title": "Negative photograph of several copies of the June 1948 edition of the 'The Way: A Quarterly Publication of the Psychiana Religion.'"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_002.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_002.jpg",
+      "item_url": "/items/psychiana018.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_002_th.jpg",
+      "title": "Photograph of 1st and Main Street, Moscow, ID"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_011.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_011.jpg",
+      "item_url": "/items/psychiana019.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_011_th.jpg",
+      "title": "Photograph of clerical and bookkeeping staff from the branch mailing department."
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_001.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_001.jpg",
+      "item_url": "/items/psychiana020.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_001_th.jpg",
+      "title": "Photograph of Corner Drug Store in Moscow, ID"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_039.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_039.jpg",
+      "item_url": "/items/psychiana021.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_039_th.jpg",
+      "title": "Photograph of Frank B. Robinson adjusting a small printing press."
+    },
+    {
+      "filename": "mg101_b6_robinson_friends_008.jpg",
+      "image_path": "objects/mg101_b6_robinson_friends_008.jpg",
+      "item_url": "/items/psychiana022.html",
+      "thumb_path": "objects/thumbs/mg101_b6_robinson_friends_008_th.jpg",
+      "title": "Photograph of Frank B. Robinson and a man named Henry Banks"
+    },
+    {
+      "filename": "mg101_b6_photographs_06.jpg",
+      "image_path": "objects/mg101_b6_photographs_06.jpg",
+      "item_url": "/items/psychiana023.html",
+      "thumb_path": "objects/thumbs/mg101_b6_photographs_06_th.jpg",
+      "title": "Photograph of Frank B. Robinson beside his Duesenberg Convertible Coupe"
+    },
+    {
+      "filename": "mg101_b6_photographs_07.jpg",
+      "image_path": "objects/mg101_b6_photographs_07.jpg",
+      "item_url": "/items/psychiana024.html",
+      "thumb_path": "objects/thumbs/mg101_b6_photographs_07_th.jpg",
+      "title": "Photograph of Frank B. Robinson beside his Duesenberg Convertible Coupe in front of crowd"
+    },
+    {
+      "filename": "mg101_b6_photographs_02.jpg",
+      "image_path": "objects/mg101_b6_photographs_02.jpg",
+      "item_url": "/items/psychiana025.html",
+      "thumb_path": "objects/thumbs/mg101_b6_photographs_02_th.jpg",
+      "title": "Photograph of Frank B. Robinson in his Duesenberg Convertible Coupe"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_037b.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_037b.jpg",
+      "item_url": "/items/psychiana026.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_037b_th.jpg",
+      "title": "Photograph of Frank B. Robinson loading a printing press with ink"
+    },
+    {
+      "filename": "mg101_b6_photographs_01.jpg",
+      "image_path": "objects/mg101_b6_photographs_01.jpg",
+      "item_url": "/items/psychiana027.html",
+      "thumb_path": "objects/thumbs/mg101_b6_photographs_01_th.jpg",
+      "title": "Photograph of Frank B. Robinson playing his organ"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_018a.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_018a.jpg",
+      "item_url": "/items/psychiana028.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_018a_th.jpg",
+      "title": "Photograph of Frank B. Robinson watching Psychiana staff members work"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_038.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_038.jpg",
+      "item_url": "/items/psychiana029.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_038_th.jpg",
+      "title": "Photograph of Frank B. Robinson watching the work of an unidentified male staff member"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_015.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_015.jpg",
+      "item_url": "/items/psychiana030.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_015_th.jpg",
+      "title": "Photograph of Psychiana business office"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_021.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_021.jpg",
+      "item_url": "/items/psychiana031.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_021_th.jpg",
+      "title": "Photograph of revolving table used to sort and compile materials"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_010.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_010.jpg",
+      "item_url": "/items/psychiana032.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_010_th.jpg",
+      "title": "Photograph of some Psychiana staff members at Psychiana's international headquarters"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_019.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_019.jpg",
+      "item_url": "/items/psychiana033.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_019_th.jpg",
+      "title": "Photograph of the bookkeeping department"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_003.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_003.jpg",
+      "item_url": "/items/psychiana034.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_003_th.jpg",
+      "title": "Photograph of The Professional Building built by Frank B. Robinson"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_035.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_035.jpg",
+      "item_url": "/items/psychiana035.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_035_th.jpg",
+      "title": "Photograph of three men, two working at linographs"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_017.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_017.jpg",
+      "item_url": "/items/psychiana036.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_017_th.jpg",
+      "title": "Photograph of two women using dictaphones"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_028.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_028.jpg",
+      "item_url": "/items/psychiana037.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_028_th.jpg",
+      "title": "Photograph of unidentified woman using an envelope sorter"
+    },
+    {
+      "filename": "mg101_b6_psychiana_photographs_040.jpg",
+      "image_path": "objects/mg101_b6_psychiana_photographs_040.jpg",
+      "item_url": "/items/psychiana038.html",
+      "thumb_path": "objects/thumbs/mg101_b6_psychiana_photographs_040_th.jpg",
+      "title": "Photograph of William Walter DeBolt, Frank B. Robinson, and unidentified female staff member working at a sorter"
+    },
+    {
+      "filename": "mg101_b6_photographs_04.jpg",
+      "image_path": "objects/mg101_b6_photographs_04.jpg",
+      "item_url": "/items/psychiana039.html",
+      "thumb_path": "objects/thumbs/mg101_b6_photographs_04_th.jpg",
+      "title": "Portrait of Frank B. Robinson [01]"
+    },
+    {
+      "filename": "mg101_b6_photographs_05.jpg",
+      "image_path": "objects/mg101_b6_photographs_05.jpg",
+      "item_url": "/items/psychiana040.html",
+      "thumb_path": "objects/thumbs/mg101_b6_photographs_05_th.jpg",
+      "title": "Portrait of Frank B. Robinson [02]"
+    },
+    {
+      "filename": "mg101_b6_photographs_08.jpg",
+      "image_path": "objects/mg101_b6_photographs_08.jpg",
+      "item_url": "/items/psychiana041.html",
+      "thumb_path": "objects/thumbs/mg101_b6_photographs_08_th.jpg",
+      "title": "Portrait of Frank B. Robinson [03]"
+    },
+    {
+      "filename": "mg101_b6_photographs_03.jpg",
+      "image_path": "objects/mg101_b6_photographs_03.jpg",
+      "item_url": "/items/psychiana047.html",
+      "thumb_path": "objects/thumbs/mg101_b6_photographs_03_th.jpg",
+      "title": "Several portrait photographs of a younger Frank B. Robinson"
+    },
+    {
+      "filename": "mg101_b6_robinson_friends_015.jpg",
+      "image_path": "objects/mg101_b6_robinson_friends_015.jpg",
+      "item_url": "/items/psychiana048.html",
+      "thumb_path": "objects/thumbs/mg101_b6_robinson_friends_015_th.jpg",
+      "title": "Signed portrait of Tommy Burns at age 27 mailed to Frank B. Robinson"
+    },
+    {
+      "filename": "postcard_023.jpg",
+      "image_path": "objects/postcard_023.jpg",
+      "item_url": "/items/nwpostcards435.html#nwpostcards436",
+      "thumb_path": "objects/thumbs/postcard_023_th.jpg"
+    },
+    {
+      "filename": "postcard_023b.jpg",
+      "image_path": "objects/postcard_023b.jpg",
+      "item_url": "/items/nwpostcards435.html#nwpostcards437",
+      "thumb_path": "objects/thumbs/postcard_023b_th.jpg"
+    },
+    {
+      "filename": "postcard_024.jpg",
+      "image_path": "objects/postcard_024.jpg",
+      "item_url": "/items/nwpostcards472.html#nwpostcards473",
+      "thumb_path": "objects/thumbs/postcard_024_th.jpg"
+    },
+    {
+      "filename": "postcard_024b.jpg",
+      "image_path": "objects/postcard_024b.jpg",
+      "item_url": "/items/nwpostcards472.html#nwpostcards474",
+      "thumb_path": "objects/thumbs/postcard_024b_th.jpg"
+    },
+    {
+      "filename": "postcard_026.jpg",
+      "image_path": "objects/postcard_026.jpg",
+      "item_url": "/items/nwpostcards484.html#nwpostcards485",
+      "thumb_path": "objects/thumbs/postcard_026_th.jpg"
+    },
+    {
+      "filename": "postcard_026b.jpg",
+      "image_path": "objects/postcard_026b.jpg",
+      "item_url": "/items/nwpostcards484.html#nwpostcards486",
+      "thumb_path": "objects/thumbs/postcard_026b_th.jpg"
+    },
+    {
+      "filename": "postcard_028.jpg",
+      "image_path": "objects/postcard_028.jpg",
+      "item_url": "/items/nwpostcards490.html#nwpostcards491",
+      "thumb_path": "objects/thumbs/postcard_028_th.jpg"
+    },
+    {
+      "filename": "postcard_028b.jpg",
+      "image_path": "objects/postcard_028b.jpg",
+      "item_url": "/items/nwpostcards490.html#nwpostcards492",
+      "thumb_path": "objects/thumbs/postcard_028b_th.jpg"
+    },
+    {
+      "filename": "postcard_030.jpg",
+      "image_path": "objects/postcard_030.jpg",
+      "item_url": "/items/nwpostcards499.html#nwpostcards500",
+      "thumb_path": "objects/thumbs/postcard_030_th.jpg"
+    },
+    {
+      "filename": "postcard_030b.jpg",
+      "image_path": "objects/postcard_030b.jpg",
+      "item_url": "/items/nwpostcards499.html#nwpostcards501",
+      "thumb_path": "objects/thumbs/postcard_030b_th.jpg"
+    },
+    {
+      "filename": "postcard_032.jpg",
+      "image_path": "objects/postcard_032.jpg",
+      "item_url": "/items/nwpostcards505.html#nwpostcards506",
+      "thumb_path": "objects/thumbs/postcard_032_th.jpg"
+    },
+    {
+      "filename": "postcard_032b.jpg",
+      "image_path": "objects/postcard_032b.jpg",
+      "item_url": "/items/nwpostcards505.html#nwpostcards507",
+      "thumb_path": "objects/thumbs/postcard_032b_th.jpg"
+    },
+    {
+      "filename": "postcard_040.jpg",
+      "image_path": "objects/postcard_040.jpg",
+      "item_url": "/items/nwpostcards511.html#nwpostcards512",
+      "thumb_path": "objects/thumbs/postcard_040_th.jpg"
+    },
+    {
+      "filename": "postcard_040b.jpg",
+      "image_path": "objects/postcard_040b.jpg",
+      "item_url": "/items/nwpostcards511.html#nwpostcards513",
+      "thumb_path": "objects/thumbs/postcard_040b_th.jpg"
+    },
+    {
+      "filename": "postcard_041.jpg",
+      "image_path": "objects/postcard_041.jpg",
+      "item_url": "/items/nwpostcards514.html#nwpostcards515",
+      "thumb_path": "objects/thumbs/postcard_041_th.jpg"
+    },
+    {
+      "filename": "postcard_041b.jpg",
+      "image_path": "objects/postcard_041b.jpg",
+      "item_url": "/items/nwpostcards514.html#nwpostcards516",
+      "thumb_path": "objects/thumbs/postcard_041b_th.jpg"
+    },
+    {
+      "filename": "postcard_042.jpg",
+      "image_path": "objects/postcard_042.jpg",
+      "item_url": "/items/nwpostcards517.html#nwpostcards518",
+      "thumb_path": "objects/thumbs/postcard_042_th.jpg"
+    },
+    {
+      "filename": "postcard_042b.jpg",
+      "image_path": "objects/postcard_042b.jpg",
+      "item_url": "/items/nwpostcards517.html#nwpostcards519",
+      "thumb_path": "objects/thumbs/postcard_042b_th.jpg"
+    },
+    {
+      "filename": "postcard_043.jpg",
+      "image_path": "objects/postcard_043.jpg",
+      "item_url": "/items/nwpostcards520.html#nwpostcards521",
+      "thumb_path": "objects/thumbs/postcard_043_th.jpg"
+    },
+    {
+      "filename": "postcard_043b.jpg",
+      "image_path": "objects/postcard_043b.jpg",
+      "item_url": "/items/nwpostcards520.html#nwpostcards522",
+      "thumb_path": "objects/thumbs/postcard_043b_th.jpg"
+    },
+    {
+      "filename": "postcard_044.jpg",
+      "image_path": "objects/postcard_044.jpg",
+      "item_url": "/items/nwpostcards523.html#nwpostcards524",
+      "thumb_path": "objects/thumbs/postcard_044_th.jpg"
+    },
+    {
+      "filename": "postcard_044b.jpg",
+      "image_path": "objects/postcard_044b.jpg",
+      "item_url": "/items/nwpostcards523.html#nwpostcards525",
+      "thumb_path": "objects/thumbs/postcard_044b_th.jpg"
+    },
+    {
+      "filename": "postcard_045.jpg",
+      "image_path": "objects/postcard_045.jpg",
+      "item_url": "/items/nwpostcards526.html#nwpostcards527",
+      "thumb_path": "objects/thumbs/postcard_045_th.jpg"
+    },
+    {
+      "filename": "postcard_045b.jpg",
+      "image_path": "objects/postcard_045b.jpg",
+      "item_url": "/items/nwpostcards526.html#nwpostcards528",
+      "thumb_path": "objects/thumbs/postcard_045b_th.jpg"
+    },
+    {
+      "filename": "postcard_053.jpg",
+      "image_path": "objects/postcard_053.jpg",
+      "item_url": "/items/nwpostcards556.html#nwpostcards557",
+      "thumb_path": "objects/thumbs/postcard_053_th.jpg"
+    },
+    {
+      "filename": "postcard_053b.jpg",
+      "image_path": "objects/postcard_053b.jpg",
+      "item_url": "/items/nwpostcards556.html#nwpostcards558",
+      "thumb_path": "objects/thumbs/postcard_053b_th.jpg"
+    },
+    {
+      "filename": "postcard_054.jpg",
+      "image_path": "objects/postcard_054.jpg",
+      "item_url": "/items/nwpostcards559.html#nwpostcards560",
+      "thumb_path": "objects/thumbs/postcard_054_th.jpg"
+    },
+    {
+      "filename": "postcard_054b.jpg",
+      "image_path": "objects/postcard_054b.jpg",
+      "item_url": "/items/nwpostcards559.html#nwpostcards561",
+      "thumb_path": "objects/thumbs/postcard_054b_th.jpg"
+    },
+    {
+      "filename": "postcard_055.jpg",
+      "image_path": "objects/postcard_055.jpg",
+      "item_url": "/items/nwpostcards565.html#nwpostcards566",
+      "thumb_path": "objects/thumbs/postcard_055_th.jpg"
+    },
+    {
+      "filename": "postcard_055b.jpg",
+      "image_path": "objects/postcard_055b.jpg",
+      "item_url": "/items/nwpostcards565.html#nwpostcards567",
+      "thumb_path": "objects/thumbs/postcard_055b_th.jpg"
+    },
+    {
+      "filename": "postcard_056.jpg",
+      "image_path": "objects/postcard_056.jpg",
+      "item_url": "/items/nwpostcards568.html#nwpostcards569",
+      "thumb_path": "objects/thumbs/postcard_056_th.jpg"
+    },
+    {
+      "filename": "postcard_056b.jpg",
+      "image_path": "objects/postcard_056b.jpg",
+      "item_url": "/items/nwpostcards568.html#nwpostcards570",
+      "thumb_path": "objects/thumbs/postcard_056b_th.jpg"
+    },
+    {
+      "filename": "postcard_060.jpg",
+      "image_path": "objects/postcard_060.jpg",
+      "item_url": "/items/nwpostcards583.html#nwpostcards584",
+      "thumb_path": "objects/thumbs/postcard_060_th.jpg"
+    },
+    {
+      "filename": "postcard_060b.jpg",
+      "image_path": "objects/postcard_060b.jpg",
+      "item_url": "/items/nwpostcards583.html#nwpostcards585",
+      "thumb_path": "objects/thumbs/postcard_060b_th.jpg"
+    },
+    {
+      "filename": "postcard_061.jpg",
+      "image_path": "objects/postcard_061.jpg",
+      "item_url": "/items/nwpostcards586.html#nwpostcards587",
+      "thumb_path": "objects/thumbs/postcard_061_th.jpg"
+    },
+    {
+      "filename": "postcard_061b.jpg",
+      "image_path": "objects/postcard_061b.jpg",
+      "item_url": "/items/nwpostcards586.html#nwpostcards588",
+      "thumb_path": "objects/thumbs/postcard_061b_th.jpg"
+    },
+    {
+      "filename": "postcard_062.jpg",
+      "image_path": "objects/postcard_062.jpg",
+      "item_url": "/items/nwpostcards589.html#nwpostcards590",
+      "thumb_path": "objects/thumbs/postcard_062_th.jpg"
+    },
+    {
+      "filename": "postcard_062b.jpg",
+      "image_path": "objects/postcard_062b.jpg",
+      "item_url": "/items/nwpostcards589.html#nwpostcards591",
+      "thumb_path": "objects/thumbs/postcard_062b_th.jpg"
+    },
+    {
+      "filename": "postcard_038.jpg",
+      "image_path": "objects/postcard_038.jpg",
+      "item_url": "/items/nwpostcards634.html#nwpostcards635",
+      "thumb_path": "objects/thumbs/postcard_038_th.jpg"
+    },
+    {
+      "filename": "postcard_038b.jpg",
+      "image_path": "objects/postcard_038b.jpg",
+      "item_url": "/items/nwpostcards634.html#nwpostcards636",
+      "thumb_path": "objects/thumbs/postcard_038b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_06d.jpg",
+      "image_path": "objects/pg_9_01_06d.jpg",
+      "item_url": "/items/nwpostcards750.html#nwpostcards751",
+      "thumb_path": "objects/thumbs/pg_9_01_06d_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_06d_b.jpg",
+      "image_path": "objects/pg_9_01_06d_b.jpg",
+      "item_url": "/items/nwpostcards750.html#nwpostcards752",
+      "thumb_path": "objects/thumbs/pg_9_01_06d_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_03.jpg",
+      "image_path": "objects/pg_9_01_03.jpg",
+      "item_url": "/items/nwpostcards755.html",
+      "thumb_path": "objects/thumbs/pg_9_01_03_th.jpg",
+      "title": "McCall from Payette Lake, Idaho."
+    },
+    {
+      "filename": "pg_9_01_04h.jpg",
+      "image_path": "objects/pg_9_01_04h.jpg",
+      "item_url": "/items/nwpostcards773.html#nwpostcards774",
+      "thumb_path": "objects/thumbs/pg_9_01_04h_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_04h_b.jpg",
+      "image_path": "objects/pg_9_01_04h_b.jpg",
+      "item_url": "/items/nwpostcards773.html#nwpostcards775",
+      "thumb_path": "objects/thumbs/pg_9_01_04h_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_04i.jpg",
+      "image_path": "objects/pg_9_01_04i.jpg",
+      "item_url": "/items/nwpostcards776.html#nwpostcards777",
+      "thumb_path": "objects/thumbs/pg_9_01_04i_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_04i_b.jpg",
+      "image_path": "objects/pg_9_01_04i_b.jpg",
+      "item_url": "/items/nwpostcards776.html#nwpostcards778",
+      "thumb_path": "objects/thumbs/pg_9_01_04i_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_04j.jpg",
+      "image_path": "objects/pg_9_01_04j.jpg",
+      "item_url": "/items/nwpostcards779.html#nwpostcards780",
+      "thumb_path": "objects/thumbs/pg_9_01_04j_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_04j_b.jpg",
+      "image_path": "objects/pg_9_01_04j_b.jpg",
+      "item_url": "/items/nwpostcards779.html#nwpostcards781",
+      "thumb_path": "objects/thumbs/pg_9_01_04j_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_08b.jpg",
+      "image_path": "objects/pg_9_01_08b.jpg",
+      "item_url": "/items/nwpostcards801.html",
+      "thumb_path": "objects/thumbs/pg_9_01_08b_th.jpg",
+      "title": "Main St., Moscow, Idaho. #2"
+    },
+    {
+      "filename": "pg_9_01_10a.jpg",
+      "image_path": "objects/pg_9_01_10a.jpg",
+      "item_url": "/items/nwpostcards836.html#nwpostcards837",
+      "thumb_path": "objects/thumbs/pg_9_01_10a_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_10a_b.jpg",
+      "image_path": "objects/pg_9_01_10a_b.jpg",
+      "item_url": "/items/nwpostcards836.html#nwpostcards838",
+      "thumb_path": "objects/thumbs/pg_9_01_10a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_08t.jpg",
+      "image_path": "objects/pg_9_01_08t.jpg",
+      "item_url": "/items/nwpostcards845.html#nwpostcards846",
+      "thumb_path": "objects/thumbs/pg_9_01_08t_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_08t_b.jpg",
+      "image_path": "objects/pg_9_01_08t_b.jpg",
+      "item_url": "/items/nwpostcards845.html#nwpostcards847",
+      "thumb_path": "objects/thumbs/pg_9_01_08t_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_08u.jpg",
+      "image_path": "objects/pg_9_01_08u.jpg",
+      "item_url": "/items/nwpostcards848.html#nwpostcards849",
+      "thumb_path": "objects/thumbs/pg_9_01_08u_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_08u_b.jpg",
+      "image_path": "objects/pg_9_01_08u_b.jpg",
+      "item_url": "/items/nwpostcards848.html#nwpostcards850",
+      "thumb_path": "objects/thumbs/pg_9_01_08u_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_08y.jpg",
+      "image_path": "objects/pg_9_01_08y.jpg",
+      "item_url": "/items/nwpostcards860.html#nwpostcards861",
+      "thumb_path": "objects/thumbs/pg_9_01_08y_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_08y_b.jpg",
+      "image_path": "objects/pg_9_01_08y_b.jpg",
+      "item_url": "/items/nwpostcards860.html#nwpostcards862",
+      "thumb_path": "objects/thumbs/pg_9_01_08y_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_09.jpg",
+      "image_path": "objects/pg_9_01_09.jpg",
+      "item_url": "/items/nwpostcards863.html",
+      "thumb_path": "objects/thumbs/pg_9_01_09_th.jpg",
+      "title": "Main St. Juliaetta, Idaho, looking south. 515."
+    },
+    {
+      "filename": "pg_9_01_12c.jpg",
+      "image_path": "objects/pg_9_01_12c.jpg",
+      "item_url": "/items/nwpostcards866.html#nwpostcards867",
+      "thumb_path": "objects/thumbs/pg_9_01_12c_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_12c_b.jpg",
+      "image_path": "objects/pg_9_01_12c_b.jpg",
+      "item_url": "/items/nwpostcards866.html#nwpostcards868",
+      "thumb_path": "objects/thumbs/pg_9_01_12c_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_21a.jpg",
+      "image_path": "objects/pg_9_01_21a.jpg",
+      "item_url": "/items/nwpostcards873.html#nwpostcards874",
+      "thumb_path": "objects/thumbs/pg_9_01_21a_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_21a_b.jpg",
+      "image_path": "objects/pg_9_01_21a_b.jpg",
+      "item_url": "/items/nwpostcards873.html#nwpostcards875",
+      "thumb_path": "objects/thumbs/pg_9_01_21a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_20a.jpg",
+      "image_path": "objects/pg_9_01_20a.jpg",
+      "item_url": "/items/nwpostcards894.html#nwpostcards895",
+      "thumb_path": "objects/thumbs/pg_9_01_20a_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_20a_b.jpg",
+      "image_path": "objects/pg_9_01_20a_b.jpg",
+      "item_url": "/items/nwpostcards894.html#nwpostcards896",
+      "thumb_path": "objects/thumbs/pg_9_01_20a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_19a.jpg",
+      "image_path": "objects/pg_9_01_19a.jpg",
+      "item_url": "/items/nwpostcards897.html#nwpostcards898",
+      "thumb_path": "objects/thumbs/pg_9_01_19a_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_19a_b.jpg",
+      "image_path": "objects/pg_9_01_19a_b.jpg",
+      "item_url": "/items/nwpostcards897.html#nwpostcards899",
+      "thumb_path": "objects/thumbs/pg_9_01_19a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_30a.jpg",
+      "image_path": "objects/pg_9_01_30a.jpg",
+      "item_url": "/items/nwpostcards939.html#nwpostcards940",
+      "thumb_path": "objects/thumbs/pg_9_01_30a_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_30a_b.jpg",
+      "image_path": "objects/pg_9_01_30a_b.jpg",
+      "item_url": "/items/nwpostcards939.html#nwpostcards941",
+      "thumb_path": "objects/thumbs/pg_9_01_30a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_30b.jpg",
+      "image_path": "objects/pg_9_01_30b.jpg",
+      "item_url": "/items/nwpostcards945.html#nwpostcards946",
+      "thumb_path": "objects/thumbs/pg_9_01_30b_th.jpg"
+    },
+    {
+      "filename": "pg_9_01_30b_b.jpg",
+      "image_path": "objects/pg_9_01_30b_b.jpg",
+      "item_url": "/items/nwpostcards945.html#nwpostcards947",
+      "thumb_path": "objects/thumbs/pg_9_01_30b_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_02_01.jpg",
+      "image_path": "objects/pg_9_02_01.jpg",
+      "item_url": "/items/nwpostcards951.html",
+      "thumb_path": "objects/thumbs/pg_9_02_01_th.jpg",
+      "title": "Public school, Burke, Idaho."
+    },
+    {
+      "filename": "pg_9_03_04.jpg",
+      "image_path": "objects/pg_9_03_04.jpg",
+      "item_url": "/items/nwpostcards968.html",
+      "thumb_path": "objects/thumbs/pg_9_03_04_th.jpg",
+      "title": "Lobby and office, Hotel Victoria, Spokane, Washington."
+    },
+    {
+      "filename": "pg_9_05_02b.jpg",
+      "image_path": "objects/pg_9_05_02b.jpg",
+      "item_url": "/items/nwpostcards1024.html#nwpostcards1025",
+      "thumb_path": "objects/thumbs/pg_9_05_02b_th.jpg"
+    },
+    {
+      "filename": "pg_9_05_02b_b.jpg",
+      "image_path": "objects/pg_9_05_02b_b.jpg",
+      "item_url": "/items/nwpostcards1024.html#nwpostcards1026",
+      "thumb_path": "objects/thumbs/pg_9_05_02b_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_15b.jpg",
+      "image_path": "objects/pg_9_06_15b.jpg",
+      "item_url": "/items/nwpostcards1043.html#nwpostcards1044",
+      "thumb_path": "objects/thumbs/pg_9_06_15b_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_15b_b.jpg",
+      "image_path": "objects/pg_9_06_15b_b.jpg",
+      "item_url": "/items/nwpostcards1043.html#nwpostcards1045",
+      "thumb_path": "objects/thumbs/pg_9_06_15b_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_08_01.jpg",
+      "image_path": "objects/pg_9_08_01.jpg",
+      "item_url": "/items/nwpostcards1110.html",
+      "thumb_path": "objects/thumbs/pg_9_08_01_th.jpg",
+      "title": "[Cable] Ferry on Snake River, Idaho."
+    },
+    {
+      "filename": "pg_9_09_07b.jpg",
+      "image_path": "objects/pg_9_09_07b.jpg",
+      "item_url": "/items/nwpostcards1130.html#nwpostcards1131",
+      "thumb_path": "objects/thumbs/pg_9_09_07b_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_07b_b.jpg",
+      "image_path": "objects/pg_9_09_07b_b.jpg",
+      "item_url": "/items/nwpostcards1130.html#nwpostcards1132",
+      "thumb_path": "objects/thumbs/pg_9_09_07b_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_08a.jpg",
+      "image_path": "objects/pg_9_09_08a.jpg",
+      "item_url": "/items/nwpostcards1134.html#nwpostcards1135",
+      "thumb_path": "objects/thumbs/pg_9_09_08a_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_08a_b.jpg",
+      "image_path": "objects/pg_9_09_08a_b.jpg",
+      "item_url": "/items/nwpostcards1134.html#nwpostcards1136",
+      "thumb_path": "objects/thumbs/pg_9_09_08a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_09a.jpg",
+      "image_path": "objects/pg_9_09_09a.jpg",
+      "item_url": "/items/nwpostcards1138.html#nwpostcards1139",
+      "thumb_path": "objects/thumbs/pg_9_09_09a_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_09a_b.jpg",
+      "image_path": "objects/pg_9_09_09a_b.jpg",
+      "item_url": "/items/nwpostcards1138.html#nwpostcards1140",
+      "thumb_path": "objects/thumbs/pg_9_09_09a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_11a.jpg",
+      "image_path": "objects/pg_9_09_11a.jpg",
+      "item_url": "/items/nwpostcards1153.html#nwpostcards1154",
+      "thumb_path": "objects/thumbs/pg_9_09_11a_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_11a_b.jpg",
+      "image_path": "objects/pg_9_09_11a_b.jpg",
+      "item_url": "/items/nwpostcards1153.html#nwpostcards1155",
+      "thumb_path": "objects/thumbs/pg_9_09_11a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_08f.jpg",
+      "image_path": "objects/pg_9_06_08f.jpg",
+      "item_url": "/items/nwpostcards1156.html#nwpostcards1157",
+      "thumb_path": "objects/thumbs/pg_9_06_08f_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_08f_b.jpg",
+      "image_path": "objects/pg_9_06_08f_b.jpg",
+      "item_url": "/items/nwpostcards1156.html#nwpostcards1158",
+      "thumb_path": "objects/thumbs/pg_9_06_08f_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_13a.jpg",
+      "image_path": "objects/pg_9_09_13a.jpg",
+      "item_url": "/items/nwpostcards1165.html#nwpostcards1166",
+      "thumb_path": "objects/thumbs/pg_9_09_13a_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_13a_b.jpg",
+      "image_path": "objects/pg_9_09_13a_b.jpg",
+      "item_url": "/items/nwpostcards1165.html#nwpostcards1167",
+      "thumb_path": "objects/thumbs/pg_9_09_13a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_03a.jpg",
+      "image_path": "objects/pg_9_06_03a.jpg",
+      "item_url": "/items/nwpostcards1168.html",
+      "thumb_path": "objects/thumbs/pg_9_06_03a_th.jpg",
+      "title": "Log Rolling Contest, Payette River, Idaho."
+    },
+    {
+      "filename": "pg_9_09_14a.jpg",
+      "image_path": "objects/pg_9_09_14a.jpg",
+      "item_url": "/items/nwpostcards1169.html#nwpostcards1170",
+      "thumb_path": "objects/thumbs/pg_9_09_14a_th.jpg"
+    },
+    {
+      "filename": "pg_9_09_14a_b.jpg",
+      "image_path": "objects/pg_9_09_14a_b.jpg",
+      "item_url": "/items/nwpostcards1169.html#nwpostcards1171",
+      "thumb_path": "objects/thumbs/pg_9_09_14a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_04b.jpg",
+      "image_path": "objects/pg_9_06_04b.jpg",
+      "item_url": "/items/nwpostcards1189.html",
+      "thumb_path": "objects/thumbs/pg_9_06_04b_th.jpg",
+      "title": "Lewiston Commercial Fleet, Lewiston, Idaho. Steamboats."
+    },
+    {
+      "filename": "pg_9_10_03.jpg",
+      "image_path": "objects/pg_9_10_03.jpg",
+      "item_url": "/items/nwpostcards1195.html#nwpostcards1196",
+      "thumb_path": "objects/thumbs/pg_9_10_03_th.jpg"
+    },
+    {
+      "filename": "pg_9_10_03_b.jpg",
+      "image_path": "objects/pg_9_10_03_b.jpg",
+      "item_url": "/items/nwpostcards1195.html#nwpostcards1197",
+      "thumb_path": "objects/thumbs/pg_9_10_03_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_10_06.jpg",
+      "image_path": "objects/pg_9_10_06.jpg",
+      "item_url": "/items/nwpostcards1208.html#nwpostcards1209",
+      "thumb_path": "objects/thumbs/pg_9_10_06_th.jpg"
+    },
+    {
+      "filename": "pg_9_10_06_b.jpg",
+      "image_path": "objects/pg_9_10_06_b.jpg",
+      "item_url": "/items/nwpostcards1208.html#nwpostcards1210",
+      "thumb_path": "objects/thumbs/pg_9_10_06_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_17a.jpg",
+      "image_path": "objects/pg_9_06_17a.jpg",
+      "item_url": "/items/nwpostcards1227.html#nwpostcards1228",
+      "thumb_path": "objects/thumbs/pg_9_06_17a_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_17a_b.jpg",
+      "image_path": "objects/pg_9_06_17a_b.jpg",
+      "item_url": "/items/nwpostcards1227.html#nwpostcards1229",
+      "thumb_path": "objects/thumbs/pg_9_06_17a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_18a.jpg",
+      "image_path": "objects/pg_9_06_18a.jpg",
+      "item_url": "/items/nwpostcards1233.html#nwpostcards1234",
+      "thumb_path": "objects/thumbs/pg_9_06_18a_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_18a_b.jpg",
+      "image_path": "objects/pg_9_06_18a_b.jpg",
+      "item_url": "/items/nwpostcards1233.html#nwpostcards1235",
+      "thumb_path": "objects/thumbs/pg_9_06_18a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_09a.jpg",
+      "image_path": "objects/pg_9_06_09a.jpg",
+      "item_url": "/items/nwpostcards1239.html#nwpostcards1240",
+      "thumb_path": "objects/thumbs/pg_9_06_09a_th.jpg"
+    },
+    {
+      "filename": "pg_9_06_09a_b.jpg",
+      "image_path": "objects/pg_9_06_09a_b.jpg",
+      "item_url": "/items/nwpostcards1239.html#nwpostcards1241",
+      "thumb_path": "objects/thumbs/pg_9_06_09a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01bt.jpg",
+      "image_path": "objects/pg_9_12_01bt.jpg",
+      "item_url": "/items/nwpostcards1361.html#nwpostcards1362",
+      "thumb_path": "objects/thumbs/pg_9_12_01bt_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01bt_b.jpg",
+      "image_path": "objects/pg_9_12_01bt_b.jpg",
+      "item_url": "/items/nwpostcards1361.html#nwpostcards1363",
+      "thumb_path": "objects/thumbs/pg_9_12_01bt_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01bi.jpg",
+      "image_path": "objects/pg_9_12_01bi.jpg",
+      "item_url": "/items/nwpostcards1373.html#nwpostcards1374",
+      "thumb_path": "objects/thumbs/pg_9_12_01bi_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01bi_b.jpg",
+      "image_path": "objects/pg_9_12_01bi_b.jpg",
+      "item_url": "/items/nwpostcards1373.html#nwpostcards1375",
+      "thumb_path": "objects/thumbs/pg_9_12_01bi_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01bq.jpg",
+      "image_path": "objects/pg_9_12_01bq.jpg",
+      "item_url": "/items/nwpostcards1391.html#nwpostcards1392",
+      "thumb_path": "objects/thumbs/pg_9_12_01bq_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01bq_b.jpg",
+      "image_path": "objects/pg_9_12_01bq_b.jpg",
+      "item_url": "/items/nwpostcards1391.html#nwpostcards1393",
+      "thumb_path": "objects/thumbs/pg_9_12_01bq_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01bs.jpg",
+      "image_path": "objects/pg_9_12_01bs.jpg",
+      "item_url": "/items/nwpostcards1397.html#nwpostcards1398",
+      "thumb_path": "objects/thumbs/pg_9_12_01bs_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01bs_b.jpg",
+      "image_path": "objects/pg_9_12_01bs_b.jpg",
+      "item_url": "/items/nwpostcards1397.html#nwpostcards1399",
+      "thumb_path": "objects/thumbs/pg_9_12_01bs_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_11_01a.jpg",
+      "image_path": "objects/pg_9_11_01a.jpg",
+      "item_url": "/items/nwpostcards1420.html",
+      "thumb_path": "objects/thumbs/pg_9_11_01a_th.jpg",
+      "title": "Volcanic craters. Craters of the Moon, Idaho."
+    },
+    {
+      "filename": "pg_9_12_01j.jpg",
+      "image_path": "objects/pg_9_12_01j.jpg",
+      "item_url": "/items/nwpostcards1426.html",
+      "thumb_path": "objects/thumbs/pg_9_12_01j_th.jpg",
+      "title": "University of Idaho, Moscow, Idaho."
+    },
+    {
+      "filename": "pg_9_12_01k.jpg",
+      "image_path": "objects/pg_9_12_01k.jpg",
+      "item_url": "/items/nwpostcards1427.html",
+      "thumb_path": "objects/thumbs/pg_9_12_01k_th.jpg",
+      "title": "Administration Building. University of Idaho. Moscow, Idaho."
+    },
+    {
+      "filename": "pg_9_12_01m.jpg",
+      "image_path": "objects/pg_9_12_01m.jpg",
+      "item_url": "/items/nwpostcards1428.html#nwpostcards1429",
+      "thumb_path": "objects/thumbs/pg_9_12_01m_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01m_b.jpg",
+      "image_path": "objects/pg_9_12_01m_b.jpg",
+      "item_url": "/items/nwpostcards1428.html#nwpostcards1430",
+      "thumb_path": "objects/thumbs/pg_9_12_01m_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01l.jpg",
+      "image_path": "objects/pg_9_12_01l.jpg",
+      "item_url": "/items/nwpostcards1434.html#nwpostcards1435",
+      "thumb_path": "objects/thumbs/pg_9_12_01l_th.jpg"
+    },
+    {
+      "filename": "pg_9_12_01l_b.jpg",
+      "image_path": "objects/pg_9_12_01l_b.jpg",
+      "item_url": "/items/nwpostcards1434.html#nwpostcards1436",
+      "thumb_path": "objects/thumbs/pg_9_12_01l_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_14_01.jpg",
+      "image_path": "objects/pg_9_14_01.jpg",
+      "item_url": "/items/nwpostcards1501.html",
+      "thumb_path": "objects/thumbs/pg_9_14_01_th.jpg",
+      "title": "The Gibraltar. Juliaetta, Idaho."
+    },
+    {
+      "filename": "pg_9_14_02.jpg",
+      "image_path": "objects/pg_9_14_02.jpg",
+      "item_url": "/items/nwpostcards1502.html",
+      "thumb_path": "objects/thumbs/pg_9_14_02_th.jpg",
+      "title": "Sawtooth Mountains, Idaho. 667."
+    },
+    {
+      "filename": "pg_9_14_12a.jpg",
+      "image_path": "objects/pg_9_14_12a.jpg",
+      "item_url": "/items/nwpostcards1523.html#nwpostcards1524",
+      "thumb_path": "objects/thumbs/pg_9_14_12a_th.jpg"
+    },
+    {
+      "filename": "pg_9_14_12a_b.jpg",
+      "image_path": "objects/pg_9_14_12a_b.jpg",
+      "item_url": "/items/nwpostcards1523.html#nwpostcards1525",
+      "thumb_path": "objects/thumbs/pg_9_14_12a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_17_06a.jpg",
+      "image_path": "objects/pg_9_17_06a.jpg",
+      "item_url": "/items/nwpostcards1544.html#nwpostcards1545",
+      "thumb_path": "objects/thumbs/pg_9_17_06a_th.jpg"
+    },
+    {
+      "filename": "pg_9_17_06a_b.jpg",
+      "image_path": "objects/pg_9_17_06a_b.jpg",
+      "item_url": "/items/nwpostcards1544.html#nwpostcards1546",
+      "thumb_path": "objects/thumbs/pg_9_17_06a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_16_01a.jpg",
+      "image_path": "objects/pg_9_16_01a.jpg",
+      "item_url": "/items/nwpostcards1547.html#nwpostcards1548",
+      "thumb_path": "objects/thumbs/pg_9_16_01a_th.jpg"
+    },
+    {
+      "filename": "pg_9_16_01a_b.jpg",
+      "image_path": "objects/pg_9_16_01a_b.jpg",
+      "item_url": "/items/nwpostcards1547.html#nwpostcards1549",
+      "thumb_path": "objects/thumbs/pg_9_16_01a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_17_08a.jpg",
+      "image_path": "objects/pg_9_17_08a.jpg",
+      "item_url": "/items/nwpostcards1550.html#nwpostcards1551",
+      "thumb_path": "objects/thumbs/pg_9_17_08a_th.jpg"
+    },
+    {
+      "filename": "pg_9_17_08a_b.jpg",
+      "image_path": "objects/pg_9_17_08a_b.jpg",
+      "item_url": "/items/nwpostcards1550.html#nwpostcards1552",
+      "thumb_path": "objects/thumbs/pg_9_17_08a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_16_01b.jpg",
+      "image_path": "objects/pg_9_16_01b.jpg",
+      "item_url": "/items/nwpostcards1553.html",
+      "thumb_path": "objects/thumbs/pg_9_16_01b_th.jpg",
+      "title": "Combined harvester."
+    },
+    {
+      "filename": "pg_9_16_01b_b.jpg",
+      "image_path": "objects/pg_9_16_01b_b.jpg",
+      "item_url": "/items/nwpostcards1551.html#nwpostcards1555",
+      "thumb_path": "objects/thumbs/pg_9_16_01b_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_16_01.jpg",
+      "image_path": "objects/pg_9_16_01.jpg",
+      "item_url": "/items/nwpostcards1556.html",
+      "thumb_path": "objects/thumbs/pg_9_16_01_th.jpg",
+      "title": "Warren T. Shepperd homestead S.W. of Plummer."
+    },
+    {
+      "filename": "pg_9_17_02.jpg",
+      "image_path": "objects/pg_9_17_02.jpg",
+      "item_url": "/items/nwpostcards1562.html",
+      "thumb_path": "objects/thumbs/pg_9_17_02_th.jpg",
+      "title": "Six men peeling potatoes. Camp Lewis, Washington."
+    },
+    {
+      "filename": "pg_9_17_05a.jpg",
+      "image_path": "objects/pg_9_17_05a.jpg",
+      "item_url": "/items/nwpostcards1570.html",
+      "thumb_path": "objects/thumbs/pg_9_17_05a_th.jpg",
+      "title": "Devil's Elbow and Pacific & Idaho Northern Road, Idaho. Train."
+    },
+    {
+      "filename": "pg_9_17_13a.jpg",
+      "image_path": "objects/pg_9_17_13a.jpg",
+      "item_url": "/items/nwpostcards1576.html",
+      "thumb_path": "objects/thumbs/pg_9_17_13a_th.jpg",
+      "title": "Rocky Mountain Sheep. Sawtooth Mountains, Idaho"
+    },
+    {
+      "filename": "pg_9_17_15a.jpg",
+      "image_path": "objects/pg_9_17_15a.jpg",
+      "item_url": "/items/nwpostcards1578.html",
+      "thumb_path": "objects/thumbs/pg_9_17_15a_th.jpg",
+      "title": "Bear grass in bloom in North Idaho"
+    },
+    {
+      "filename": "pg_9_19_02a.jpg",
+      "image_path": "objects/pg_9_19_02a.jpg",
+      "item_url": "/items/nwpostcards1586.html",
+      "thumb_path": "objects/thumbs/pg_9_19_02a_th.jpg",
+      "title": "Masonic Temple, Lewiston, Idaho. Theatre."
+    },
+    {
+      "filename": "pg_9_21_01a.jpg",
+      "image_path": "objects/pg_9_21_01a.jpg",
+      "item_url": "/items/nwpostcards1594.html#nwpostcards1595",
+      "thumb_path": "objects/thumbs/pg_9_21_01a_th.jpg"
+    },
+    {
+      "filename": "pg_9_21_01a_b.jpg",
+      "image_path": "objects/pg_9_21_01a_b.jpg",
+      "item_url": "/items/nwpostcards1594.html#nwpostcards1596",
+      "thumb_path": "objects/thumbs/pg_9_21_01a_b_th.jpg"
+    },
+    {
+      "filename": "pg_9_20_01b.jpg",
+      "image_path": "objects/pg_9_20_01b.jpg",
+      "item_url": "/items/nwpostcards1597.html",
+      "thumb_path": "objects/thumbs/pg_9_20_01b_th.jpg",
+      "title": "Three first prize winners owned by the University of Idaho. Cattle."
+    },
+    {
+      "filename": "pg_9_19_01.jpg",
+      "image_path": "objects/pg_9_19_01.jpg",
+      "item_url": "/items/nwpostcards1601.html",
+      "thumb_path": "objects/thumbs/pg_9_19_01_th.jpg",
+      "title": "Pioneer Lodge No. 1. I.O.O.F. Idaho City, Idaho."
+    },
+    {
+      "filename": "pg_9_20_01g.jpg",
+      "image_path": "objects/pg_9_20_01g.jpg",
+      "item_url": "/items/nwpostcards1602.html",
+      "thumb_path": "objects/thumbs/pg_9_20_01g_th.jpg",
+      "title": "The big bonfire. Football. University of Idaho."
+    },
+    {
+      "filename": "pg_9_21_02a.jpg",
+      "image_path": "objects/pg_9_21_02a.jpg",
+      "item_url": "/items/nwpostcards1603.html",
+      "thumb_path": "objects/thumbs/pg_9_21_02a_th.jpg",
+      "title": "Pacific train in the Northwest"
+    },
+    {
+      "filename": "pg_9_21_03a.jpg",
+      "image_path": "objects/pg_9_21_03a.jpg",
+      "item_url": "/items/nwpostcards1604.html",
+      "thumb_path": "objects/thumbs/pg_9_21_03a_th.jpg",
+      "title": "Making poles in the forest. St. Joe, Idaho"
+    },
+    {
+      "filename": "pg_9_22_01.jpg",
+      "image_path": "objects/pg_9_22_01.jpg",
+      "item_url": "/items/nwpostcards1606.html",
+      "thumb_path": "objects/thumbs/pg_9_22_01_th.jpg",
+      "title": "First Catholic Church. Murray, Idaho."
+    },
+    {
+      "filename": "pg_9_22_02.jpg",
+      "image_path": "objects/pg_9_22_02.jpg",
+      "item_url": "/items/nwpostcards1607.html",
+      "thumb_path": "objects/thumbs/pg_9_22_02_th.jpg",
+      "title": "Churches. Moscow, Idaho. Baptist, Swedish Methodist, Methodist, Presbyterian, Norwegian Lutheran."
+    },
+    {
+      "filename": "pg_9_24_02a.jpg",
+      "image_path": "objects/pg_9_24_02a.jpg",
+      "item_url": "/items/nwpostcards1618.html",
+      "thumb_path": "objects/thumbs/pg_9_24_02a_th.jpg",
+      "title": "Float. Lewiston, Idaho, Rose Fair. #28."
+    },
+    {
+      "filename": "pg_9_25_04.jpg",
+      "image_path": "objects/pg_9_25_04.jpg",
+      "item_url": "/items/nwpostcards1622.html",
+      "thumb_path": "objects/thumbs/pg_9_25_04_th.jpg",
+      "title": "Mining in Butte, Montana. Loading underground."
+    },
+    {
+      "filename": "pg_9_25_05.jpg",
+      "image_path": "objects/pg_9_25_05.jpg",
+      "item_url": "/items/nwpostcards1626.html",
+      "thumb_path": "objects/thumbs/pg_9_25_05_th.jpg",
+      "title": "Mining in Butte, Montana. Miner drilling underground."
+    },
+    {
+      "filename": "pg_9_25_07.jpg",
+      "image_path": "objects/pg_9_25_07.jpg",
+      "item_url": "/items/nwpostcards1629.html",
+      "thumb_path": "objects/thumbs/pg_9_25_07_th.jpg",
+      "title": "Mining in Butte, Montana. Dynamite holes with fuses."
+    },
+    {
+      "filename": "pg_9_25_12.jpg",
+      "image_path": "objects/pg_9_25_12.jpg",
+      "item_url": "/items/nwpostcards1633.html",
+      "thumb_path": "objects/thumbs/pg_9_25_12_th.jpg",
+      "title": "Snowstorm Concentrator, Troy, Montana. No. 6."
+    },
+    {
+      "filename": "pg_9_25_09.jpg",
+      "image_path": "objects/pg_9_25_09.jpg",
+      "item_url": "/items/nwpostcards1634.html",
+      "thumb_path": "objects/thumbs/pg_9_25_09_th.jpg",
+      "title": "Mining in Butte, Montana. Miners drilling underground."
+    },
+    {
+      "filename": "pg_9_26_01.jpg",
+      "image_path": "objects/pg_9_26_01.jpg",
+      "item_url": "/items/nwpostcards1635.html",
+      "thumb_path": "objects/thumbs/pg_9_26_01_th.jpg",
+      "title": "Indian and Wedge peaks, Ennis, Montana."
+    },
+    {
+      "filename": "pg_9_29_02d.jpg",
+      "image_path": "objects/pg_9_29_02d.jpg",
+      "item_url": "/items/nwpostcards1643.html",
+      "thumb_path": "objects/thumbs/pg_9_29_02d_th.jpg",
+      "title": "California Store. Virginia City, Montana."
+    },
+    {
+      "filename": "pg_9_29_02e.jpg",
+      "image_path": "objects/pg_9_29_02e.jpg",
+      "item_url": "/items/nwpostcards1646.html",
+      "thumb_path": "objects/thumbs/pg_9_29_02e_th.jpg",
+      "title": "Street scene at Virginia city, Montana. Stagecoach."
+    },
+    {
+      "filename": "pg_9_30_01.jpg",
+      "image_path": "objects/pg_9_30_01.jpg",
+      "item_url": "/items/nwpostcards1671.html",
+      "thumb_path": "objects/thumbs/pg_9_30_01_th.jpg",
+      "title": "Museum, Virginia City, Montana."
+    },
+    {
+      "filename": "pg_9_76_02.jpg",
+      "image_path": "objects/pg_9_76_02.jpg",
+      "item_url": "/items/nwpostcards1686.html",
+      "thumb_path": "objects/thumbs/pg_9_76_02_th.jpg",
+      "title": "Administration Building, Washington State College, Pullman, Washington."
+    },
+    {
+      "filename": "pg_9_200_01.jpg",
+      "image_path": "objects/pg_9_200_01.jpg",
+      "item_url": "/items/nwpostcards1741.html",
+      "thumb_path": "objects/thumbs/pg_9_200_01_th.jpg",
+      "title": "Trail, British Columbia."
+    },
+    {
+      "filename": "pg_9_201_01.jpg",
+      "image_path": "objects/pg_9_201_01.jpg",
+      "item_url": "/items/nwpostcards1742.html",
+      "thumb_path": "objects/thumbs/pg_9_201_01_th.jpg",
+      "title": "Smelter, Trail, British Columbia."
+    },
+    {
+      "filename": "pg_9_93_01a.jpg",
+      "image_path": "objects/pg_9_93_01a.jpg",
+      "item_url": "/items/nwpostcards1745.html",
+      "thumb_path": "objects/thumbs/pg_9_93_01a_th.jpg",
+      "title": "Lincoln School, Jerome, Idaho"
+    },
+    {
+      "filename": "pg_9_324_01a.jpg",
+      "image_path": "objects/pg_9_324_01a.jpg",
+      "item_url": "/items/nwpostcards1758.html",
+      "thumb_path": "objects/thumbs/pg_9_324_01a_th.jpg",
+      "title": "Elite Cleaning Works, Spokane, Washington (?). Horse and buggy."
+    },
+    {
+      "filename": "pg_9_327_02.jpg",
+      "image_path": "objects/pg_9_327_02.jpg",
+      "item_url": "/items/nwpostcards1763.html",
+      "thumb_path": "objects/thumbs/pg_9_327_02_th.jpg",
+      "title": "New Winchester grade over the Culdesac Hill"
+    },
+    {
+      "filename": "pg_9_327_03.jpg",
+      "image_path": "objects/pg_9_327_03.jpg",
+      "item_url": "/items/nwpostcards1764.html",
+      "thumb_path": "objects/thumbs/pg_9_327_03_th.jpg",
+      "title": "Highest railroad bridge in the world across Lawyers Canyon"
+    },
+    {
+      "filename": "pg_9_327_05.jpg",
+      "image_path": "objects/pg_9_327_05.jpg",
+      "item_url": "/items/nwpostcards1766.html",
+      "thumb_path": "objects/thumbs/pg_9_327_05_th.jpg",
+      "title": "Horse-shoe bend of the Big Salmon at the mouth of Slippery Creek"
+    },
+    {
+      "filename": "pg_9_327_06.jpg",
+      "image_path": "objects/pg_9_327_06.jpg",
+      "item_url": "/items/nwpostcards1767.html",
+      "thumb_path": "objects/thumbs/pg_9_327_06_th.jpg",
+      "title": "Box Canyon of the Salmon"
+    },
+    {
+      "filename": "pg_9_327_07.jpg",
+      "image_path": "objects/pg_9_327_07.jpg",
+      "item_url": "/items/nwpostcards1768.html",
+      "thumb_path": "objects/thumbs/pg_9_327_07_th.jpg",
+      "title": "Looking up the Big Salmon towards the Gill Ranch from the upper end of the Box Canyon"
+    },
+    {
+      "filename": "pg_9_327_08.jpg",
+      "image_path": "objects/pg_9_327_08.jpg",
+      "item_url": "/items/nwpostcards1769.html",
+      "thumb_path": "objects/thumbs/pg_9_327_08_th.jpg",
+      "title": "Grand Canyon of the Big Salmon river looking North from the Pogue Ranch"
+    },
+    {
+      "filename": "pg_9_327_04.jpg",
+      "image_path": "objects/pg_9_327_04.jpg",
+      "item_url": "/items/nwpostcards1770.html",
+      "thumb_path": "objects/thumbs/pg_9_327_04_th.jpg",
+      "title": "Looking south toward Whitebird from the top of Whitebird Hill"
+    },
+    {
+      "filename": "pg_9_327_10.jpg",
+      "image_path": "objects/pg_9_327_10.jpg",
+      "item_url": "/items/nwpostcards1773.html",
+      "thumb_path": "objects/thumbs/pg_9_327_10_th.jpg",
+      "title": "Black Bear Inn on the Little Salmon"
+    },
+    {
+      "filename": "pg_9_59_01.jpg",
+      "image_path": "objects/pg_9_59_01.jpg",
+      "item_url": "/items/nwpostcards1804.html",
+      "thumb_path": "objects/thumbs/pg_9_59_01_th.jpg",
+      "title": "Main street, Enterprise, Oregon"
+    },
+    {
+      "filename": "pg_9_75_01b.jpg",
+      "image_path": "objects/pg_9_75_01b.jpg",
+      "item_url": "/items/nwpostcards1818.html",
+      "thumb_path": "objects/thumbs/pg_9_75_01b_th.jpg",
+      "title": "Birdseye view of Northport, Washington, and the smelter."
+    },
+    {
+      "filename": "cities27.jpg",
+      "image_path": "objects/cities27.jpg",
+      "item_url": "/items/cities27.html",
+      "thumb_path": "objects/thumbs/cities27_th.jpg",
+      "title": "Murray, Idaho. White building in center, Louisville Hotel."
+    },
+    {
+      "filename": "cities28.jpg",
+      "image_path": "objects/cities28.jpg",
+      "item_url": "/items/cities28.html",
+      "thumb_path": "objects/thumbs/cities28_th.jpg",
+      "title": "Panoramic view of Murray, Idaho."
+    },
+    {
+      "filename": "cities31.jpg",
+      "image_path": "objects/cities31.jpg",
+      "item_url": "/items/cities31.html",
+      "thumb_path": "objects/thumbs/cities31_th.jpg",
+      "title": "Elk Prairie, Idaho."
+    },
+    {
+      "filename": "cities32.jpg",
+      "image_path": "objects/cities32.jpg",
+      "item_url": "/items/cities32.html",
+      "thumb_path": "objects/thumbs/cities32_th.jpg",
+      "title": "Panoramic view of Viola, Idaho."
+    },
+    {
+      "filename": "cities33.jpg",
+      "image_path": "objects/cities33.jpg",
+      "item_url": "/items/cities33.html",
+      "thumb_path": "objects/thumbs/cities33_th.jpg",
+      "title": "Panoramic view of Viola, Idaho looking south.."
+    },
+    {
+      "filename": "cities35.jpg",
+      "image_path": "objects/cities35.jpg",
+      "item_url": "/items/cities35.html",
+      "thumb_path": "objects/thumbs/cities35_th.jpg",
+      "title": "Lamb Bros. General Machinist and Blacksmithing. Harrison, Idaho."
+    },
+    {
+      "filename": "cities36.jpg",
+      "image_path": "objects/cities36.jpg",
+      "item_url": "/items/cities36.html",
+      "thumb_path": "objects/thumbs/cities36_th.jpg",
+      "title": "Knox, Idaho."
+    },
+    {
+      "filename": "cities37.jpg",
+      "image_path": "objects/cities37.jpg",
+      "item_url": "/items/cities37.html",
+      "thumb_path": "objects/thumbs/cities37_th.jpg",
+      "title": "Crowd of people in street with band in foreground. DeLamar Mercantile in background. DeLamar, Idaho."
+    },
+    {
+      "filename": "cities40.jpg",
+      "image_path": "objects/cities40.jpg",
+      "item_url": "/items/cities40.html",
+      "thumb_path": "objects/thumbs/cities40_th.jpg",
+      "title": "Moscow Public Library Moscow, Idaho."
+    },
+    {
+      "filename": "cities42.jpg",
+      "image_path": "objects/cities42.jpg",
+      "item_url": "/items/cities42.html",
+      "thumb_path": "objects/thumbs/cities42_th.jpg",
+      "title": "David's Department Store, 3rd and Main Street. Moscow, Idaho."
+    },
+    {
+      "filename": "cities45.jpg",
+      "image_path": "objects/cities45.jpg",
+      "item_url": "/items/cities45.html",
+      "thumb_path": "objects/thumbs/cities45_th.jpg",
+      "title": "Exterior view of Russell School (1884-1912) after the annex was built in 1888. Moscow, Idaho.."
+    },
+    {
+      "filename": "cities59.jpg",
+      "image_path": "objects/cities59.jpg",
+      "item_url": "/items/cities59.html",
+      "thumb_path": "objects/thumbs/cities59_th.jpg",
+      "title": "Barton House. Hotel on corner of Main Street and 4th Street. Moscow, Idaho."
+    },
+    {
+      "filename": "cities61.jpg",
+      "image_path": "objects/cities61.jpg",
+      "item_url": "/items/cities61.html",
+      "thumb_path": "objects/thumbs/cities61_th.jpg",
+      "title": "People standing on porch of Moscow City Hotel. Moscow, Idaho."
+    },
+    {
+      "filename": "cities64.jpg",
+      "image_path": "objects/cities64.jpg",
+      "item_url": "/items/cities64.html",
+      "thumb_path": "objects/thumbs/cities64_th.jpg",
+      "title": "Latah County Courthouse (1889-1958). Moscow, Idaho."
+    },
+    {
+      "filename": "cities66.jpg",
+      "image_path": "objects/cities66.jpg",
+      "item_url": "/items/cities66.html",
+      "thumb_path": "objects/thumbs/cities66_th.jpg",
+      "title": "Interior view of cigar store in Moscow Hotel. Moscow, Idaho."
+    },
+    {
+      "filename": "cities69.jpg",
+      "image_path": "objects/cities69.jpg",
+      "item_url": "/items/cities69.html",
+      "thumb_path": "objects/thumbs/cities69_th.jpg",
+      "title": "Interior view of Moscow Hotel (1891- ). Moscow, Idaho."
+    },
+    {
+      "filename": "cities70.jpg",
+      "image_path": "objects/cities70.jpg",
+      "item_url": "/items/cities70.html",
+      "thumb_path": "objects/thumbs/cities70_th.jpg",
+      "title": "Sale held in front of old stable on northwest corner of 1st and Main Streets. Moscow, Idaho."
+    },
+    {
+      "filename": "cities73.jpg",
+      "image_path": "objects/cities73.jpg",
+      "item_url": "/items/cities73.html",
+      "thumb_path": "objects/thumbs/cities73_th.jpg",
+      "title": "4th of July parade on Main Street. Moscow, Idaho."
+    },
+    {
+      "filename": "cities75.jpg",
+      "image_path": "objects/cities75.jpg",
+      "item_url": "/items/cities75.html",
+      "thumb_path": "objects/thumbs/cities75_th.jpg",
+      "title": "4th of July parade on Main Street. Moscow, Idaho."
+    },
+    {
+      "filename": "cities81.jpg",
+      "image_path": "objects/cities81.jpg",
+      "item_url": "/items/cities81.html",
+      "thumb_path": "objects/thumbs/cities81_th.jpg",
+      "title": "Main Street from intersection of Main and 5th. Moscow, Idaho."
+    },
+    {
+      "filename": "cities84.jpg",
+      "image_path": "objects/cities84.jpg",
+      "item_url": "/items/cities84.html",
+      "thumb_path": "objects/thumbs/cities84_th.jpg",
+      "title": "Main Street from intersection of A and Main Streets. Moscow, Idaho"
+    },
+    {
+      "filename": "cities87.jpg",
+      "image_path": "objects/cities87.jpg",
+      "item_url": "/items/cities87.html",
+      "thumb_path": "objects/thumbs/cities87_th.jpg",
+      "title": "Birdseye view of business district from corner of 6th and Jackson Streets. Moscow, Idaho."
+    },
+    {
+      "filename": "cities89.jpg",
+      "image_path": "objects/cities89.jpg",
+      "item_url": "/items/cities89.html",
+      "thumb_path": "objects/thumbs/cities89_th.jpg",
+      "title": "Main Street. Moscow, Idaho."
+    },
+    {
+      "filename": "cities95.jpg",
+      "image_path": "objects/cities95.jpg",
+      "item_url": "/items/cities95.html",
+      "thumb_path": "objects/thumbs/cities95_th.jpg",
+      "title": "4th of July parade on Main Street. Looking southwest from the corner of 6th and Main Streets. Moscow, Idaho."
+    },
+    {
+      "filename": "cities97.jpg",
+      "image_path": "objects/cities97.jpg",
+      "item_url": "/items/cities97.html",
+      "thumb_path": "objects/thumbs/cities97_th.jpg",
+      "title": "Ringling Brothers Circus parade on Main Street. Moscow, Idaho."
+    },
+    {
+      "filename": "cities98.jpg",
+      "image_path": "objects/cities98.jpg",
+      "item_url": "/items/cities98.html",
+      "thumb_path": "objects/thumbs/cities98_th.jpg",
+      "title": "4th of July parade on Main Street. Moscow, Idaho."
+    },
+    {
+      "filename": "cities103.jpg",
+      "image_path": "objects/cities103.jpg",
+      "item_url": "/items/cities103.html",
+      "thumb_path": "objects/thumbs/cities103_th.jpg",
+      "title": "Panoramic view from Administration Building of Moscow, Idaho."
+    },
+    {
+      "filename": "cities128.jpg",
+      "image_path": "objects/cities128.jpg",
+      "item_url": "/items/cities128.html",
+      "thumb_path": "objects/thumbs/cities128_th.jpg",
+      "title": "Panoramic view of Moscow, Idaho."
+    },
+    {
+      "filename": "cities133.jpg",
+      "image_path": "objects/cities133.jpg",
+      "item_url": "/items/cities133.html",
+      "thumb_path": "objects/thumbs/cities133_th.jpg",
+      "title": "Panoramic view of Moscow, Idaho from the west."
+    },
+    {
+      "filename": "cities144.jpg",
+      "image_path": "objects/cities144.jpg",
+      "item_url": "/items/cities144.html",
+      "thumb_path": "objects/thumbs/cities144_th.jpg",
+      "title": "Panoramic view from campus of Moscow, Idaho."
+    },
+    {
+      "filename": "cities148.jpg",
+      "image_path": "objects/cities148.jpg",
+      "item_url": "/items/cities148.html",
+      "thumb_path": "objects/thumbs/cities148_th.jpg",
+      "title": "Panoramic view from campus of Moscow, Idaho."
+    },
+    {
+      "filename": "cities166.jpg",
+      "image_path": "objects/cities166.jpg",
+      "item_url": "/items/cities166.html",
+      "thumb_path": "objects/thumbs/cities166_th.jpg",
+      "title": "Panoramic view of Moscow, Idaho."
+    },
+    {
+      "filename": "cities167.jpg",
+      "image_path": "objects/cities167.jpg",
+      "item_url": "/items/cities167.html",
+      "thumb_path": "objects/thumbs/cities167_th.jpg",
+      "title": "Panoramic view from campus of Moscow, Idaho. Snow scene."
+    },
+    {
+      "filename": "cities180.jpg",
+      "image_path": "objects/cities180.jpg",
+      "item_url": "/items/cities180.html",
+      "thumb_path": "objects/thumbs/cities180_th.jpg",
+      "title": "Unidentified home. Moscow, Idaho."
+    },
+    {
+      "filename": "cities191.jpg",
+      "image_path": "objects/cities191.jpg",
+      "item_url": "/items/cities191.html",
+      "thumb_path": "objects/thumbs/cities191_th.jpg",
+      "title": "McGregor House (1890- ). Moscow, Idaho."
+    },
+    {
+      "filename": "cities201.jpg",
+      "image_path": "objects/cities201.jpg",
+      "item_url": "/items/cities201.html",
+      "thumb_path": "objects/thumbs/cities201_th.jpg",
+      "title": "Elk City, Idaho."
+    },
+    {
+      "filename": "cities207.jpg",
+      "image_path": "objects/cities207.jpg",
+      "item_url": "/items/cities207.html",
+      "thumb_path": "objects/thumbs/cities207_th.jpg",
+      "title": "Moscow Fire Department Hose Co. No. 4."
+    },
+    {
+      "filename": "cities224.jpg",
+      "image_path": "objects/cities224.jpg",
+      "item_url": "/items/cities224.html",
+      "thumb_path": "objects/thumbs/cities224_th.jpg",
+      "title": "L-R: Billie Allen, Little Gus Gustafson, Henry Holzman, Martin Hickman, Fred Franklin, Charlie Wong Gee standing in front of Old Blue Front Saloon. Elk City, Idaho."
+    },
+    {
+      "filename": "cities233.jpg",
+      "image_path": "objects/cities233.jpg",
+      "item_url": "/items/cities233.html",
+      "thumb_path": "objects/thumbs/cities233_th.jpg",
+      "title": "Andrews Store. Interior view showing Mildred Dodge and Mr. & Mrs. Andrews. Moscow, Idaho."
+    },
+    {
+      "filename": "cities234.jpg",
+      "image_path": "objects/cities234.jpg",
+      "item_url": "/items/cities234.html",
+      "thumb_path": "objects/thumbs/cities234_th.jpg",
+      "title": "Andrews Store. Interior view showing Mildred Dodge and Mr. & Mrs. Andrews. Moscow, Idaho."
+    },
+    {
+      "filename": "cities277.jpg",
+      "image_path": "objects/cities277.jpg",
+      "item_url": "/items/cities277.html",
+      "thumb_path": "objects/thumbs/cities277_th.jpg",
+      "title": "Williamson's General Merchandise. Moscow, Idaho."
+    },
+    {
+      "filename": "cities279.jpg",
+      "image_path": "objects/cities279.jpg",
+      "item_url": "/items/cities279.html",
+      "thumb_path": "objects/thumbs/cities279_th.jpg",
+      "title": "Destruction caused by fire. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities280.jpg",
+      "image_path": "objects/cities280.jpg",
+      "item_url": "/items/cities280.html",
+      "thumb_path": "objects/thumbs/cities280_th.jpg",
+      "title": "Williamson's General Merchandise. Moscow, Idaho"
+    },
+    {
+      "filename": "cities281.jpg",
+      "image_path": "objects/cities281.jpg",
+      "item_url": "/items/cities281.html",
+      "thumb_path": "objects/thumbs/cities281_th.jpg",
+      "title": "4th of July picnic. Moscow, Idaho."
+    },
+    {
+      "filename": "cities282.jpg",
+      "image_path": "objects/cities282.jpg",
+      "item_url": "/items/cities282.html",
+      "thumb_path": "objects/thumbs/cities282_th.jpg",
+      "title": "4th of July parade. Moscow, Idaho."
+    },
+    {
+      "filename": "cities299.jpg",
+      "image_path": "objects/cities299.jpg",
+      "item_url": "/items/cities299.html",
+      "thumb_path": "objects/thumbs/cities299_th.jpg",
+      "title": "Boat excursions up the St. Joe River. Crowd of people on bank. Boat 'Idaho' at left, boat 'The Spokane' in center. Ferrel, Idaho."
+    },
+    {
+      "filename": "cities303.jpg",
+      "image_path": "objects/cities303.jpg",
+      "item_url": "/items/cities303.html",
+      "thumb_path": "objects/thumbs/cities303_th.jpg",
+      "title": "Aerial view of Peck, Idaho."
+    },
+    {
+      "filename": "cities308.jpg",
+      "image_path": "objects/cities308.jpg",
+      "item_url": "/items/cities308.html",
+      "thumb_path": "objects/thumbs/cities308_th.jpg",
+      "title": "Panoramic view of Peck, Idaho taken by D.P. Shrewsberry (1880-1942)"
+    },
+    {
+      "filename": "cities313.jpg",
+      "image_path": "objects/cities313.jpg",
+      "item_url": "/items/cities313.html",
+      "thumb_path": "objects/thumbs/cities313_th.jpg",
+      "title": "Lewiston Bakery and Cracker Factory. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities323.jpg",
+      "image_path": "objects/cities323.jpg",
+      "item_url": "/items/cities323.html",
+      "thumb_path": "objects/thumbs/cities323_th.jpg",
+      "title": "Office Saloon. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities325.jpg",
+      "image_path": "objects/cities325.jpg",
+      "item_url": "/items/cities325.html",
+      "thumb_path": "objects/thumbs/cities325_th.jpg",
+      "title": "Highway 95 on the Lewiston Hill."
+    },
+    {
+      "filename": "cities336.jpg",
+      "image_path": "objects/cities336.jpg",
+      "item_url": "/items/cities336.html",
+      "thumb_path": "objects/thumbs/cities336_th.jpg",
+      "title": "Old courthouse. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities346.jpg",
+      "image_path": "objects/cities346.jpg",
+      "item_url": "/items/cities346.html",
+      "thumb_path": "objects/thumbs/cities346_th.jpg",
+      "title": "Matt's Place pool hall. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities349.jpg",
+      "image_path": "objects/cities349.jpg",
+      "item_url": "/items/cities349.html",
+      "thumb_path": "objects/thumbs/cities349_th.jpg",
+      "title": "St. Joseph's Hospital. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities351.jpg",
+      "image_path": "objects/cities351.jpg",
+      "item_url": "/items/cities351.html",
+      "thumb_path": "objects/thumbs/cities351_th.jpg",
+      "title": "Lewiston, Idaho Territory."
+    },
+    {
+      "filename": "cities352.jpg",
+      "image_path": "objects/cities352.jpg",
+      "item_url": "/items/cities352.html",
+      "thumb_path": "objects/thumbs/cities352_th.jpg",
+      "title": "A.R. Trimble Saloon. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities355.jpg",
+      "image_path": "objects/cities355.jpg",
+      "item_url": "/items/cities355.html",
+      "thumb_path": "objects/thumbs/cities355_th.jpg",
+      "title": "Birdseye view of Lewiston, Idaho."
+    },
+    {
+      "filename": "cities360.jpg",
+      "image_path": "objects/cities360.jpg",
+      "item_url": "/items/cities360.html",
+      "thumb_path": "objects/thumbs/cities360_th.jpg",
+      "title": "View of flood at corner of Fifth and Main Streets. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities361.jpg",
+      "image_path": "objects/cities361.jpg",
+      "item_url": "/items/cities361.html",
+      "thumb_path": "objects/thumbs/cities361_th.jpg",
+      "title": "East Main Street. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities364.jpg",
+      "image_path": "objects/cities364.jpg",
+      "item_url": "/items/cities364.html",
+      "thumb_path": "objects/thumbs/cities364_th.jpg",
+      "title": "Bell & Bollinger Royal Restaurant. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities368.jpg",
+      "image_path": "objects/cities368.jpg",
+      "item_url": "/items/cities368.html",
+      "thumb_path": "objects/thumbs/cities368_th.jpg",
+      "title": "Interior of J.P. Fitzgerald Blacksmith Shop. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities370.jpg",
+      "image_path": "objects/cities370.jpg",
+      "item_url": "/items/cities370.html",
+      "thumb_path": "objects/thumbs/cities370_th.jpg",
+      "title": "Jack Banks riding Denver. Lewiston Roundup. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities376.jpg",
+      "image_path": "objects/cities376.jpg",
+      "item_url": "/items/cities376.html",
+      "thumb_path": "objects/thumbs/cities376_th.jpg",
+      "title": "Harbor on the Snake River, Interior Warehouse Co. and several boats. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities387.jpg",
+      "image_path": "objects/cities387.jpg",
+      "item_url": "/items/cities387.html",
+      "thumb_path": "objects/thumbs/cities387_th.jpg",
+      "title": "C. Weisgerber Brewery. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities391.jpg",
+      "image_path": "objects/cities391.jpg",
+      "item_url": "/items/cities391.html",
+      "thumb_path": "objects/thumbs/cities391_th.jpg",
+      "title": "Bottling room. C. Weisgerber Brewery. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities395.jpg",
+      "image_path": "objects/cities395.jpg",
+      "item_url": "/items/cities395.html",
+      "thumb_path": "objects/thumbs/cities395_th.jpg",
+      "title": "Stock cellar. C. Weisgerber Brewery. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities397.jpg",
+      "image_path": "objects/cities397.jpg",
+      "item_url": "/items/cities397.html",
+      "thumb_path": "objects/thumbs/cities397_th.jpg",
+      "title": "Wash house on 1st floor. C. Weisgerber Brewery. Lewiston, Idaho."
+    },
+    {
+      "filename": "cities399.jpg",
+      "image_path": "objects/cities399.jpg",
+      "item_url": "/items/cities399.html",
+      "thumb_path": "objects/thumbs/cities399_th.jpg",
+      "title": "Peck Ferry looking north across the river. Peck, Idaho."
+    },
+    {
+      "filename": "cities400.jpg",
+      "image_path": "objects/cities400.jpg",
+      "item_url": "/items/cities400.html",
+      "thumb_path": "objects/thumbs/cities400_th.jpg",
+      "title": "Peck Ferry. Peck, Idaho."
+    },
+    {
+      "filename": "cities401.jpg",
+      "image_path": "objects/cities401.jpg",
+      "item_url": "/items/cities401.html",
+      "thumb_path": "objects/thumbs/cities401_th.jpg",
+      "title": "J. Arborgast, Cal Huddleston, and George Arnold, pioneers of Grangeville, Idaho."
+    },
+    {
+      "filename": "cities402.jpg",
+      "image_path": "objects/cities402.jpg",
+      "item_url": "/items/cities402.html",
+      "thumb_path": "objects/thumbs/cities402_th.jpg",
+      "title": "Peck Ferry. Peck, Idaho."
+    },
+    {
+      "filename": "cities404.jpg",
+      "image_path": "objects/cities404.jpg",
+      "item_url": "/items/cities404.html",
+      "thumb_path": "objects/thumbs/cities404_th.jpg",
+      "title": "Peck Ferry. Peck, Idaho."
+    },
+    {
+      "filename": "cities419.jpg",
+      "image_path": "objects/cities419.jpg",
+      "item_url": "/items/cities419.html",
+      "thumb_path": "objects/thumbs/cities419_th.jpg",
+      "title": "Panoramic view of Salmon, Idaho."
+    },
+    {
+      "filename": "cities432.jpg",
+      "image_path": "objects/cities432.jpg",
+      "item_url": "/items/cities432.html",
+      "thumb_path": "objects/thumbs/cities432_th.jpg",
+      "title": "Lewiston City Hall (1889- ). Lewiston, Idaho."
+    },
+    {
+      "filename": "cities448.jpg",
+      "image_path": "objects/cities448.jpg",
+      "item_url": "/items/cities448.html",
+      "thumb_path": "objects/thumbs/cities448_th.jpg",
+      "title": "Business section. Boise City, Idaho Territory."
+    },
+    {
+      "filename": "cities449.jpg",
+      "image_path": "objects/cities449.jpg",
+      "item_url": "/items/cities449.html",
+      "thumb_path": "objects/thumbs/cities449_th.jpg",
+      "title": "Picture made from painting of business section. Boise City, Idaho Territory."
+    },
+    {
+      "filename": "cities455.jpg",
+      "image_path": "objects/cities455.jpg",
+      "item_url": "/items/cities455.html",
+      "thumb_path": "objects/thumbs/cities455_th.jpg",
+      "title": "Street scene. Wilson Mercantile Co. and Clarkia Mercantile. Clarkia, Idaho."
+    },
+    {
+      "filename": "cities461.jpg",
+      "image_path": "objects/cities461.jpg",
+      "item_url": "/items/cities461.html",
+      "thumb_path": "objects/thumbs/cities461_th.jpg",
+      "title": "Panoramic view of Lemhi Valley showing remains of Fort Lemhi. Idaho."
+    },
+    {
+      "filename": "cities462.jpg",
+      "image_path": "objects/cities462.jpg",
+      "item_url": "/items/cities462.html",
+      "thumb_path": "objects/thumbs/cities462_th.jpg",
+      "title": "Panoramic view of Lemhi Valley looking northwest. Idaho."
+    },
+    {
+      "filename": "cities463.jpg",
+      "image_path": "objects/cities463.jpg",
+      "item_url": "/items/cities463.html",
+      "thumb_path": "objects/thumbs/cities463_th.jpg",
+      "title": "Salmon-Redrock stage on the Continental Divide. Lemhi Valley, Idaho."
+    },
+    {
+      "filename": "cities464.jpg",
+      "image_path": "objects/cities464.jpg",
+      "item_url": "/items/cities464.html",
+      "thumb_path": "objects/thumbs/cities464_th.jpg",
+      "title": "Salmon-Redrock stage on the Continental Divide. Lemhi Valley, Idaho."
+    },
+    {
+      "filename": "cities465.jpg",
+      "image_path": "objects/cities465.jpg",
+      "item_url": "/items/cities465.html",
+      "thumb_path": "objects/thumbs/cities465_th.jpg",
+      "title": "Spalding cabin (1837- ). Lapwai, Idaho."
+    },
+    {
+      "filename": "cities466.jpg",
+      "image_path": "objects/cities466.jpg",
+      "item_url": "/items/cities466.html",
+      "thumb_path": "objects/thumbs/cities466_th.jpg",
+      "title": "Spalding cabin (1837- ). Lapwai, Idaho."
+    },
+    {
+      "filename": "cities468.jpg",
+      "image_path": "objects/cities468.jpg",
+      "item_url": "/items/cities468.html",
+      "thumb_path": "objects/thumbs/cities468_th.jpg",
+      "title": "Knights of Pythias, Grand Lodge of Idaho. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities490.jpg",
+      "image_path": "objects/cities490.jpg",
+      "item_url": "/items/cities490.html",
+      "thumb_path": "objects/thumbs/cities490_th.jpg",
+      "title": "Steer tying. Border Days. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities520.jpg",
+      "image_path": "objects/cities520.jpg",
+      "item_url": "/items/cities520.html",
+      "thumb_path": "objects/thumbs/cities520_th.jpg",
+      "title": "Farmers' Day. Aberdeen Sub-station. Aberdeen, Idaho."
+    },
+    {
+      "filename": "cities523.jpg",
+      "image_path": "objects/cities523.jpg",
+      "item_url": "/items/cities523.html",
+      "thumb_path": "objects/thumbs/cities523_th.jpg",
+      "title": "2nd Idaho State Fair. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities524.jpg",
+      "image_path": "objects/cities524.jpg",
+      "item_url": "/items/cities524.html",
+      "thumb_path": "objects/thumbs/cities524_th.jpg",
+      "title": "Panoramic view of Spalding, Idaho."
+    },
+    {
+      "filename": "cities525.jpg",
+      "image_path": "objects/cities525.jpg",
+      "item_url": "/items/cities525.html",
+      "thumb_path": "objects/thumbs/cities525_th.jpg",
+      "title": "Overland Hotel (1863-1903) on corner of 8th and Main Streets. Boise, Idaho."
+    },
+    {
+      "filename": "cities533.jpg",
+      "image_path": "objects/cities533.jpg",
+      "item_url": "/items/cities533.html",
+      "thumb_path": "objects/thumbs/cities533_th.jpg",
+      "title": "Panoramic view of Cottonwood, Idaho."
+    },
+    {
+      "filename": "cities534.jpg",
+      "image_path": "objects/cities534.jpg",
+      "item_url": "/items/cities534.html",
+      "thumb_path": "objects/thumbs/cities534_th.jpg",
+      "title": "World War I Veterans marching down street. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities543.jpg",
+      "image_path": "objects/cities543.jpg",
+      "item_url": "/items/cities543.html",
+      "thumb_path": "objects/thumbs/cities543_th.jpg",
+      "title": "Cottonwood Public School [under construction?]. Cottonwood, Idaho."
+    },
+    {
+      "filename": "cities545.jpg",
+      "image_path": "objects/cities545.jpg",
+      "item_url": "/items/cities545.html",
+      "thumb_path": "objects/thumbs/cities545_th.jpg",
+      "title": "Balloon launching. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities548.jpg",
+      "image_path": "objects/cities548.jpg",
+      "item_url": "/items/cities548.html",
+      "thumb_path": "objects/thumbs/cities548_th.jpg",
+      "title": "Site of Fort Hall, Idaho."
+    },
+    {
+      "filename": "cities564.jpg",
+      "image_path": "objects/cities564.jpg",
+      "item_url": "/items/cities564.html",
+      "thumb_path": "objects/thumbs/cities564_th.jpg",
+      "title": "Overland Hotel (1863-1903) on corner of 8th and Main Streets. Boise, Idaho."
+    },
+    {
+      "filename": "cities568.jpg",
+      "image_path": "objects/cities568.jpg",
+      "item_url": "/items/cities568.html",
+      "thumb_path": "objects/thumbs/cities568_th.jpg",
+      "title": "Bull Moose Party float being pulled by horses. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities586.jpg",
+      "image_path": "objects/cities586.jpg",
+      "item_url": "/items/cities586.html",
+      "thumb_path": "objects/thumbs/cities586_th.jpg",
+      "title": "Electric Studio. Emmett, Idaho."
+    },
+    {
+      "filename": "cities587.jpg",
+      "image_path": "objects/cities587.jpg",
+      "item_url": "/items/cities587.html",
+      "thumb_path": "objects/thumbs/cities587_th.jpg",
+      "title": "A.M. Whelchel Studio. Emmett, Idaho"
+    },
+    {
+      "filename": "cities601.jpg",
+      "image_path": "objects/cities601.jpg",
+      "item_url": "/items/cities601.html",
+      "thumb_path": "objects/thumbs/cities601_th.jpg",
+      "title": "West end of Main Street. Grangeville, Idaho."
+    },
+    {
+      "filename": "cities604.jpg",
+      "image_path": "objects/cities604.jpg",
+      "item_url": "/items/cities604.html",
+      "thumb_path": "objects/thumbs/cities604_th.jpg",
+      "title": "Creamery. McDermott, Idaho."
+    },
+    {
+      "filename": "cities607.jpg",
+      "image_path": "objects/cities607.jpg",
+      "item_url": "/items/cities607.html",
+      "thumb_path": "objects/thumbs/cities607_th.jpg",
+      "title": "Creamery. Meridian, Idaho."
+    },
+    {
+      "filename": "cities609.jpg",
+      "image_path": "objects/cities609.jpg",
+      "item_url": "/items/cities609.html",
+      "thumb_path": "objects/thumbs/cities609_th.jpg",
+      "title": "Mr. and Mrs. Harry Miller's buggy. St. Joe, Idaho."
+    },
+    {
+      "filename": "cities610.jpg",
+      "image_path": "objects/cities610.jpg",
+      "item_url": "/items/cities610.html",
+      "thumb_path": "objects/thumbs/cities610_th.jpg",
+      "title": "Print from book? Of L.P. Brown Hotel. Mount Idaho, Idaho."
+    },
+    {
+      "filename": "cities611.jpg",
+      "image_path": "objects/cities611.jpg",
+      "item_url": "/items/cities611.html",
+      "thumb_path": "objects/thumbs/cities611_th.jpg",
+      "title": "Courthouse. Mount Idaho, Idaho."
+    },
+    {
+      "filename": "cities613.jpg",
+      "image_path": "objects/cities613.jpg",
+      "item_url": "/items/cities613.html",
+      "thumb_path": "objects/thumbs/cities613_th.jpg",
+      "title": "Idaho County Courthouse. Mount Idaho, Idaho."
+    },
+    {
+      "filename": "cities616.jpg",
+      "image_path": "objects/cities616.jpg",
+      "item_url": "/items/cities616.html",
+      "thumb_path": "objects/thumbs/cities616_th.jpg",
+      "title": "Judge Joseph K. Vincent home (1822- ). Mount Idaho. Idaho."
+    },
+    {
+      "filename": "cities620.jpg",
+      "image_path": "objects/cities620.jpg",
+      "item_url": "/items/cities620.html",
+      "thumb_path": "objects/thumbs/cities620_th.jpg",
+      "title": "Horses moving logs by sled. Above Elk River, Idaho on tributary of Clearwater."
+    },
+    {
+      "filename": "cities621.jpg",
+      "image_path": "objects/cities621.jpg",
+      "item_url": "/items/cities621.html",
+      "thumb_path": "objects/thumbs/cities621_th.jpg",
+      "title": "Cutting timber in about ten feet of snow. Near Hunicker Logging Camp above Elk River, Idaho."
+    },
+    {
+      "filename": "cities622.jpg",
+      "image_path": "objects/cities622.jpg",
+      "item_url": "/items/cities622.html",
+      "thumb_path": "objects/thumbs/cities622_th.jpg",
+      "title": "Loggers and living quarters at Hunicker Logging Camp. Near Elk River, Idaho."
+    },
+    {
+      "filename": "cities625.jpg",
+      "image_path": "objects/cities625.jpg",
+      "item_url": "/items/cities625.html",
+      "thumb_path": "objects/thumbs/cities625_th.jpg",
+      "title": "Loggers and living quarters at Hunicker Logging Camp. Near Elk River, Idaho."
+    },
+    {
+      "filename": "cities626.jpg",
+      "image_path": "objects/cities626.jpg",
+      "item_url": "/items/cities626.html",
+      "thumb_path": "objects/thumbs/cities626_th.jpg",
+      "title": "Clearing and cottage of timber claim. Basin about 12 miles northeast of Elk River, Idaho."
+    },
+    {
+      "filename": "cities627.jpg",
+      "image_path": "objects/cities627.jpg",
+      "item_url": "/items/cities627.html",
+      "thumb_path": "objects/thumbs/cities627_th.jpg",
+      "title": "Men standing by carpenters shop. Logging camp near Elk River, Idaho."
+    },
+    {
+      "filename": "cities634.jpg",
+      "image_path": "objects/cities634.jpg",
+      "item_url": "/items/cities634.html",
+      "thumb_path": "objects/thumbs/cities634_th.jpg",
+      "title": "Schmidt Brothers Lumber Co. camp. Eileen, Idaho."
+    },
+    {
+      "filename": "cities660.jpg",
+      "image_path": "objects/cities660.jpg",
+      "item_url": "/items/cities660.html",
+      "thumb_path": "objects/thumbs/cities660_th.jpg",
+      "title": "Bunker Hill and Sullivan Company Smelter. Kellogg, Idaho"
+    },
+    {
+      "filename": "cities662.jpg",
+      "image_path": "objects/cities662.jpg",
+      "item_url": "/items/cities662.html",
+      "thumb_path": "objects/thumbs/cities662_th.jpg",
+      "title": "View looking down into Mullan, Idaho."
+    },
+    {
+      "filename": "cities664.jpg",
+      "image_path": "objects/cities664.jpg",
+      "item_url": "/items/cities664.html",
+      "thumb_path": "objects/thumbs/cities664_th.jpg",
+      "title": "View of business district. Mullan, Idaho."
+    },
+    {
+      "filename": "cities665.jpg",
+      "image_path": "objects/cities665.jpg",
+      "item_url": "/items/cities665.html",
+      "thumb_path": "objects/thumbs/cities665_th.jpg",
+      "title": "Panoramic view of Mullan, Idaho."
+    },
+    {
+      "filename": "cities666.jpg",
+      "image_path": "objects/cities666.jpg",
+      "item_url": "/items/cities666.html",
+      "thumb_path": "objects/thumbs/cities666_th.jpg",
+      "title": "Panoramic view of Mullan, Idaho."
+    },
+    {
+      "filename": "cities669.jpg",
+      "image_path": "objects/cities669.jpg",
+      "item_url": "/items/cities669.html",
+      "thumb_path": "objects/thumbs/cities669_th.jpg",
+      "title": "Street scene. Mullan, Idaho."
+    },
+    {
+      "filename": "cities671.jpg",
+      "image_path": "objects/cities671.jpg",
+      "item_url": "/items/cities671.html",
+      "thumb_path": "objects/thumbs/cities671_th.jpg",
+      "title": "Stores on Earl Avenue. Mullan, Idaho."
+    },
+    {
+      "filename": "cities672.jpg",
+      "image_path": "objects/cities672.jpg",
+      "item_url": "/items/cities672.html",
+      "thumb_path": "objects/thumbs/cities672_th.jpg",
+      "title": "Copper King Mining Company plant. Mullan, Idaho."
+    },
+    {
+      "filename": "cities674.jpg",
+      "image_path": "objects/cities674.jpg",
+      "item_url": "/items/cities674.html",
+      "thumb_path": "objects/thumbs/cities674_th.jpg",
+      "title": "Underground drilling crew. Copper King Mining Company. Mullan, Idaho."
+    },
+    {
+      "filename": "cities675.jpg",
+      "image_path": "objects/cities675.jpg",
+      "item_url": "/items/cities675.html",
+      "thumb_path": "objects/thumbs/cities675_th.jpg",
+      "title": "Snowstorm Hotel. Mullan, Idaho."
+    },
+    {
+      "filename": "cities676.jpg",
+      "image_path": "objects/cities676.jpg",
+      "item_url": "/items/cities676.html",
+      "thumb_path": "objects/thumbs/cities676_th.jpg",
+      "title": "Morning Hotel. Mullan, Idaho."
+    },
+    {
+      "filename": "cities677.jpg",
+      "image_path": "objects/cities677.jpg",
+      "item_url": "/items/cities677.html",
+      "thumb_path": "objects/thumbs/cities677_th.jpg",
+      "title": "View of Morning Mill and river. Mullan, Idaho."
+    },
+    {
+      "filename": "cities678.jpg",
+      "image_path": "objects/cities678.jpg",
+      "item_url": "/items/cities678.html",
+      "thumb_path": "objects/thumbs/cities678_th.jpg",
+      "title": "Mullan Opera House. Mullan, Idaho."
+    },
+    {
+      "filename": "cities679.jpg",
+      "image_path": "objects/cities679.jpg",
+      "item_url": "/items/cities679.html",
+      "thumb_path": "objects/thumbs/cities679_th.jpg",
+      "title": "Schmidt Brothers Lumber Co. lumber yard and flume. Eileen, Idaho."
+    },
+    {
+      "filename": "cities680.jpg",
+      "image_path": "objects/cities680.jpg",
+      "item_url": "/items/cities680.html",
+      "thumb_path": "objects/thumbs/cities680_th.jpg",
+      "title": "Mullan, Idaho."
+    },
+    {
+      "filename": "cities682.jpg",
+      "image_path": "objects/cities682.jpg",
+      "item_url": "/items/cities682.html",
+      "thumb_path": "objects/thumbs/cities682_th.jpg",
+      "title": "Looking east on Earle Street toward the Gold Hunter Mill. Mullan, Idaho."
+    },
+    {
+      "filename": "cities683.jpg",
+      "image_path": "objects/cities683.jpg",
+      "item_url": "/items/cities683.html",
+      "thumb_path": "objects/thumbs/cities683_th.jpg",
+      "title": "Panoramic view of Mullan, Idaho."
+    },
+    {
+      "filename": "cities687.jpg",
+      "image_path": "objects/cities687.jpg",
+      "item_url": "/items/cities687.html",
+      "thumb_path": "objects/thumbs/cities687_th.jpg",
+      "title": "View of Mace, Idaho before and after the snowslide."
+    },
+    {
+      "filename": "cities688.jpg",
+      "image_path": "objects/cities688.jpg",
+      "item_url": "/items/cities688.html",
+      "thumb_path": "objects/thumbs/cities688_th.jpg",
+      "title": "View of Mace, Idaho showing the snowslide in the background."
+    },
+    {
+      "filename": "cities712.jpg",
+      "image_path": "objects/cities712.jpg",
+      "item_url": "/items/cities712.html",
+      "thumb_path": "objects/thumbs/cities712_th.jpg",
+      "title": "Distant view of Orofino, Idaho."
+    },
+    {
+      "filename": "cities720.jpg",
+      "image_path": "objects/cities720.jpg",
+      "item_url": "/items/cities720.html",
+      "thumb_path": "objects/thumbs/cities720_th.jpg",
+      "title": "Kootenai County Track Meet. James Hawkins, Robson, Graf"
+    },
+    {
+      "filename": "cities723.jpg",
+      "image_path": "objects/cities723.jpg",
+      "item_url": "/items/cities723.html",
+      "thumb_path": "objects/thumbs/cities723_th.jpg",
+      "title": "Schmidt Brothers Lumber Co. log chute. Eileen, Idaho."
+    },
+    {
+      "filename": "cities727.jpg",
+      "image_path": "objects/cities727.jpg",
+      "item_url": "/items/cities727.html",
+      "thumb_path": "objects/thumbs/cities727_th.jpg",
+      "title": "Guess home demolished by snowslide. Mace, Idaho."
+    },
+    {
+      "filename": "cities737.jpg",
+      "image_path": "objects/cities737.jpg",
+      "item_url": "/items/cities737.html",
+      "thumb_path": "objects/thumbs/cities737_th.jpg",
+      "title": "Hecla Mill. Gem, Idaho."
+    },
+    {
+      "filename": "cities742.jpg",
+      "image_path": "objects/cities742.jpg",
+      "item_url": "/items/cities742.html",
+      "thumb_path": "objects/thumbs/cities742_th.jpg",
+      "title": "Black Bear, Idaho."
+    },
+    {
+      "filename": "cities743.jpg",
+      "image_path": "objects/cities743.jpg",
+      "item_url": "/items/cities743.html",
+      "thumb_path": "objects/thumbs/cities743_th.jpg",
+      "title": "View of town of Black Bear, Idaho and Black Bear Mine."
+    },
+    {
+      "filename": "cities744.jpg",
+      "image_path": "objects/cities744.jpg",
+      "item_url": "/items/cities744.html",
+      "thumb_path": "objects/thumbs/cities744_th.jpg",
+      "title": "Black Bear, Idaho. Standard Sorting Plant in background."
+    },
+    {
+      "filename": "cities747.jpg",
+      "image_path": "objects/cities747.jpg",
+      "item_url": "/items/cities747.html",
+      "thumb_path": "objects/thumbs/cities747_th.jpg",
+      "title": "Damage from snowslide. Burke, Idaho."
+    },
+    {
+      "filename": "cities748.jpg",
+      "image_path": "objects/cities748.jpg",
+      "item_url": "/items/cities748.html",
+      "thumb_path": "objects/thumbs/cities748_th.jpg",
+      "title": "Group of people gathered at Hercules Mine after snowslide. Burke, Idaho."
+    },
+    {
+      "filename": "cities749.jpg",
+      "image_path": "objects/cities749.jpg",
+      "item_url": "/items/cities749.html",
+      "thumb_path": "objects/thumbs/cities749_th.jpg",
+      "title": "Group of people gathered at Hercules Mine after snowslide. Burke, Idaho."
+    },
+    {
+      "filename": "cities752.jpg",
+      "image_path": "objects/cities752.jpg",
+      "item_url": "/items/cities752.html",
+      "thumb_path": "objects/thumbs/cities752_th.jpg",
+      "title": "Upper end of Burke, Idaho."
+    },
+    {
+      "filename": "cities753.jpg",
+      "image_path": "objects/cities753.jpg",
+      "item_url": "/items/cities753.html",
+      "thumb_path": "objects/thumbs/cities753_th.jpg",
+      "title": "Railroad tracks running through center of town. Burke, Idaho."
+    },
+    {
+      "filename": "cities754.jpg",
+      "image_path": "objects/cities754.jpg",
+      "item_url": "/items/cities754.html",
+      "thumb_path": "objects/thumbs/cities754_th.jpg",
+      "title": "Lower end of Burke, Idaho."
+    },
+    {
+      "filename": "cities755.jpg",
+      "image_path": "objects/cities755.jpg",
+      "item_url": "/items/cities755.html",
+      "thumb_path": "objects/thumbs/cities755_th.jpg",
+      "title": "Burke depot and portion of town. Burke, Idaho."
+    },
+    {
+      "filename": "cities759.jpg",
+      "image_path": "objects/cities759.jpg",
+      "item_url": "/items/cities759.html",
+      "thumb_path": "objects/thumbs/cities759_th.jpg",
+      "title": "Looking down into Burke, Idaho."
+    },
+    {
+      "filename": "cities760.jpg",
+      "image_path": "objects/cities760.jpg",
+      "item_url": "/items/cities760.html",
+      "thumb_path": "objects/thumbs/cities760_th.jpg",
+      "title": "Burke, Idaho."
+    },
+    {
+      "filename": "cities761.jpg",
+      "image_path": "objects/cities761.jpg",
+      "item_url": "/items/cities761.html",
+      "thumb_path": "objects/thumbs/cities761_th.jpg",
+      "title": "West Hexla Gulch before the snowslide. Burke, Idaho."
+    },
+    {
+      "filename": "cities764.jpg",
+      "image_path": "objects/cities764.jpg",
+      "item_url": "/items/cities764.html",
+      "thumb_path": "objects/thumbs/cities764_th.jpg",
+      "title": "Old Tiger-Poorman Surface Plant. Burke, Idaho."
+    },
+    {
+      "filename": "cities794.jpg",
+      "image_path": "objects/cities794.jpg",
+      "item_url": "/items/cities794.html",
+      "thumb_path": "objects/thumbs/cities794_th.jpg",
+      "title": "Panoramic view of Wardner, Idaho."
+    },
+    {
+      "filename": "cities795.jpg",
+      "image_path": "objects/cities795.jpg",
+      "item_url": "/items/cities795.html",
+      "thumb_path": "objects/thumbs/cities795_th.jpg",
+      "title": "Cookhouse at Bunker Hill and Sullivan Mines. Wardner, Idaho."
+    },
+    {
+      "filename": "cities798.jpg",
+      "image_path": "objects/cities798.jpg",
+      "item_url": "/items/cities798.html",
+      "thumb_path": "objects/thumbs/cities798_th.jpg",
+      "title": "Panoramic view of Wardner, Idaho."
+    },
+    {
+      "filename": "cities804.jpg",
+      "image_path": "objects/cities804.jpg",
+      "item_url": "/items/cities804.html",
+      "thumb_path": "objects/thumbs/cities804_th.jpg",
+      "title": "Wardner Public School. Wardner, Idaho."
+    },
+    {
+      "filename": "cities809.jpg",
+      "image_path": "objects/cities809.jpg",
+      "item_url": "/items/cities809.html",
+      "thumb_path": "objects/thumbs/cities809_th.jpg",
+      "title": "Main Street. Hailey, Idaho."
+    },
+    {
+      "filename": "cities811.jpg",
+      "image_path": "objects/cities811.jpg",
+      "item_url": "/items/cities811.html",
+      "thumb_path": "objects/thumbs/cities811_th.jpg",
+      "title": "View of Clearwater River, railroad and station looking to the north. Tramway, Idaho."
+    },
+    {
+      "filename": "cities813.jpg",
+      "image_path": "objects/cities813.jpg",
+      "item_url": "/items/cities813.html",
+      "thumb_path": "objects/thumbs/cities813_th.jpg",
+      "title": "Grain warehouse and tramway. Kendrick, Idaho."
+    },
+    {
+      "filename": "cities827.jpg",
+      "image_path": "objects/cities827.jpg",
+      "item_url": "/items/cities827.html",
+      "thumb_path": "objects/thumbs/cities827_th.jpg",
+      "title": "Potlatch Lumber Mill. Potlatch, Idaho."
+    },
+    {
+      "filename": "cities830.jpg",
+      "image_path": "objects/cities830.jpg",
+      "item_url": "/items/cities830.html",
+      "thumb_path": "objects/thumbs/cities830_th.jpg",
+      "title": "Risdon dredge. Operated by Boston and Gold Dredging Company near Idaho City."
+    },
+    {
+      "filename": "cities839.jpg",
+      "image_path": "objects/cities839.jpg",
+      "item_url": "/items/cities839.html",
+      "thumb_path": "objects/thumbs/cities839_th.jpg",
+      "title": "After the snowslide of February 27, 1910. Mace, Idaho."
+    },
+    {
+      "filename": "cities842.jpg",
+      "image_path": "objects/cities842.jpg",
+      "item_url": "/items/cities842.html",
+      "thumb_path": "objects/thumbs/cities842_th.jpg",
+      "title": "Boxcar burning after train wreck. Mace, Idaho."
+    },
+    {
+      "filename": "cities844.jpg",
+      "image_path": "objects/cities844.jpg",
+      "item_url": "/items/cities844.html",
+      "thumb_path": "objects/thumbs/cities844_th.jpg",
+      "title": "View of Troy, Idaho in winter."
+    },
+    {
+      "filename": "cities846.jpg",
+      "image_path": "objects/cities846.jpg",
+      "item_url": "/items/cities846.html",
+      "thumb_path": "objects/thumbs/cities846_th.jpg",
+      "title": "View of Troy, Idaho in winter."
+    },
+    {
+      "filename": "cities850.jpg",
+      "image_path": "objects/cities850.jpg",
+      "item_url": "/items/cities850.html",
+      "thumb_path": "objects/thumbs/cities850_th.jpg",
+      "title": "Deary, Idaho."
+    },
+    {
+      "filename": "cities851.jpg",
+      "image_path": "objects/cities851.jpg",
+      "item_url": "/items/cities851.html",
+      "thumb_path": "objects/thumbs/cities851_th.jpg",
+      "title": "Couple seated on horse-drawn sleigh. Wallace, Idaho?"
+    },
+    {
+      "filename": "cities868.jpg",
+      "image_path": "objects/cities868.jpg",
+      "item_url": "/items/cities868.html",
+      "thumb_path": "objects/thumbs/cities868_th.jpg",
+      "title": "Wallace National Bank. Wallace, Idaho."
+    },
+    {
+      "filename": "cities869.jpg",
+      "image_path": "objects/cities869.jpg",
+      "item_url": "/items/cities869.html",
+      "thumb_path": "objects/thumbs/cities869_th.jpg",
+      "title": "Old Court Building. Wallace, Idaho."
+    },
+    {
+      "filename": "cities870.jpg",
+      "image_path": "objects/cities870.jpg",
+      "item_url": "/items/cities870.html",
+      "thumb_path": "objects/thumbs/cities870_th.jpg",
+      "title": "Portion of Bank Street. Wallace, Idaho."
+    },
+    {
+      "filename": "cities872.jpg",
+      "image_path": "objects/cities872.jpg",
+      "item_url": "/items/cities872.html",
+      "thumb_path": "objects/thumbs/cities872_th.jpg",
+      "title": "Interior of showroom. C.E. Haines Ford Garage. Wallace, Idaho."
+    },
+    {
+      "filename": "cities875.jpg",
+      "image_path": "objects/cities875.jpg",
+      "item_url": "/items/cities875.html",
+      "thumb_path": "objects/thumbs/cities875_th.jpg",
+      "title": "Interior of Barnard Studio. Wallace, Idaho."
+    },
+    {
+      "filename": "cities876.jpg",
+      "image_path": "objects/cities876.jpg",
+      "item_url": "/items/cities876.html",
+      "thumb_path": "objects/thumbs/cities876_th.jpg",
+      "title": "6th Street, looking south. Wallace, Idaho."
+    },
+    {
+      "filename": "cities877.jpg",
+      "image_path": "objects/cities877.jpg",
+      "item_url": "/items/cities877.html",
+      "thumb_path": "objects/thumbs/cities877_th.jpg",
+      "title": "View of 6th Street, looking north after 4th of July horse race. Wallace, Idaho."
+    },
+    {
+      "filename": "cities880.jpg",
+      "image_path": "objects/cities880.jpg",
+      "item_url": "/items/cities880.html",
+      "thumb_path": "objects/thumbs/cities880_th.jpg",
+      "title": "Idaho Bean Co. and elevator. Troy, Idaho."
+    },
+    {
+      "filename": "cities882.jpg",
+      "image_path": "objects/cities882.jpg",
+      "item_url": "/items/cities882.html",
+      "thumb_path": "objects/thumbs/cities882_th.jpg",
+      "title": "Panoramic view from the west of Wallace, Idaho."
+    },
+    {
+      "filename": "cities886.jpg",
+      "image_path": "objects/cities886.jpg",
+      "item_url": "/items/cities886.html",
+      "thumb_path": "objects/thumbs/cities886_th.jpg",
+      "title": "View of Wallace, Idaho with the Oregon Railroad and Navigation Company Depot and tracks in the foreground."
+    },
+    {
+      "filename": "cities888.jpg",
+      "image_path": "objects/cities888.jpg",
+      "item_url": "/items/cities888.html",
+      "thumb_path": "objects/thumbs/cities888_th.jpg",
+      "title": "Looking southeast from Northern Pacific Depot at part of Wallace, Idaho burnt from the fire."
+    },
+    {
+      "filename": "cities891.jpg",
+      "image_path": "objects/cities891.jpg",
+      "item_url": "/items/cities891.html",
+      "thumb_path": "objects/thumbs/cities891_th.jpg",
+      "title": "View of Wallace, Idaho 24 hours after devastated by fire."
+    },
+    {
+      "filename": "cities892.jpg",
+      "image_path": "objects/cities892.jpg",
+      "item_url": "/items/cities892.html",
+      "thumb_path": "objects/thumbs/cities892_th.jpg",
+      "title": "Room in F.F. Johnson home decorated for the reception of President Theodore Roosevelt. Wallace, Idaho."
+    },
+    {
+      "filename": "cities893.jpg",
+      "image_path": "objects/cities893.jpg",
+      "item_url": "/items/cities893.html",
+      "thumb_path": "objects/thumbs/cities893_th.jpg",
+      "title": "View of 4th of July parade looking north on 7th Street toward fire station. Wallace, Idaho."
+    },
+    {
+      "filename": "cities897.jpg",
+      "image_path": "objects/cities897.jpg",
+      "item_url": "/items/cities897.html",
+      "thumb_path": "objects/thumbs/cities897_th.jpg",
+      "title": "Horse-drawn delivery wagons of George K. Garrett Transfer and Coal beside the White & Bender Co.'s Warehouse. Wallace, Idaho."
+    },
+    {
+      "filename": "cities916.jpg",
+      "image_path": "objects/cities916.jpg",
+      "item_url": "/items/cities916.html",
+      "thumb_path": "objects/thumbs/cities916_th.jpg",
+      "title": "Distant view of Pierce, Idaho."
+    },
+    {
+      "filename": "cities917.jpg",
+      "image_path": "objects/cities917.jpg",
+      "item_url": "/items/cities917.html",
+      "thumb_path": "objects/thumbs/cities917_th.jpg",
+      "title": "Panoramic view of Pierce, Idaho."
+    },
+    {
+      "filename": "cities918.jpg",
+      "image_path": "objects/cities918.jpg",
+      "item_url": "/items/cities918.html",
+      "thumb_path": "objects/thumbs/cities918_th.jpg",
+      "title": "Distant view of Pierce, Idaho."
+    },
+    {
+      "filename": "cities919.jpg",
+      "image_path": "objects/cities919.jpg",
+      "item_url": "/items/cities919.html",
+      "thumb_path": "objects/thumbs/cities919_th.jpg",
+      "title": "Troy Garage. Troy, Idaho."
+    },
+    {
+      "filename": "cities920.jpg",
+      "image_path": "objects/cities920.jpg",
+      "item_url": "/items/cities920.html",
+      "thumb_path": "objects/thumbs/cities920_th.jpg",
+      "title": "Street scene. Pierce, Idaho."
+    },
+    {
+      "filename": "cities927.jpg",
+      "image_path": "objects/cities927.jpg",
+      "item_url": "/items/cities927.html",
+      "thumb_path": "objects/thumbs/cities927_th.jpg",
+      "title": "L.H. Hatch house. Franklin, Idaho."
+    },
+    {
+      "filename": "cities930.jpg",
+      "image_path": "objects/cities930.jpg",
+      "item_url": "/items/cities930.html",
+      "thumb_path": "objects/thumbs/cities930_th.jpg",
+      "title": "Russell, Idaho."
+    },
+    {
+      "filename": "cities931.jpg",
+      "image_path": "objects/cities931.jpg",
+      "item_url": "/items/cities931.html",
+      "thumb_path": "objects/thumbs/cities931_th.jpg",
+      "title": "Ramey's Mill on Murphy Place. Russell, Idaho."
+    },
+    {
+      "filename": "cities932.jpg",
+      "image_path": "objects/cities932.jpg",
+      "item_url": "/items/cities932.html",
+      "thumb_path": "objects/thumbs/cities932_th.jpg",
+      "title": "View of Greer, Idaho from Greer Grade."
+    },
+    {
+      "filename": "cities933.jpg",
+      "image_path": "objects/cities933.jpg",
+      "item_url": "/items/cities933.html",
+      "thumb_path": "objects/thumbs/cities933_th.jpg",
+      "title": "Interior of butcher shop showing Alfred and Art Flint. Range Market. Troy, Idaho."
+    },
+    {
+      "filename": "cities935.jpg",
+      "image_path": "objects/cities935.jpg",
+      "item_url": "/items/cities935.html",
+      "thumb_path": "objects/thumbs/cities935_th.jpg",
+      "title": "Wagon pulled by team and men on porch in front of Erb Brothers General Store."
+    },
+    {
+      "filename": "cities936.jpg",
+      "image_path": "objects/cities936.jpg",
+      "item_url": "/items/cities936.html",
+      "thumb_path": "objects/thumbs/cities936_th.jpg",
+      "title": "Erickson's Mill. Reubens, Idaho."
+    },
+    {
+      "filename": "cities937.jpg",
+      "image_path": "objects/cities937.jpg",
+      "item_url": "/items/cities937.html",
+      "thumb_path": "objects/thumbs/cities937_th.jpg",
+      "title": "Greer Ferry run by Jack Greer. Greer, Idaho."
+    },
+    {
+      "filename": "cities938.jpg",
+      "image_path": "objects/cities938.jpg",
+      "item_url": "/items/cities938.html",
+      "thumb_path": "objects/thumbs/cities938_th.jpg",
+      "title": "Group gathered in front of Westlake Hotel for camp meeting. Westlake, Idaho."
+    },
+    {
+      "filename": "cities939.jpg",
+      "image_path": "objects/cities939.jpg",
+      "item_url": "/items/cities939.html",
+      "thumb_path": "objects/thumbs/cities939_th.jpg",
+      "title": "Group gathered for baptizing in Lawyer's Canyon."
+    },
+    {
+      "filename": "cities941.jpg",
+      "image_path": "objects/cities941.jpg",
+      "item_url": "/items/cities941.html",
+      "thumb_path": "objects/thumbs/cities941_th.jpg",
+      "title": "Sunday school picnic. Westlake, Idaho."
+    },
+    {
+      "filename": "cities946.jpg",
+      "image_path": "objects/cities946.jpg",
+      "item_url": "/items/cities946.html",
+      "thumb_path": "objects/thumbs/cities946_th.jpg",
+      "title": "Armistice Day Parade. Troy, Idaho."
+    },
+    {
+      "filename": "cities947.jpg",
+      "image_path": "objects/cities947.jpg",
+      "item_url": "/items/cities947.html",
+      "thumb_path": "objects/thumbs/cities947_th.jpg",
+      "title": "Portion of Juliaetta, Idaho showing brewery site."
+    },
+    {
+      "filename": "cities948.jpg",
+      "image_path": "objects/cities948.jpg",
+      "item_url": "/items/cities948.html",
+      "thumb_path": "objects/thumbs/cities948_th.jpg",
+      "title": "Panoramic view of Juliaetta, Idaho."
+    },
+    {
+      "filename": "cities974.jpg",
+      "image_path": "objects/cities974.jpg",
+      "item_url": "/items/cities974.html",
+      "thumb_path": "objects/thumbs/cities974_th.jpg",
+      "title": "Men with horses in front of Idaho Livery. Vollmer, Idaho."
+    },
+    {
+      "filename": "cities985.jpg",
+      "image_path": "objects/cities985.jpg",
+      "item_url": "/items/cities985.html",
+      "thumb_path": "objects/thumbs/cities985_th.jpg",
+      "title": "4th of July parade looking west on Main Street. Mohler, Idaho."
+    },
+    {
+      "filename": "cities986.jpg",
+      "image_path": "objects/cities986.jpg",
+      "item_url": "/items/cities986.html",
+      "thumb_path": "objects/thumbs/cities986_th.jpg",
+      "title": "Main street looking east. Mohler, Idaho."
+    },
+    {
+      "filename": "cities987.jpg",
+      "image_path": "objects/cities987.jpg",
+      "item_url": "/items/cities987.html",
+      "thumb_path": "objects/thumbs/cities987_th.jpg",
+      "title": "Mohler Blacksmith Shop. Mohler, Idaho."
+    },
+    {
+      "filename": "cities988.jpg",
+      "image_path": "objects/cities988.jpg",
+      "item_url": "/items/cities988.html",
+      "thumb_path": "objects/thumbs/cities988_th.jpg",
+      "title": "Two views of Mohler Times Building. Mohler, Idaho."
+    },
+    {
+      "filename": "cities993.jpg",
+      "image_path": "objects/cities993.jpg",
+      "item_url": "/items/cities993.html",
+      "thumb_path": "objects/thumbs/cities993_th.jpg",
+      "title": "Henry Weeks and Abe Weeks with hunting dogs."
+    },
+    {
+      "filename": "cities994.jpg",
+      "image_path": "objects/cities994.jpg",
+      "item_url": "/items/cities994.html",
+      "thumb_path": "objects/thumbs/cities994_th.jpg",
+      "title": "Armistice Day? Parade. Troy, Idaho."
+    },
+    {
+      "filename": "cities1049.jpg",
+      "image_path": "objects/cities1049.jpg",
+      "item_url": "/items/cities1049.html",
+      "thumb_path": "objects/thumbs/cities1049_th.jpg",
+      "title": "E.S. Sweet sawmill. Near Keuterville, Idaho."
+    },
+    {
+      "filename": "cities1051.jpg",
+      "image_path": "objects/cities1051.jpg",
+      "item_url": "/items/cities1051.html",
+      "thumb_path": "objects/thumbs/cities1051_th.jpg",
+      "title": "E.S. Sweet sawmill. Near Keuterville, Idaho."
+    },
+    {
+      "filename": "cities1151.jpg",
+      "image_path": "objects/cities1151.jpg",
+      "item_url": "/items/cities1151.html",
+      "thumb_path": "objects/thumbs/cities1151_th.jpg",
+      "title": "People on Main Street before the 1914 Fire"
+    },
+    {
+      "filename": "cities1166.jpg",
+      "image_path": "objects/cities1166.jpg",
+      "item_url": "/items/cities1166.html",
+      "thumb_path": "objects/thumbs/cities1166_th.jpg",
+      "title": "Women on the Porch of the Bovill Hotel"
+    },
+    {
+      "filename": "cities1211.jpg",
+      "image_path": "objects/cities1211.jpg",
+      "item_url": "/items/cities1211.html",
+      "thumb_path": "objects/thumbs/cities1211_th.jpg",
+      "title": "House at Warren Meadows"
+    },
+    {
+      "filename": "cities1223.jpg",
+      "image_path": "objects/cities1223.jpg",
+      "item_url": "/items/cities1223.html",
+      "thumb_path": "objects/thumbs/cities1223_th.jpg",
+      "title": "Bovill Public School"
+    },
+    {
+      "filename": "cities1228.jpg",
+      "image_path": "objects/cities1228.jpg",
+      "item_url": "/items/cities1228.html",
+      "thumb_path": "objects/thumbs/cities1228_th.jpg",
+      "title": "Opera House [02]"
+    }
+  ]
+}

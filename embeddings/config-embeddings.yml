@@ -29,8 +29,9 @@ model: clip
 preprocessing: binary
 
 # Collection inputs.
-objects_dir: docs/objects # this should be read from metadata csv "object_location" field instead
-metadata_csv: docs/metadata/cb-pmcarchive.csv # this should be read from project "_config.yml" metadata key instead of here.
+objects_dir: objects
+# Metadata CSV path is derived automatically from _config.yml "metadata"
+# (resolved as _data/<metadata>.csv), so it is no longer configured here.
 
 # CSV column that holds each image's filename (used to join metadata).
 filename_field: filename

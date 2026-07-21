@@ -3,8 +3,8 @@
  *
  * Configures itself entirely from data/manifest.json (written by the build):
  * which model to load, which preprocessing profile to apply, quantization
- * parameters, and score calibration. Rebuilding with a different config.yml
- * updates this page with no code edits.
+ * parameters, and score calibration. Rebuilding with different settings in
+ * embeddings/config-embeddings.yml updates this page with no code edits.
  */
 
 import * as transformers from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.6";
@@ -17,7 +17,9 @@ import {
   calibratedPercent,
 } from "./embedding-core.mjs";
 
-const DATA_BASE = "data/";
+const appRoot = document.getElementById("reverse-lookup-app");
+const DATA_BASE = normalizeBase(appRoot?.dataset.dataBase || "assets/embeddings/data/");
+const SITE_ROOT = normalizeSiteRoot(appRoot?.dataset.siteRoot || "/");
 
 const introCard = document.getElementById("rl-intro");
 const introStatus = document.getElementById("rl-intro-status");
@@ -40,6 +42,36 @@ let blob = null;
 let indexByFilename = new Map();
 let embedder = null;
 let selectedFile = null;
+
+function normalizeBase(value) {
+  return value.endsWith("/") ? value : `${value}/`;
+}
+
+function normalizeSiteRoot(value) {
+  if (!value) {
+    return "/";
+  }
+  return value.endsWith("/") ? value : `${value}/`;
+}
+
+function isExternalUrl(value) {
+  return /^[a-z]+:\/\//i.test(value || "");
+}
+
+function resolveItemUrl(item) {
+  const path = (item?.item_url || "").trim();
+  if (!path) {
+    return "";
+  }
+  if (isExternalUrl(path)) {
+    return path;
+  }
+  if (path.startsWith("/")) {
+    const siteRoot = SITE_ROOT.replace(/\/$/, "");
+    return `${siteRoot}${path}`;
+  }
+  return `${SITE_ROOT}${path}`;
+}
 
 function setStatus(message, tone = "secondary") {
   statusBox.textContent = message;
@@ -136,7 +168,11 @@ function renderResults(matches, elapsedMs) {
   resultsMeta.textContent = `Top ${matches.length} of ${manifest.embeddings.count} images in ${elapsedMs.toFixed(0)} ms.`;
 
   for (const match of matches) {
-    const item = indexByFilename.get(match.filename) || { filename: match.filename, image_path: `objects/${match.filename}` };
+    const item = indexByFilename.get(match.filename) || {
+      filename: match.filename,
+      image_path: `objects/${match.filename}`,
+    };
+    const itemUrl = resolveItemUrl(item);
 
     const col = document.createElement("div");
     col.className = "col";
@@ -160,7 +196,15 @@ function renderResults(matches, elapsedMs) {
 
     const title = document.createElement("h3");
     title.className = "card-title fs-6 mb-1";
-    title.textContent = item.title || item.filename;
+    if (itemUrl) {
+      const titleLink = document.createElement("a");
+      titleLink.href = itemUrl;
+      titleLink.className = "link-dark text-decoration-none";
+      titleLink.textContent = item.title || item.filename;
+      title.appendChild(titleLink);
+    } else {
+      title.textContent = item.title || item.filename;
+    }
 
     const line = document.createElement("p");
     line.className = "card-text small text-body-secondary mb-1";
@@ -168,14 +212,29 @@ function renderResults(matches, elapsedMs) {
 
     body.append(badge, title, line);
 
+    const links = document.createElement("div");
+    links.className = "d-flex flex-wrap gap-2 small";
+
+    if (itemUrl) {
+      const itemLink = document.createElement("a");
+      itemLink.href = itemUrl;
+      itemLink.className = "link-primary";
+      itemLink.textContent = "View item";
+      links.appendChild(itemLink);
+    }
+
     if (item.website) {
       const link = document.createElement("a");
       link.href = item.website;
       link.target = "_blank";
       link.rel = "noreferrer noopener";
-      link.className = "small stretched-link";
+      link.className = "link-secondary";
       link.textContent = "Source";
-      body.appendChild(link);
+      links.appendChild(link);
+    }
+
+    if (links.childElementCount > 0) {
+      body.appendChild(links);
     }
 
     card.append(img, body);

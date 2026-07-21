@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.org/schemas/index.schema.json",
   "title": "IndexArtifact",
-  "description": "Trimmed metadata records for result cards. Only fields the card renders, empty values omitted.",
+  "description": "Trimmed metadata records for result cards and item page links. Only fields the card renders, empty values omitted.",
   "type": "object",
   "additionalProperties": false,
   "required": ["version", "generated_at", "items"],
@@ -14,10 +14,11 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["filename", "image_path"],
+        "required": ["filename", "image_path", "item_url"],
         "properties": {
           "filename": { "type": "string", "minLength": 1 },
           "image_path": { "type": "string", "minLength": 1 },
+          "item_url": { "type": "string", "minLength": 1 },
           "thumb_path": { "type": "string", "minLength": 1 },
           "title": { "type": "string", "minLength": 1 },
           "active_years": { "type": "string", "minLength": 1 },

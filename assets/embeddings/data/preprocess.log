@@ -1,0 +1,10 @@
+generated_at=2026-07-21T23:15:37Z
+model=clip (Xenova/clip-vit-base-patch32)
+preprocessing=binary
+images_found=496
+metadata_rows=555
+non_image_rows_filtered=59
+embeddings_built=496
+skipped_images=0
+unmatched_metadata_rows=0
+

@@ -2,7 +2,8 @@
 /**
  * Build browser-ready image embedding artifacts for the reverse lookup app.
  *
- * Reads config.yml at the repo root, embeds every collection image with the
+ * Reads embeddings/config-embeddings.yml for embedding settings plus
+ * _config.yml metadata pointer, embeds every collection image with the
  * configured model + preprocessing profile (via the same shared module the
  * browser uses), and writes to the configured output dir:
  *   - manifest.json    build configuration export read by the search page
@@ -12,8 +13,8 @@
  *   - preprocess.log   plain-text build summary
  */
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import * as transformers from "@huggingface/transformers";
@@ -29,43 +30,76 @@ import {
   loadEmbedder,
   embedImage,
   quantize,
-} from "../assets/embeddings/embedding-core.mjs";
+} from "../../assets/embeddings/embedding-core.mjs";
 
-const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const SCHEMAS_DIR = join(PROJECT_ROOT, "scripts", "schemas");
 const SUPPORTED_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff", ".gif"]);
 const CARD_FIELDS = ["title", "active_years", "printers", "publishers", "website"];
 const CALIBRATION_FLOOR_PERCENTILE = 0.05;
+const EMBEDDINGS_CONFIG_FILE = "config-embeddings.yml";
+const COLLECTION_CONFIG_FILE = "_config.yml";
+
+const EMBEDDINGS_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const REPO_ROOT = resolve(EMBEDDINGS_ROOT, "..");
+const SCHEMAS_DIR = join(EMBEDDINGS_ROOT, "scripts", "schemas");
+const EMBEDDINGS_CONFIG_PATH = join(EMBEDDINGS_ROOT, EMBEDDINGS_CONFIG_FILE);
+const COLLECTION_CONFIG_PATH = join(REPO_ROOT, COLLECTION_CONFIG_FILE);
 
 function fail(message) {
   console.error(`Error: ${message}`);
   process.exit(1);
 }
 
-function loadConfig() {
-  const configPath = join(PROJECT_ROOT, "config.yml");
-  if (!existsSync(configPath)) {
-    fail(`missing ${configPath}`);
+function loadYaml(path, label) {
+  if (!existsSync(path)) {
+    fail(`missing ${label}: ${path}`);
   }
-  const config = parseYaml(readFileSync(configPath, "utf8"));
+  return parseYaml(readFileSync(path, "utf8"));
+}
 
-  const modelKey = config.model ?? "dinov2";
-  if (!MODEL_REGISTRY[modelKey]) {
-    fail(`config.yml model "${modelKey}" is not one of: ${Object.keys(MODEL_REGISTRY).join(", ")}`);
+function resolveFromRepo(pathValue) {
+  return resolve(REPO_ROOT, pathValue);
+}
+
+function normalizeText(value) {
+  return (value ?? "").toString().trim();
+}
+
+function normalizeLower(value) {
+  return normalizeText(value).toLowerCase();
+}
+
+function loadConfig() {
+  const embeddingConfig = loadYaml(EMBEDDINGS_CONFIG_PATH, EMBEDDINGS_CONFIG_FILE);
+  const collectionConfig = loadYaml(COLLECTION_CONFIG_PATH, COLLECTION_CONFIG_FILE);
+
+  const metadataKey = (collectionConfig.metadata ?? "").toString().trim();
+  if (!metadataKey) {
+    fail(`${COLLECTION_CONFIG_FILE} is missing required "metadata" key`);
   }
-  const preprocessing = config.preprocessing ?? "standard";
+
+  const modelKey = embeddingConfig.model ?? "dinov2";
+  if (!MODEL_REGISTRY[modelKey]) {
+    fail(`${EMBEDDINGS_CONFIG_FILE} model "${modelKey}" is not one of: ${Object.keys(MODEL_REGISTRY).join(", ")}`);
+  }
+
+  const preprocessing = embeddingConfig.preprocessing ?? "standard";
   if (!PREPROCESSING_PROFILES.includes(preprocessing)) {
-    fail(`config.yml preprocessing "${preprocessing}" is not one of: ${PREPROCESSING_PROFILES.join(", ")}`);
+    fail(`${EMBEDDINGS_CONFIG_FILE} preprocessing "${preprocessing}" is not one of: ${PREPROCESSING_PROFILES.join(", ")}`);
+  }
+
+  const topK = Number(embeddingConfig.top_k ?? 12);
+  if (!Number.isFinite(topK) || topK < 1) {
+    fail(`${EMBEDDINGS_CONFIG_FILE} top_k must be a positive number`);
   }
 
   return {
     modelKey,
     preprocessing,
-    objectsDir: resolve(PROJECT_ROOT, config.objects_dir ?? "docs/objects"),
-    metadataCsv: resolve(PROJECT_ROOT, config.metadata_csv ?? "docs/metadata/cb-pmcarchive.csv"),
-    filenameField: config.filename_field ?? "filename",
-    outputDir: resolve(PROJECT_ROOT, config.output_dir ?? "docs/data"),
-    topK: Number(config.top_k ?? 12),
+    objectsDir: resolveFromRepo(embeddingConfig.objects_dir ?? "objects"),
+    metadataCsv: resolveFromRepo(join("_data", `${metadataKey}.csv`)),
+    filenameField: embeddingConfig.filename_field ?? "filename",
+    outputDir: resolveFromRepo(embeddingConfig.output_dir ?? "assets/embeddings/data"),
+    topK,
   };
 }
 
@@ -76,21 +110,77 @@ function loadMetadata(csvPath, filenameField) {
     skip_empty_lines: true,
     trim: true,
   });
-  const byFilename = new Map();
-  for (const row of rows) {
-    const filename = (row[filenameField] ?? "").trim();
-    if (filename) {
-      byFilename.set(filename, row);
-    }
-  }
-  return { rows, byFilename };
-}
 
-function listImages(objectsDir) {
-  return readdirSync(objectsDir, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && SUPPORTED_EXTENSIONS.has(extensionOf(entry.name)))
-    .map((entry) => entry.name)
-    .sort();
+  if (!rows.length) {
+    fail(`metadata CSV has no rows: ${csvPath}`);
+  }
+
+  const requiredColumns = ["objectid", "display_template", "object_location"];
+  const header = rows[0];
+  const missingColumns = requiredColumns.filter((key) => !Object.prototype.hasOwnProperty.call(header, key));
+  if (missingColumns.length) {
+    fail(`metadata CSV is missing required column(s): ${missingColumns.join(", ")}`);
+  }
+
+  const imageRows = [];
+  const skippedRows = [];
+  const seenFilenames = new Set();
+  let nonImageRows = 0;
+
+  for (let index = 0; index < rows.length; index += 1) {
+    const row = rows[index];
+    const rowNumber = index + 2;
+
+    const objectid = normalizeText(row.objectid);
+    if (!objectid) {
+      fail(`metadata row ${rowNumber} is missing required value "objectid"`);
+    }
+
+    const displayTemplate = normalizeLower(row.display_template);
+    if (!displayTemplate) {
+      fail(`metadata row ${rowNumber} (${objectid}) is missing required value "display_template"`);
+    }
+    if (displayTemplate !== "image") {
+      nonImageRows += 1;
+      continue;
+    }
+
+    const objectLocation = normalizeText(row.object_location);
+    if (!objectLocation) {
+      fail(`metadata row ${rowNumber} (${objectid}) is missing required value "object_location"`);
+    }
+    if (/^[a-z]+:\/\//i.test(objectLocation)) {
+      skippedRows.push({ filename: objectid, reason: `external object_location not supported (${objectLocation})` });
+      continue;
+    }
+
+    const objectRelative = objectLocation.replace(/^\/+/, "");
+    const objectPath = resolveFromRepo(objectRelative);
+    if (!existsSync(objectPath)) {
+      skippedRows.push({ filename: objectid, reason: `missing object file: ${objectRelative}` });
+      continue;
+    }
+
+    const filename = normalizeText(row[filenameField]) || basename(objectRelative);
+    if (!filename) {
+      skippedRows.push({ filename: objectid, reason: `could not derive filename from field "${filenameField}" or object_location` });
+      continue;
+    }
+    if (seenFilenames.has(filename)) {
+      skippedRows.push({ filename: objectid, reason: `duplicate filename key "${filename}"; ensure ${filenameField} is unique for image rows` });
+      continue;
+    }
+
+    if (!SUPPORTED_EXTENSIONS.has(extensionOf(filename))) {
+      skippedRows.push({ filename: objectid, reason: `unsupported image extension for "${filename}"` });
+      continue;
+    }
+
+    seenFilenames.add(filename);
+    imageRows.push({ row, filename, objectPath });
+  }
+
+  return { rows, imageRows, skippedRows, nonImageRows };
 }
 
 function extensionOf(name) {
@@ -109,10 +199,26 @@ function relativizePath(value) {
   return path.replace(/^\/+/, "");
 }
 
+function encodePathPart(value) {
+  return encodeURIComponent(normalizeText(value));
+}
+
+function collectionItemUrl(metadataRow) {
+  const objectid = normalizeText(metadataRow.objectid);
+  const parentid = normalizeText(metadataRow.parentid);
+  const baseId = parentid || objectid;
+  const itemPath = `/items/${encodePathPart(baseId)}.html`;
+  if (parentid) {
+    return `${itemPath}#${encodePathPart(objectid)}`;
+  }
+  return itemPath;
+}
+
 function indexRecord(filename, metadataRow) {
   const record = {
     filename,
     image_path: relativizePath(metadataRow.object_location) || `objects/${filename}`,
+    item_url: collectionItemUrl(metadataRow),
   };
   const thumb = relativizePath(metadataRow.image_thumb) || relativizePath(metadataRow.image_small);
   if (thumb) {
@@ -181,10 +287,19 @@ async function main() {
   }
   mkdirSync(config.outputDir, { recursive: true });
 
-  const { rows: metadataRows, byFilename } = loadMetadata(config.metadataCsv, config.filenameField);
-  const images = listImages(config.objectsDir);
+  const { rows: metadataRows, imageRows, skippedRows, nonImageRows } = loadMetadata(
+    config.metadataCsv,
+    config.filenameField,
+  );
+
+  if (!imageRows.length) {
+    fail("no image rows were selected from metadata; check display_template and object_location values");
+  }
 
   console.log(`Model: ${spec.label} (${spec.hf_id}), preprocessing: ${config.preprocessing}`);
+  console.log(
+    `Metadata rows: ${metadataRows.length}; image rows selected: ${imageRows.length}; non-image rows skipped by filter: ${nonImageRows}`,
+  );
   console.log("Loading model (first run downloads weights; they are cached for later runs) ...");
   const embedder = await loadEmbedder(transformers, config.modelKey);
 
@@ -194,26 +309,28 @@ async function main() {
   const quantizedRows = [];
   const indexItems = [];
 
+  for (const entry of skippedRows) {
+    skipped.push(entry);
+    console.warn(`Warning: skipped ${entry.filename} - ${entry.reason}`);
+  }
+
   let done = 0;
-  for (const filename of images) {
+  for (const imageRow of imageRows) {
     done += 1;
-    const metadataRow = byFilename.get(filename);
-    if (!metadataRow) {
-      skipped.push({ filename, reason: "missing metadata row for filename" });
-      continue;
-    }
+    const { filename, objectPath, row: metadataRow } = imageRow;
     try {
-      const image = await transformers.RawImage.read(join(config.objectsDir, filename));
+      const image = await transformers.RawImage.read(objectPath);
       const vector = await embedImage(embedder, image, config.preprocessing);
       filenames.push(filename);
       quantizedRows.push(quantize(vector));
       indexItems.push(indexRecord(filename, metadataRow));
     } catch (error) {
       skipped.push({ filename, reason: `embedding failed: ${error.message}` });
+      console.warn(`Warning: skipped ${filename} - embedding failed: ${error.message}`);
       continue;
     }
-    if (done % 25 === 0 || done === images.length) {
-      console.log(`  embedded ${done}/${images.length}`);
+    if (done % 25 === 0 || done === imageRows.length) {
+      console.log(`  embedded ${done}/${imageRows.length}`);
     }
   }
 
@@ -221,11 +338,7 @@ async function main() {
   const blob = new Int8Array(count * spec.dim);
   quantizedRows.forEach((row, i) => blob.set(row, i * spec.dim));
 
-  const matched = new Set(filenames);
-  const unmatchedMetadata = metadataRows
-    .map((row) => (row[config.filenameField] ?? "").trim())
-    .filter((name) => name && !matched.has(name))
-    .sort();
+  const unmatchedMetadata = [];
 
   const manifest = {
     version: 2,
@@ -259,7 +372,7 @@ async function main() {
     config: { model: spec.key, preprocessing: config.preprocessing },
     source: { objects_dir: config.objectsDir, metadata_csv: config.metadataCsv },
     counts: {
-      images_found: images.length,
+      images_found: imageRows.length,
       metadata_rows: metadataRows.length,
       embeddings_built: count,
       skipped_images: skipped.length,
@@ -290,8 +403,9 @@ async function main() {
     `generated_at=${generatedAt}`,
     `model=${spec.key} (${spec.hf_id})`,
     `preprocessing=${config.preprocessing}`,
-    `images_found=${images.length}`,
+    `images_found=${imageRows.length}`,
     `metadata_rows=${metadataRows.length}`,
+    `non_image_rows_filtered=${nonImageRows}`,
     `embeddings_built=${count}`,
     `skipped_images=${skipped.length}`,
     `unmatched_metadata_rows=${unmatchedMetadata.length}`,
@@ -312,7 +426,7 @@ async function main() {
     console.log(`Wrote ${path}`);
   }
   console.log(
-    `Summary: images_found=${images.length}, embeddings_built=${count}, skipped_images=${skipped.length}`,
+    `Summary: images_found=${imageRows.length}, embeddings_built=${count}, skipped_images=${skipped.length}`,
   );
 }
 

@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "generated_at": "2026-07-21T23:15:37Z",
+  "config": {
+    "model": "clip",
+    "preprocessing": "binary"
+  },
+  "source": {
+    "objects_dir": "/Users/ewilliamson/Documents/github/evanwill/embedding-search-explore/objects",
+    "metadata_csv": "/Users/ewilliamson/Documents/github/evanwill/embedding-search-explore/_data/explore.csv"
+  },
+  "counts": {
+    "images_found": 496,
+    "metadata_rows": 555,
+    "embeddings_built": 496,
+    "skipped_images": 0,
+    "unmatched_metadata_rows": 0
+  },
+  "unmatched_metadata_filenames": [],
+  "skipped": []
+}
