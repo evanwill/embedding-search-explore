@@ -9,6 +9,14 @@ It provides:
 - a shared JavaScript module that guarantees the browser computes query embeddings exactly the same way the pipeline computed them.
 - a minimal search page: the user uploads an image, the embedding is computed locally in their browser, and the most visually similar collection images are ranked and displayed — no backend, and no image ever leaves their device. Model assets are only downloaded after the user reads a short explanation of the search and opts in with a start button.
 
+## Image Embeddings
+
+Image embeddings are compact numeric vectors that represent visual content (shapes, textures, and structure) in a form a computer can compare efficiently. In this project, each collection image is passed through a vision model (CLIP, DINOv2, or MobileCLIP) to produce one fixed-length vector.
+
+Search works by embedding the uploaded query image the same way, then computing cosine similarity between that query vector and every precomputed collection vector. Higher similarity means closer visual match, so results can be ranked. 
+
+In this project, the image processing tools and search index are loaded client-side, meaning the search can be done without the user sending their image to a server.
+
 ## add_on contents
 
 - "embeddings/" - contains utility scripts and information for the preprocessing steps.
