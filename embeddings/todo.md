@@ -47,6 +47,7 @@
 - verify the page works as a normal CollectionBuilder page route and that script/data paths remain valid after Jekyll build.
 
 ### 5. polish, documentation, and verification
+- status: completed (2026-07-21)
 - run `rake build_embeddings` and verify regenerated outputs in `assets/embeddings/data/` (`manifest.json`, `embeddings.bin`, `index.json`, `build-info.json`).
 - run `bundle exec jekyll build` (and optionally `bundle exec jekyll serve`) to validate the page in site context.
 - manually test search flow:
