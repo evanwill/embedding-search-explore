@@ -44,6 +44,14 @@ let embedder = null;
 let selectedFile = null;
 let activeDevice = "wasm";
 
+// Minimum acceptable self-similarity when the backend self-check re-embeds a
+// known indexed image and scores it against its own stored vector. A working
+// backend lands near 1.0 (int8 quantization costs a little); a broken one
+// produces garbage vectors that score far lower. A score threshold is robust
+// where a rank-1 check is not: collections with near-duplicate images can
+// legitimately rank a sibling above the seed within numerical noise.
+const SELF_CHECK_MIN_SCORE = 0.95;
+
 function normalizeBase(value) {
   return value.endsWith("/") ? value : `${value}/`;
 }
@@ -57,6 +65,20 @@ function normalizeSiteRoot(value) {
 
 function isExternalUrl(value) {
   return /^[a-z]+:\/\//i.test(value || "");
+}
+
+// index.json image/thumb paths are site-root-relative (leading slash
+// stripped at build time). Resolve them against data-site-root so they work
+// regardless of where this page's permalink lives.
+function resolveAssetUrl(path) {
+  const value = (path || "").trim();
+  if (!value) {
+    return "";
+  }
+  if (isExternalUrl(value)) {
+    return value;
+  }
+  return `${SITE_ROOT}${value.replace(/^\/+/, "")}`;
 }
 
 function resolveItemUrl(item) {
@@ -183,37 +205,69 @@ function hasDegenerateScores(scores) {
   return max - min < 1e-6;
 }
 
+// Self-check: re-embed the first indexed image and require near-perfect
+// similarity against its own stored vector (row 0 of the blob). Returns
+// true when the backend looks healthy, false when it should be replaced.
+// A seed image that cannot be fetched skips the check rather than failing
+// startup — that is a network problem, not a backend problem.
 async function verifyBackend() {
-  const seedFilename = manifest.filenames[0];
-  const seedItem = indexByFilename.get(seedFilename);
-  const seedImagePath = seedItem?.image_path;
+  const seedItem = indexByFilename.get(manifest.filenames[0]);
+  const seedImagePath = resolveAssetUrl(seedItem?.image_path);
   if (!seedImagePath) {
     return true;
   }
 
-  const response = await fetch(seedImagePath);
-  if (!response.ok) {
+  let seedBlob;
+  try {
+    const response = await fetch(seedImagePath);
+    if (!response.ok) {
+      return true;
+    }
+    seedBlob = await response.blob();
+  } catch {
     return true;
   }
-  const seedBlob = await response.blob();
-  const image = await transformers.RawImage.fromBlob(seedBlob);
-  const queryVector = await embedImage(embedder, image, manifest.preprocessing);
-  const { matches, scores } = scoreQueryVector(queryVector);
 
-  if (hasDegenerateScores(scores)) {
+  try {
+    const image = await transformers.RawImage.fromBlob(seedBlob);
+    const queryVector = await embedImage(embedder, image, manifest.preprocessing);
+    const { scores } = scoreQueryVector(queryVector);
+    if (hasDegenerateScores(scores)) {
+      return false;
+    }
+    return scores[0] >= SELF_CHECK_MIN_SCORE;
+  } catch {
     return false;
   }
-  return matches.length > 0 && matches[0].filename === seedFilename;
+}
+
+async function disposeEmbedder() {
+  try {
+    await embedder?.model?.dispose();
+  } catch {
+    // Best-effort: a backend broken enough to fail the self-check may also
+    // fail to release its session cleanly.
+  }
+  embedder = null;
 }
 
 async function ensureWorkingBackend() {
-  await loadModel("webgpu");
-  const ok = await verifyBackend();
+  let ok = false;
+  try {
+    await loadModel("webgpu");
+    ok = await verifyBackend();
+  } catch {
+    // Session creation can fail outright on some driver stacks; a WASM
+    // attempt may still succeed (and if backend state is truly poisoned,
+    // it will fail below and surface its own error).
+    ok = false;
+  }
   if (ok) {
     return;
   }
 
   setStatus("WebGPU backend produced unstable results, switching to WASM ...", "warning");
+  await disposeEmbedder();
   await loadModel("wasm");
   const wasmOk = await verifyBackend();
   if (!wasmOk) {
@@ -239,7 +293,7 @@ function renderResults(matches, elapsedMs) {
     card.className = "card h-100";
 
     const img = document.createElement("img");
-    img.src = item.thumb_path || item.image_path;
+    img.src = resolveAssetUrl(item.thumb_path || item.image_path);
     img.alt = item.title || item.filename;
     img.loading = "lazy";
     img.className = "card-img-top object-fit-contain bg-body-tertiary";
@@ -337,6 +391,9 @@ function handleFileSelection(event) {
 }
 
 // Post-start: fetch the collection index + embeddings and download the model.
+// On failure the intro card returns with the error and an enabled start
+// button, so a transient problem (network blip, CDN hiccup) is retryable
+// without reloading the page.
 async function startSearch() {
   startButton.disabled = true;
   introCard.hidden = true;
@@ -359,24 +416,38 @@ async function startSearch() {
     imageInput.disabled = false;
   } catch (error) {
     hideProgress();
-    setStatus(`Startup failed: ${error.message}`, "danger");
-    return;
+    searchUi.hidden = true;
+    resultsSection.hidden = true;
+    introCard.hidden = false;
+    introStatus.textContent = `Startup failed: ${error.message} — you can try again.`;
+    introStatus.hidden = false;
+    startButton.disabled = false;
   }
-
-  imageInput.addEventListener("change", handleFileSelection);
-  searchButton.addEventListener("click", runSearch);
 }
 
 async function init() {
   try {
     const spec = await loadManifest();
+
+    const pageLibraryVersion = transformers.env?.version;
+    const buildLibraryVersion = manifest.library?.version;
+    if (pageLibraryVersion && buildLibraryVersion && pageLibraryVersion !== buildLibraryVersion) {
+      console.warn(
+        `embeddings: data was built with @huggingface/transformers ${buildLibraryVersion} but this page loads ` +
+          `${pageLibraryVersion} — update the CDN pin in app.js or re-run \`rake build_embeddings\` to keep ` +
+          `build and query preprocessing identical`,
+      );
+    }
+
     downloadNote.textContent =
       `Starting the search downloads the ${spec.label} image-analysis model ` +
       `(about ${spec.approx_download_mb} MB) and the collection index for ` +
       `${manifest.embeddings.count} images to your browser. This happens once; ` +
       `your browser caches the files for future visits.`;
     startButton.disabled = false;
-    startButton.addEventListener("click", startSearch, { once: true });
+    startButton.addEventListener("click", startSearch);
+    imageInput.addEventListener("change", handleFileSelection);
+    searchButton.addEventListener("click", runSearch);
   } catch (error) {
     introStatus.textContent = `This search is unavailable: ${error.message}`;
     introStatus.hidden = false;

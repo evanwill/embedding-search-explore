@@ -1,8 +1,8 @@
 # collection-reverse-lookup configuration
 #
 # Edit this file, then run `rake build_embeddings` to (re)generate the search
-# data. The build exports these settings to docs/data/manifest.json, and the
-# search page configures itself from that manifest — no page edits needed.
+# data. The build exports these settings to assets/embeddings/data/manifest.json,
+# and the search page configures itself from that manifest — no page edits needed.
 
 # Which embedding model to use. One of:
 #   clip      - CLIP ViT-B/32 (demo default). Best when user uploads differ
@@ -19,14 +19,17 @@ model: clip
 
 # Image preprocessing profile, applied identically at build time and to user
 # uploads in the browser. One of:
-#   standard - flatten transparency to white, pad to square.
+#   standard - flatten transparency to white, pad to square. Use for
+#              photographs and continuous-tone images.
 #   lineart  - flatten to white, grayscale, contrast stretch, pad to square.
-#   binary   - lineart steps, then Otsu-threshold to pure black-on-white
-#              (demo default). Collapses inked scans, photos, and embossed
-#              impressions of a mark into one representation — the best for
-#              cross-domain queries against high-contrast material. Avoid
-#              for collections of photographs or continuous-tone images.
-preprocessing: binary
+#   binary   - lineart steps, then Otsu-threshold to pure black-on-white.
+#              Collapses inked scans, photos, and embossed impressions of a
+#              mark into one representation — the best for cross-domain
+#              queries against high-contrast material like printer's marks.
+#              Avoid for collections of photographs or continuous-tone
+#              images: binarizing photos collapses the embedding space and
+#              makes everything look similar.
+preprocessing: standard
 
 # Collection inputs.
 objects_dir: objects

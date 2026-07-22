@@ -58,11 +58,11 @@ Set in `embeddings/config-embeddings.yml`; all run fully client-side via ONNX (W
 | `dinov2` | [DINOv2-small](https://huggingface.co/Xenova/dinov2-small) | 384-dim | ~23 MB | strongest same-domain retrieval with a small download; weaker when the query is a different rendering of the mark |
 | `mobilenet` | [MobileCLIP-S0](https://huggingface.co/Xenova/mobileclip_s0) | 512-dim | ~11 MB | lightest option (MobileNet-family image encoder); see eval caveat below |
 
-Three preprocessing profiles are available: `standard` (flatten transparency, pad to square), `lineart` (additionally grayscale + contrast-stretch), and `binary` (**demo default** — lineart steps, then Otsu-threshold to pure black-on-white). For high-contrast material like printer's marks, `binary` collapses different renderings of the same mark — inked scan, photo, blind emboss — into one representation, which measurably improves retrieval when users photograph physical marks. Avoid `binary` for collections of photographs or continuous-tone images.
+Three preprocessing profiles are available: `standard` (flatten transparency, pad to square), `lineart` (additionally grayscale + contrast-stretch), and `binary` (lineart steps, then Otsu-threshold to pure black-on-white). **Match the profile to the material.** For high-contrast material like printer's marks, `binary` collapses different renderings of the same mark — inked scan, photo, blind emboss — into one representation, which measurably improves retrieval when users photograph physical marks. For photographs and continuous-tone images, use `standard`: binarizing photos collapses the embedding space, making everything score as similar to everything else and destroying retrieval quality. (This repository's demo is a photograph collection, so it uses `clip` + `standard`; the original printer's-marks prototype used `clip` + `binary`.)
 
-### evaluation results (demo collection)
+### evaluation results (printer's-marks prototype collection)
 
-An evaluation harness (`scripts/eval_retrieval.mjs`) measures top-1/top-5 self-retrieval from perturbed queries so you can pick the configuration for your own collection empirically. Results for the 196-image printer's mark demo (65 queries per perturbation; a "hit" requires the exact source file, so near-duplicate variants count as misses):
+An evaluation harness (`scripts/eval_retrieval.mjs`) measures top-1/top-5 self-retrieval from perturbed queries so you can pick the configuration for your own collection empirically. The results below are from the 196-image printer's-marks collection this package was originally prototyped on (65 queries per perturbation; a "hit" requires the exact source file, so near-duplicate variants count as misses):
 
 | model | profile | crop 10% | rotate 5° | photo sim |
 |---|---|---|---|---|
@@ -77,7 +77,7 @@ An evaluation harness (`scripts/eval_retrieval.mjs`) measures top-1/top-5 self-r
 
 (cells are top-1 / top-5 hit rates)
 
-**Cross-domain queries are the harder, more realistic test** — and synthetic perturbations miss it. A real-world probe (a photo of a blind-embossed mark, `docs/test/test.jpg`, whose inked line-art version is `docs/objects/10003.jpg`) reversed the picture the table above paints: with `lineart` preprocessing the target ranked #39 under `dinov2` and #15 under `clip`, while **`clip` + `binary` retrieved it at #1** (and `dinov2` + `binary` at #4). Binarization costs a few points of same-domain rotation robustness (thin binarized lines alias under rotation) but is decisively better when users photograph physical marks — hence the demo defaults of `clip` + `binary`.
+**Cross-domain queries are the harder, more realistic test** — and synthetic perturbations miss it. A real-world probe (a photo of a blind-embossed mark, `docs/test/test.jpg`, whose inked line-art version is `docs/objects/10003.jpg`) reversed the picture the table above paints: with `lineart` preprocessing the target ranked #39 under `dinov2` and #15 under `clip`, while **`clip` + `binary` retrieved it at #1** (and `dinov2` + `binary` at #4). Binarization costs a few points of same-domain rotation robustness (thin binarized lines alias under rotation) but is decisively better when users photograph physical marks — hence the prototype's choice of `clip` + `binary` for that material.
 
 **Caveat on `mobilenet`**: MobileCLIP-S0 retrieves exact uploads perfectly but is very sensitive to crops and rotations on this line-art collection — choose it only when download size is critical and queries will be close copies of collection images. Run the harness on your own material before trusting any of these numbers elsewhere.
 
@@ -87,11 +87,11 @@ The perturbation harness only measures same-domain robustness; the embossed-mark
 
 ## data payload
 
-For the ~200-image demo collection, the entire search dataset is about **145 KB** (75 KB `embeddings.bin` + 65 KB trimmed `index.json` + 4 KB manifest). Embeddings ship as a single binary blob of int8-quantized L2-normalized vectors; the dominant first-visit cost is the model download, which the browser caches.
+For the 496-image demo collection, the entire search dataset is about **390 KB** (248 KB `embeddings.bin` + 124 KB trimmed `index.json` + 12 KB manifest). Embeddings ship as a single binary blob of int8-quantized L2-normalized vectors; the dominant first-visit cost is the model download, which the browser caches.
 
 ## demo use case
 
-The demo is a digital collection of printer's marks: ~196 images of unique marks in `docs/objects/`, described by `docs/metadata/cb-pmcarchive.csv`. A user with an unknown mark uploads a photo or scan of it and gets back the most visually similar known marks with their metadata. The demo page is hosted from `docs/` for easy GitHub Pages publishing.
+The demo collection in this repository is the Carleton Watkins Mine Interiors Collection: 496 historic black-and-white photographs described by `_data/explore.csv`, with images in `objects/`. A user uploads a photo or screenshot and gets back the most visually similar collection images with metadata and links to their item pages. (The package was originally prototyped on a printer's-marks collection, which is why the evaluation section above focuses on line-art material; that standalone prototype lives on in `docs/`.)
 
 ## integrating into a CollectionBuilder site
 
@@ -133,11 +133,11 @@ The page sets runtime path config with `data-data-base` and `data-site-root` att
 
 ### runtime backend fallback
 
-At startup, the browser app attempts to initialize the model with a WebGPU-capable backend when available, then runs a quick self-check retrieval using a known indexed image.
+At startup, the browser app attempts to initialize the model with a WebGPU-capable backend when available, then runs a quick self-check: it re-embeds a known indexed image and requires the similarity against that image's own stored vector to be near-perfect (≥ 0.95), with non-degenerate scores across the collection.
 
-If that self-check is unstable (for example, degenerate scores or wrong top-1 on the known sample), the app automatically falls back to WASM and re-verifies before enabling search.
+If the self-check fails — or WebGPU session creation throws outright — the app disposes the failed model, falls back to WASM, and re-verifies before enabling search.
 
-This guard exists because some browser/driver combinations can initialize an execution provider but still produce unreliable retrieval behavior. The startup status message includes the active backend, e.g. `backend: wasm`.
+This guard exists because some browser/driver combinations can initialize an execution provider but still silently produce unreliable inference. The check is score-based rather than rank-based on purpose: collections with near-duplicate images can legitimately rank a sibling above the seed image within numerical noise, so requiring "seed is rank #1" would trigger spurious fallbacks, while a broken backend still fails the similarity threshold decisively. If the seed image cannot be fetched (a network problem, not a backend problem), the check is skipped. The startup status message includes the active backend, e.g. `backend: wasm`.
 
 Result cards use `title` from metadata via `index.json` plus the generated `item_url`; adapt `indexRecord()` in `embeddings/scripts/build_embeddings.mjs` if you want to expose additional fields.
 

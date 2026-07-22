@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "generated_at": "2026-07-21T23:45:17Z",
+  "generated_at": "2026-07-22T03:32:49Z",
   "config": {
     "model": "clip",
-    "preprocessing": "binary"
+    "preprocessing": "standard"
   },
   "source": {
-    "objects_dir": "/Users/ewilliamson/Documents/github/evanwill/embedding-search-explore/objects",
-    "metadata_csv": "/Users/ewilliamson/Documents/github/evanwill/embedding-search-explore/_data/explore.csv"
+    "objects_dir": "/home/workdog/Documents/github/evanwill/embedding-search-explore/objects",
+    "metadata_csv": "/home/workdog/Documents/github/evanwill/embedding-search-explore/_data/explore.csv"
   },
   "counts": {
     "images_found": 496,

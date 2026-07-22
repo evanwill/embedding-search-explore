@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-07-21T23:45:17Z",
+  "generated_at": "2026-07-22T03:32:49Z",
   "library": {
     "name": "@huggingface/transformers",
     "version": "3.7.6"
@@ -12,7 +12,7 @@
     "dtype": "q8",
     "embedding_source": "image_embeds"
   },
-  "preprocessing": "binary",
+  "preprocessing": "standard",
   "embeddings": {
     "file": "embeddings.bin",
     "count": 496,
@@ -519,7 +519,7 @@
     "cities1228.jpg"
   ],
   "score_calibration": {
-    "floor": 0.646165,
+    "floor": 0.506417,
     "ceiling": 1
   },
   "top_k": 12

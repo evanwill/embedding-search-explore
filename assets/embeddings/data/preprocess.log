@@ -1,6 +1,6 @@
-generated_at=2026-07-21T23:45:17Z
+generated_at=2026-07-22T03:32:49Z
 model=clip (Xenova/clip-vit-base-patch32)
-preprocessing=binary
+preprocessing=standard
 images_found=496
 metadata_rows=555
 non_image_rows_filtered=59
