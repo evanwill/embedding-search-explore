@@ -45,3 +45,9 @@ output_dir: assets/embeddings/data
 
 # Default number of results the search page shows.
 top_k: 12
+
+# Offer free-text ("text-to-image") search on the search page. Only takes
+# effect when the model has a text tower (currently: clip). The text language
+# model (~65 MB) is downloaded by the browser only when a visitor chooses
+# text search. Set false to hide the option entirely.
+text_search: true

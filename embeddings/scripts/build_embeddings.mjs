@@ -29,12 +29,18 @@ import {
   getModelSpec,
   loadEmbedder,
   embedImage,
+  loadTextEmbedder,
+  embedText,
   quantize,
 } from "../../assets/embeddings/embedding-core.mjs";
 
 const SUPPORTED_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff", ".gif"]);
 const CARD_FIELDS = ["title"];
 const CALIBRATION_FLOOR_PERCENTILE = 0.05;
+// Fixed probe string whose build-time embedding lets the browser verify its
+// text backend: re-embedding it in the browser must land near the stored
+// vector. The string itself is arbitrary — only build/browser agreement matters.
+const TEXT_REFERENCE_QUERY = "a photograph";
 const EMBEDDINGS_CONFIG_FILE = "config-embeddings.yml";
 const COLLECTION_CONFIG_FILE = "_config.yml";
 
@@ -100,6 +106,7 @@ function loadConfig() {
     filenameField: embeddingConfig.filename_field ?? "filename",
     outputDir: resolveFromRepo(embeddingConfig.output_dir ?? "assets/embeddings/data"),
     topK,
+    textSearch: embeddingConfig.text_search !== false,
   };
 }
 
@@ -261,6 +268,26 @@ function scoreCalibration(quantizedRows, dim) {
   return { floor: Number(floor.toFixed(6)), ceiling: 1 };
 }
 
+/**
+ * Manifest block describing text-to-image search. When the model has a text
+ * tower (and config allows it), embed the fixed probe string and store its
+ * quantized vector so the browser can self-check its text backend the same
+ * way the image backend is checked against a known collection image.
+ */
+async function textSearchBlock(config, spec) {
+  if (!spec.supports_text || !config.textSearch) {
+    return { available: false };
+  }
+  console.log("Loading text tower for the text-search reference vector (downloaded once, then cached) ...");
+  const textEmbedder = await loadTextEmbedder(transformers, spec.key);
+  const vector = await embedText(textEmbedder, TEXT_REFERENCE_QUERY);
+  return {
+    available: true,
+    approx_download_mb: spec.text_approx_download_mb,
+    reference: { text: TEXT_REFERENCE_QUERY, vector: Array.from(quantize(vector)) },
+  };
+}
+
 function validateArtifact(payload, schemaFile, label) {
   const schema = JSON.parse(readFileSync(join(SCHEMAS_DIR, schemaFile), "utf8"));
   const ajv = new Ajv2020({ allErrors: false, formats: { "date-time": true } });
@@ -362,6 +389,7 @@ async function main() {
     filenames,
     score_calibration: scoreCalibration(quantizedRows, spec.dim),
     top_k: config.topK,
+    text_search: await textSearchBlock(config, spec),
   };
 
   const index = { version: 2, generated_at: generatedAt, items: indexItems };

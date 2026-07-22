@@ -32,6 +32,8 @@ export const MODEL_REGISTRY = {
     embedding_source: "image_embeds",
     label: "CLIP ViT-B/32",
     approx_download_mb: 85,
+    supports_text: true,
+    text_approx_download_mb: 65,
   },
   mobilenet: {
     hf_id: "Xenova/mobileclip_s0",
@@ -77,6 +79,49 @@ export async function loadEmbedder(transformers, key, options = {}) {
     ...options,
   });
   return { processor, model, spec };
+}
+
+/**
+ * Load tokenizer + text tower for a registry key with a text encoder.
+ * CLIP-family models project text into the same embedding space as images,
+ * so a text query can be scored against the existing image vectors.
+ * @param {object} transformers - the @huggingface/transformers namespace.
+ * @param {string} key - registry key with `supports_text` (currently: clip).
+ * @param {object} [options] - passed through to from_pretrained (e.g.
+ *   progress_callback, device).
+ * @returns {Promise<{tokenizer, textModel, spec}>} a "text embedder".
+ */
+export async function loadTextEmbedder(transformers, key, options = {}) {
+  const spec = getModelSpec(key);
+  if (!spec.supports_text) {
+    throw new Error(`model "${key}" has no text tower; text search requires a CLIP-family model`);
+  }
+  const tokenizer = await transformers.AutoTokenizer.from_pretrained(spec.hf_id, options);
+  const textModel = await transformers.CLIPTextModelWithProjection.from_pretrained(spec.hf_id, {
+    dtype: spec.dtype,
+    ...options,
+  });
+  return { tokenizer, textModel, spec };
+}
+
+/**
+ * Compute an L2-normalized Float32Array embedding for a free-text query,
+ * in the same space as embedImage() vectors for CLIP-family models.
+ * @param {{tokenizer, textModel, spec}} textEmbedder - from loadTextEmbedder().
+ */
+export async function embedText(textEmbedder, query) {
+  const { tokenizer, textModel, spec } = textEmbedder;
+  const text = (query ?? "").toString().trim();
+  if (!text) {
+    throw new Error("text query is empty");
+  }
+  const inputs = tokenizer([text], { padding: true, truncation: true });
+  const outputs = await textModel(inputs);
+  const vector = outputs.text_embeds.data;
+  if (vector.length !== spec.dim) {
+    throw new Error(`expected ${spec.dim}-dim text embedding, got ${vector.length}`);
+  }
+  return l2Normalize(Float32Array.from(vector));
 }
 
 /**

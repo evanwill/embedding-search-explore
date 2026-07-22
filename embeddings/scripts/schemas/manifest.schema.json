@@ -5,7 +5,7 @@
   "description": "Build configuration export read by the search page. Row i of embeddings.bin belongs to filenames[i].",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "generated_at", "library", "model", "preprocessing", "embeddings", "filenames", "score_calibration", "top_k"],
+  "required": ["version", "generated_at", "library", "model", "preprocessing", "embeddings", "filenames", "score_calibration", "top_k", "text_search"],
   "properties": {
     "version": { "const": 2 },
     "generated_at": { "type": "string", "format": "date-time" },
@@ -56,6 +56,28 @@
         "ceiling": { "type": "number", "minimum": -1, "maximum": 1 }
       }
     },
-    "top_k": { "type": "integer", "minimum": 1 }
+    "top_k": { "type": "integer", "minimum": 1 },
+    "text_search": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["available"],
+      "properties": {
+        "available": { "type": "boolean" },
+        "approx_download_mb": { "type": "number", "minimum": 0 },
+        "reference": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text", "vector"],
+          "properties": {
+            "text": { "type": "string", "minLength": 1 },
+            "vector": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "integer", "minimum": -127, "maximum": 127 }
+            }
+          }
+        }
+      }
+    }
   }
 }
