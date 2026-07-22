@@ -127,7 +127,10 @@ This allows the search page to link directly to the collection item page (and to
 - page route: `pages/embeddings.html`
 - browser app: `assets/embeddings/app.js`
 - shared embedding module: `assets/embeddings/embedding-core.mjs`
+- vendored browser runtime: `assets/embeddings/lib/` (Transformers.js + ONNX WASM/WebGPU runtime, ~22 MB)
 - generated artifacts: `assets/embeddings/data/{manifest.json, embeddings.bin, index.json, build-info.json}`
+
+The browser runtime is not loaded from a CDN: `rake build_embeddings` copies the exact `@huggingface/transformers` browser build (and its ONNX runtime binaries) out of the pinned npm install into `assets/embeddings/lib/`, so the search page always runs the same library version the pipeline used and keeps working if the CDN changes or disappears. The one remaining external fetch is the model weights, which come from the Hugging Face CDN on first visit and are cached by the browser (self-hosting them is possible via `env.localModelPath` but adds ~90 MB to the repository, so it is not the default).
 
 The page sets runtime path config with `data-data-base` and `data-site-root` attributes on `#reverse-lookup-app` so links and artifact fetches are baseurl-safe.
 

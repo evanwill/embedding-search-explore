@@ -60,6 +60,8 @@ After `rake build_embeddings`, files are written to `assets/embeddings/data/`:
 - `build-info.json` — counts, skipped images, unmatched metadata rows
 - `preprocess.log` — plain-text build summary
 
+The build also copies the browser runtime (Transformers.js and its ONNX WASM/WebGPU binaries, ~22 MB) from the pinned npm install into `assets/embeddings/lib/`, so the search page has no CDN dependency and always runs the same library version the build used. This can be run on its own with `rake vendor_embeddings_lib`.
+
 Run `rake clean_data` to remove the generated artifacts.
 
 ## smoke test checklist

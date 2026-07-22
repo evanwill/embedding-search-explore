@@ -7,7 +7,14 @@
  * embeddings/config-embeddings.yml updates this page with no code edits.
  */
 
-import * as transformers from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.6";
+// Vendored Transformers.js runtime (copied from the pinned npm install by
+// `rake build_embeddings`), so the page runs the exact library version the
+// build used with no CDN dependency. transformers.min.js is the fully
+// self-contained browser bundle — the transformers.web.* builds externalize
+// onnxruntime as bare imports and only work behind a bundler. The ONNX
+// runtime must also be told to load its WASM/WebGPU binaries from the same
+// vendored directory — its default is a CDN URL.
+import * as transformers from "./lib/transformers.min.js";
 import {
   getModelSpec,
   loadEmbedder,
@@ -16,6 +23,8 @@ import {
   topK,
   calibratedPercent,
 } from "./embedding-core.mjs";
+
+transformers.env.backends.onnx.wasm.wasmPaths = new URL("./lib/", import.meta.url).href;
 
 const appRoot = document.getElementById("reverse-lookup-app");
 const DATA_BASE = normalizeBase(appRoot?.dataset.dataBase || "assets/embeddings/data/");
@@ -434,8 +443,8 @@ async function init() {
     if (pageLibraryVersion && buildLibraryVersion && pageLibraryVersion !== buildLibraryVersion) {
       console.warn(
         `embeddings: data was built with @huggingface/transformers ${buildLibraryVersion} but this page loads ` +
-          `${pageLibraryVersion} — update the CDN pin in app.js or re-run \`rake build_embeddings\` to keep ` +
-          `build and query preprocessing identical`,
+          `${pageLibraryVersion} — re-run \`rake build_embeddings\` to rebuild the data and refresh the vendored ` +
+          `runtime in assets/embeddings/lib/ together`,
       );
     }
 
