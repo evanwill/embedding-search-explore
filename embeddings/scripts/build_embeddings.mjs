@@ -31,6 +31,7 @@ import {
   embedImage,
   loadTextEmbedder,
   embedText,
+  syntheticProbeImage,
   quantize,
 } from "../../assets/embeddings/embedding-core.mjs";
 
@@ -269,10 +270,23 @@ function scoreCalibration(quantizedRows, dim) {
 }
 
 /**
+ * Manifest block for the browser's image-backend self-check: the quantized
+ * embedding of the deterministic synthetic probe image, computed with the
+ * same preprocessing profile as the collection. The browser regenerates the
+ * identical pixels and requires near-perfect similarity — fetch-free and
+ * independent of collection content.
+ */
+async function selfCheckBlock(embedder, config) {
+  const probe = syntheticProbeImage(transformers.RawImage);
+  const vector = await embedImage(embedder, probe, config.preprocessing);
+  return { image_vector: Array.from(quantize(vector)) };
+}
+
+/**
  * Manifest block describing text-to-image search. When the model has a text
  * tower (and config allows it), embed the fixed probe string and store its
  * quantized vector so the browser can self-check its text backend the same
- * way the image backend is checked against a known collection image.
+ * way the image backend is checked against the synthetic probe image.
  */
 async function textSearchBlock(config, spec) {
   if (!spec.supports_text || !config.textSearch) {
@@ -389,6 +403,7 @@ async function main() {
     filenames,
     score_calibration: scoreCalibration(quantizedRows, spec.dim),
     top_k: config.topK,
+    self_check: await selfCheckBlock(embedder, config),
     text_search: await textSearchBlock(config, spec),
   };
 

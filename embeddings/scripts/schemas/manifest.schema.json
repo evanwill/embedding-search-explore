@@ -5,7 +5,7 @@
   "description": "Build configuration export read by the search page. Row i of embeddings.bin belongs to filenames[i].",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "generated_at", "library", "model", "preprocessing", "embeddings", "filenames", "score_calibration", "top_k", "text_search"],
+  "required": ["version", "generated_at", "library", "model", "preprocessing", "embeddings", "filenames", "score_calibration", "top_k", "self_check", "text_search"],
   "properties": {
     "version": { "const": 2 },
     "generated_at": { "type": "string", "format": "date-time" },
@@ -57,6 +57,18 @@
       }
     },
     "top_k": { "type": "integer", "minimum": 1 },
+    "self_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["image_vector"],
+      "properties": {
+        "image_vector": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "integer", "minimum": -127, "maximum": 127 }
+        }
+      }
+    },
     "text_search": {
       "type": "object",
       "additionalProperties": false,

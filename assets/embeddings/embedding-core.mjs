@@ -125,6 +125,34 @@ export async function embedText(textEmbedder, query) {
 }
 
 /**
+ * Deterministic synthetic probe image for backend self-checks. The build
+ * embeds this image and stores the vector in the manifest; the browser
+ * regenerates the identical pixels, re-embeds, and compares — so the only
+ * variable measured is the inference backend itself (no network fetch, no
+ * image decoder in the path, no dependence on collection content).
+ *
+ * Integer arithmetic only: Math.sin/cos and friends are not guaranteed
+ * bit-identical across JS engines, but integer ops are — Node and every
+ * browser must produce the exact same pixel buffer.
+ * @param {Function} RawImageClass - the transformers.RawImage class.
+ */
+export function syntheticProbeImage(RawImageClass, size = 224) {
+  const data = new Uint8ClampedArray(size * size * 3);
+  for (let y = 0; y < size; y += 1) {
+    for (let x = 0; x < size; x += 1) {
+      const i = (y * size + x) * 3;
+      const checker = ((x >> 4) + (y >> 4)) & 1 ? 255 : 0;
+      const gradX = Math.floor((x * 255) / (size - 1));
+      const gradY = Math.floor((y * 255) / (size - 1));
+      data[i] = checker ^ gradX;
+      data[i + 1] = (gradX + gradY) >> 1;
+      data[i + 2] = checker ? 255 - gradY : gradY;
+    }
+  }
+  return new RawImageClass(data, size, size, 3);
+}
+
+/**
  * Apply a preprocessing profile to a RawImage, returning a new 3-channel
  * RawImage. Runs before the model's own processor on both build and query
  * sides so the two stay in lockstep.

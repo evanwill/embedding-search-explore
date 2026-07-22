@@ -119,7 +119,7 @@ Key facts constraining the design:
 ## Future ideas
 
 - **Zero-install build page**: since the model already runs in the browser, an admin-facing static page could accept a dragged-in folder of images + metadata CSV, compute all embeddings client-side, and download the `data/` artifacts — removing Ruby *and* Node from the workflow entirely ("open a page, drop a folder"). `embedding-core.mjs` is deliberately environment-neutral so such a page could reuse it unchanged.
-- **Text-to-image search**: with the `clip` model, free-text queries ("anchor and dolphin") only require adding the CLIP text tower in the browser.
+- webgpu/wasm fallback test - implemented (2026-07-21): the build embeds a deterministic synthetic probe image (integer-math pixels, identical in Node and every browser) and stores its vector in `manifest.self_check.image_vector`; the browser regenerates the probe, re-embeds, and requires cosine ≥ 0.95 — fetch-free, decoder-free, and content-independent, symmetric with the text tower's probe-string check.
 
 #### future progress: extending the eval harness with real test sets
 

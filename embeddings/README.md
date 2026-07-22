@@ -89,11 +89,11 @@ The page sets runtime path config with `data-data-base` and `data-site-root` att
 
 ### runtime backend fallback
 
-At startup, the browser app attempts to initialize the model with a WebGPU-capable backend when available, then runs a quick self-check: it re-embeds a known indexed image and requires the similarity against that image's own stored vector to be near-perfect (≥ 0.95), with non-degenerate scores across the collection.
+At startup, the browser app attempts to initialize each model tower with a WebGPU-capable backend when available, then runs a quick self-check before enabling search: it re-embeds a deterministic probe — a synthetic test image for the vision tower (generated from integer math, so Node and every browser produce identical pixels), a fixed probe string for the text tower — and requires near-perfect similarity (≥ 0.95) against the vector the build computed from the same input, which is stored in the manifest.
 
 If the self-check fails — or WebGPU session creation throws outright — the app disposes the failed model, falls back to WASM, and re-verifies before enabling search.
 
-This guard exists because some browser/driver combinations can initialize an execution provider but still silently produce unreliable inference. The check is score-based rather than rank-based on purpose: collections with near-duplicate images can legitimately rank a sibling above the seed image within numerical noise, so requiring "seed is rank #1" would trigger spurious fallbacks, while a broken backend still fails the similarity threshold decisively. If the seed image cannot be fetched (a network problem, not a backend problem), the check is skipped. The startup status message includes the active backend, e.g. `backend: wasm`.
+This guard exists because some browser/driver combinations can initialize an execution provider but still silently produce unreliable inference. Because the probe inputs are regenerated locally and bit-identical to what the build embedded, the check involves no network fetch, no image decoding, and no dependence on collection content — the only variable it measures is the inference backend itself. The startup status message includes the active backend, e.g. `backend: wasm`.
 
 Result cards use `title` from metadata via `index.json` plus the generated `item_url`; adapt `indexRecord()` in `embeddings/scripts/build_embeddings.mjs` if you want to expose additional fields.
 

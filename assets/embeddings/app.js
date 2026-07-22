@@ -20,6 +20,7 @@ import {
   embedImage,
   loadTextEmbedder,
   embedText,
+  syntheticProbeImage,
   scoreAll,
   topK,
   calibratedPercent,
@@ -73,14 +74,13 @@ let textDevice = null;
 let selectedFile = null;
 let currentMode = "image";
 
-// Minimum acceptable self-similarity for the backend self-checks: the image
-// check re-embeds a known indexed image against its own stored vector; the
-// text check re-embeds the manifest's reference probe string against its
-// build-time vector. A working backend lands near 1.0 (int8 quantization
-// costs a little); a broken one produces garbage vectors that score far
-// lower. A score threshold is robust where a rank-1 check is not:
-// collections with near-duplicate images can legitimately rank a sibling
-// above the seed within numerical noise.
+// Minimum acceptable similarity for the backend self-checks. Each check
+// re-embeds a deterministic probe (a synthetic image for the vision tower,
+// a fixed string for the text tower) and compares against the vector the
+// build computed from identical input, so the only variable measured is the
+// inference backend itself. A working backend lands near 1.0 (int8
+// quantization costs a little); a broken one produces garbage vectors that
+// score far lower.
 const SELF_CHECK_MIN_SCORE = 0.95;
 
 // Text-image cosine scores live far below the image-image range the
@@ -266,50 +266,34 @@ function perQueryCalibration(scores) {
   return { floor, ceiling };
 }
 
-function hasDegenerateScores(scores) {
-  let min = Infinity;
-  let max = -Infinity;
-  for (const score of scores) {
-    if (!Number.isFinite(score)) {
-      return true;
-    }
-    min = Math.min(min, score);
-    max = Math.max(max, score);
+// Cosine of a freshly computed embedding against a build-time reference
+// vector stored (int8-quantized) in the manifest. Both sides are
+// L2-normalized, so the dot product is the similarity.
+function referenceSimilarity(queryVector, referenceVector) {
+  const scale = manifest.embeddings.scale || QUANT_SCALE;
+  let dot = 0;
+  for (let i = 0; i < queryVector.length; i += 1) {
+    dot += queryVector[i] * (referenceVector[i] / scale);
   }
-  return max - min < 1e-6;
+  return dot;
 }
 
-// Image self-check: re-embed the first indexed image and require near-perfect
-// similarity against its own stored vector (row 0 of the blob). Returns
-// true when the backend looks healthy, false when it should be replaced.
-// A seed image that cannot be fetched skips the check rather than failing
-// startup — that is a network problem, not a backend problem.
+// Image self-check: regenerate the deterministic synthetic probe image
+// (identical pixels in Node and every browser — integer math, no fetch, no
+// image decoder involved) and require near-perfect similarity against the
+// vector the build computed from it. Data without the reference (older
+// builds) skips the check.
 async function verifyImageBackend() {
-  const seedItem = indexByFilename.get(manifest.filenames[0]);
-  const seedImagePath = resolveAssetUrl(seedItem?.image_path);
-  if (!seedImagePath) {
-    return true;
-  }
-
-  let seedBlob;
-  try {
-    const response = await fetch(seedImagePath);
-    if (!response.ok) {
-      return true;
-    }
-    seedBlob = await response.blob();
-  } catch {
+  const reference = manifest.self_check?.image_vector;
+  if (!reference || reference.length !== manifest.model.dim) {
     return true;
   }
 
   try {
-    const image = await transformers.RawImage.fromBlob(seedBlob);
-    const queryVector = await embedImage(imageEmbedder, image, manifest.preprocessing);
-    const scores = computeScores(queryVector);
-    if (hasDegenerateScores(scores)) {
-      return false;
-    }
-    return scores[0] >= SELF_CHECK_MIN_SCORE;
+    const probe = syntheticProbeImage(transformers.RawImage);
+    const queryVector = await embedImage(imageEmbedder, probe, manifest.preprocessing);
+    const score = referenceSimilarity(queryVector, reference);
+    return Number.isFinite(score) && score >= SELF_CHECK_MIN_SCORE;
   } catch {
     return false;
   }
@@ -320,21 +304,14 @@ async function verifyImageBackend() {
 // reference vector skips the check.
 async function verifyTextBackend() {
   const reference = manifest.text_search?.reference;
-  const scale = manifest.embeddings.scale || QUANT_SCALE;
   if (!reference?.vector || reference.vector.length !== manifest.model.dim) {
     return true;
   }
 
   try {
     const queryVector = await embedText(textEmbedder, reference.text);
-    let dot = 0;
-    for (let i = 0; i < queryVector.length; i += 1) {
-      dot += queryVector[i] * (reference.vector[i] / scale);
-    }
-    if (!Number.isFinite(dot)) {
-      return false;
-    }
-    return dot >= SELF_CHECK_MIN_SCORE;
+    const score = referenceSimilarity(queryVector, reference.vector);
+    return Number.isFinite(score) && score >= SELF_CHECK_MIN_SCORE;
   } catch {
     return false;
   }
