@@ -45,6 +45,7 @@ Then visit <http://localhost:4000/embeddings.html>.
 | `filename_field` | CSV column name | joins metadata rows to image files (defaults to `filename`) |
 | `output_dir` | path | where artifacts are written (the search page expects `assets/embeddings/data/`) |
 | `top_k` | integer | how many results the page shows |
+| `text_search` | `true` (default), `false` | offer free-text search when the model has a text tower (currently `clip`); the ~65 MB language model is only downloaded by visitors who choose text search |
 
 The metadata CSV is not configured here — it is derived from the `metadata:` key in `_config.yml`, resolved as `_data/<metadata>.csv`.
 
@@ -77,6 +78,13 @@ Any skips are listed with per-file reasons in `build-info.json` and `preprocess.
 3. **Parity canary**: upload an image that is *in* the collection (any file from `objects/`). It must come back as the top result with a match score near 100%. This single check verifies that build-time and in-browser embeddings agree; if the top result is not the uploaded image (or a near-duplicate of it), the pipeline and page are out of sync.
 
 4. Upload a non-collection image and confirm ranked results render with similarity badges, titles, and working links to item pages.
+
+5. **Text search** (clip only): from a fresh page load, click **Start text search** — only the ~65 MB language model should download (watch the network tab; the ~85 MB vision model should not appear). Type a short description and confirm plausible results with "relative match" badges. Then switch to "Search by image" and confirm the enable card asks consent before downloading the vision model. You can preview text-retrieval quality without a browser via:
+
+```sh
+cd embeddings/scripts
+node text_search_smoke.mjs "mine tunnel interior" "wooden ladder"
+```
 
 ## evaluating models on your collection
 

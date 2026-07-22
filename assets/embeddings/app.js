@@ -1,10 +1,16 @@
 /**
- * Reverse image lookup search page.
+ * Embedding search page: reverse image lookup + text-to-image search.
  *
  * Configures itself entirely from data/manifest.json (written by the build):
  * which model to load, which preprocessing profile to apply, quantization
- * parameters, and score calibration. Rebuilding with different settings in
- * embeddings/config-embeddings.yml updates this page with no code edits.
+ * parameters, score calibration, and whether text search is available.
+ * Rebuilding with different settings in embeddings/config-embeddings.yml
+ * updates this page with no code edits.
+ *
+ * The two model towers load independently so a visitor only downloads what
+ * they use: the vision tower (~85 MB for CLIP) for image queries, the text
+ * tower (~65 MB) for free-text queries. The intro card offers a start button
+ * per mode, and the mode toggle lazy-loads the other tower on request.
  */
 
 import * as transformers from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.6";
@@ -12,9 +18,13 @@ import {
   getModelSpec,
   loadEmbedder,
   embedImage,
+  loadTextEmbedder,
+  embedText,
+  syntheticProbeImage,
   scoreAll,
   topK,
   calibratedPercent,
+  QUANT_SCALE,
 } from "./embedding-core.mjs";
 
 const appRoot = document.getElementById("reverse-lookup-app");
@@ -25,10 +35,25 @@ const introCard = document.getElementById("rl-intro");
 const introStatus = document.getElementById("rl-intro-status");
 const downloadNote = document.getElementById("rl-download-note");
 const startButton = document.getElementById("rl-start-button");
+const startTextButton = document.getElementById("rl-start-text-button");
 const searchUi = document.getElementById("rl-search-ui");
 const resultsSection = document.getElementById("rl-results-section");
+const modeImageButton = document.getElementById("rl-mode-image");
+const modeTextButton = document.getElementById("rl-mode-text");
+const imagePanel = document.getElementById("rl-image-panel");
+const imageEnable = document.getElementById("rl-image-enable");
+const imageEnableNote = document.getElementById("rl-image-enable-note");
+const imageEnableButton = document.getElementById("rl-image-enable-button");
+const imageControls = document.getElementById("rl-image-controls");
+const textPanel = document.getElementById("rl-text-panel");
+const textEnable = document.getElementById("rl-text-enable");
+const textEnableNote = document.getElementById("rl-text-enable-note");
+const textEnableButton = document.getElementById("rl-text-enable-button");
+const textControls = document.getElementById("rl-text-controls");
 const imageInput = document.getElementById("rl-image-input");
 const searchButton = document.getElementById("rl-search-button");
+const textInput = document.getElementById("rl-text-input");
+const textSearchButton = document.getElementById("rl-text-search-button");
 const statusBox = document.getElementById("rl-status");
 const progressWrap = document.getElementById("rl-progress-wrap");
 const progressBar = document.getElementById("rl-progress");
@@ -38,19 +63,31 @@ const resultsMeta = document.getElementById("rl-results-meta");
 const resultsGrid = document.getElementById("rl-results");
 
 let manifest = null;
+let modelSpec = null;
 let blob = null;
 let indexByFilename = new Map();
-let embedder = null;
+let artifactsLoaded = false;
+let imageEmbedder = null;
+let textEmbedder = null;
+let imageDevice = null;
+let textDevice = null;
 let selectedFile = null;
-let activeDevice = "wasm";
+let currentMode = "image";
 
-// Minimum acceptable self-similarity when the backend self-check re-embeds a
-// known indexed image and scores it against its own stored vector. A working
-// backend lands near 1.0 (int8 quantization costs a little); a broken one
-// produces garbage vectors that score far lower. A score threshold is robust
-// where a rank-1 check is not: collections with near-duplicate images can
-// legitimately rank a sibling above the seed within numerical noise.
+// Minimum acceptable similarity for the backend self-checks. Each check
+// re-embeds a deterministic probe (a synthetic image for the vision tower,
+// a fixed string for the text tower) and compares against the vector the
+// build computed from identical input, so the only variable measured is the
+// inference backend itself. A working backend lands near 1.0 (int8
+// quantization costs a little); a broken one produces garbage vectors that
+// score far lower.
 const SELF_CHECK_MIN_SCORE = 0.95;
+
+// Text-image cosine scores live far below the image-image range the
+// manifest's calibration was computed from, so text results are displayed
+// with a per-query calibration instead: floor = this percentile of the
+// query's scores across the collection, ceiling = the query's best score.
+const TEXT_CALIBRATION_FLOOR_PERCENTILE = 0.05;
 
 function normalizeBase(value) {
   return value.endsWith("/") ? value : `${value}/`;
@@ -96,6 +133,10 @@ function resolveItemUrl(item) {
   return `${SITE_ROOT}${path}`;
 }
 
+function textSearchAvailable() {
+  return Boolean(manifest?.text_search?.available);
+}
+
 function setStatus(message, tone = "secondary") {
   statusBox.textContent = message;
   statusBox.className = `alert alert-${tone} mt-3 mb-0 py-2`;
@@ -110,6 +151,20 @@ function hideProgress() {
   progressWrap.hidden = true;
 }
 
+function makeProgressCallback() {
+  const perFile = new Map();
+  return (report) => {
+    if (report.status === "progress" && report.total) {
+      perFile.set(report.file, report.loaded / report.total);
+      let sum = 0;
+      perFile.forEach((value) => {
+        sum += value;
+      });
+      showProgress(sum / perFile.size);
+    }
+  };
+}
+
 async function fetchJson(url) {
   const response = await fetch(url);
   if (!response.ok) {
@@ -119,7 +174,7 @@ async function fetchJson(url) {
 }
 
 // Pre-start: only the small manifest, so the intro can describe the actual
-// model and download size before the user opts in to the heavy fetches.
+// model and download sizes before the user opts in to the heavy fetches.
 async function loadManifest() {
   manifest = await fetchJson(`${DATA_BASE}manifest.json`);
   if (manifest.version !== 2) {
@@ -135,10 +190,14 @@ async function loadManifest() {
         `${spec.hf_id} (${spec.dim}-dim) — rebuild with \`rake build_embeddings\``,
     );
   }
+  modelSpec = spec;
   return spec;
 }
 
 async function loadArtifacts() {
+  if (artifactsLoaded) {
+    return;
+  }
   const indexJson = await fetchJson(`${DATA_BASE}index.json`);
   indexByFilename = new Map(indexJson.items.map((item) => [item.filename, item]));
 
@@ -152,110 +211,146 @@ async function loadArtifacts() {
   if (blob.length !== expected) {
     throw new Error(`embeddings.bin has ${blob.length} values, expected ${expected} — rebuild the data`);
   }
+  artifactsLoaded = true;
 }
 
-async function loadModel(devicePreference = "auto") {
-  const perFile = new Map();
-  const progressCallback = (report) => {
-    if (report.status === "progress" && report.total) {
-      perFile.set(report.file, report.loaded / report.total);
-      let sum = 0;
-      perFile.forEach((value) => {
-        sum += value;
-      });
-      showProgress(sum / perFile.size);
-    }
-  };
-
-  // WebGPU when a usable adapter exists, WASM otherwise. Probe the adapter
-  // up front: a failed session creation poisons backend state, so catching
-  // afterwards is not a reliable fallback. Weights are always the same
-  // quantized files the build used, so embeddings stay comparable.
-  const options = { progress_callback: progressCallback, device: "wasm" };
-  if (devicePreference === "webgpu" && navigator.gpu) {
+// WebGPU when a usable adapter exists, WASM otherwise. Probe the adapter
+// up front: a failed session creation poisons backend state, so catching
+// afterwards is not a reliable fallback.
+async function resolveDevice(preference) {
+  if (preference === "webgpu" && navigator.gpu) {
     const adapter = await navigator.gpu.requestAdapter().catch(() => null);
     if (adapter) {
-      options.device = "webgpu";
+      return "webgpu";
     }
   }
-  embedder = await loadEmbedder(transformers, manifest.model.key, options);
-  activeDevice = options.device;
+  return "wasm";
 }
 
-function scoreQueryVector(queryVector) {
-  const scores = scoreAll(queryVector, blob, manifest.embeddings.count, manifest.model.dim);
-  const matches = topK(scores, manifest.top_k).map((row) => ({
+// Weights are always the same quantized files the build used, so embeddings
+// stay comparable across devices.
+async function loadImageModel(devicePreference) {
+  const device = await resolveDevice(devicePreference);
+  imageEmbedder = await loadEmbedder(transformers, manifest.model.key, {
+    progress_callback: makeProgressCallback(),
+    device,
+  });
+  imageDevice = device;
+}
+
+async function loadTextModel(devicePreference) {
+  const device = await resolveDevice(devicePreference);
+  textEmbedder = await loadTextEmbedder(transformers, manifest.model.key, {
+    progress_callback: makeProgressCallback(),
+    device,
+  });
+  textDevice = device;
+}
+
+function computeScores(queryVector) {
+  return scoreAll(queryVector, blob, manifest.embeddings.count, manifest.model.dim);
+}
+
+function rankMatches(scores, calibration) {
+  return topK(scores, manifest.top_k).map((row) => ({
     filename: manifest.filenames[row],
     score: scores[row],
-    percent: calibratedPercent(scores[row], manifest.score_calibration),
+    percent: calibratedPercent(scores[row], calibration),
   }));
-  return { scores, matches };
 }
 
-function hasDegenerateScores(scores) {
-  let min = Infinity;
-  let max = -Infinity;
-  for (const score of scores) {
-    if (!Number.isFinite(score)) {
-      return true;
-    }
-    min = Math.min(min, score);
-    max = Math.max(max, score);
-  }
-  return max - min < 1e-6;
+function perQueryCalibration(scores) {
+  const sorted = Float32Array.from(scores).sort();
+  const floor = sorted[Math.floor(sorted.length * TEXT_CALIBRATION_FLOOR_PERCENTILE)];
+  const ceiling = sorted[sorted.length - 1];
+  return { floor, ceiling };
 }
 
-// Self-check: re-embed the first indexed image and require near-perfect
-// similarity against its own stored vector (row 0 of the blob). Returns
-// true when the backend looks healthy, false when it should be replaced.
-// A seed image that cannot be fetched skips the check rather than failing
-// startup — that is a network problem, not a backend problem.
-async function verifyBackend() {
-  const seedItem = indexByFilename.get(manifest.filenames[0]);
-  const seedImagePath = resolveAssetUrl(seedItem?.image_path);
-  if (!seedImagePath) {
-    return true;
+// Cosine of a freshly computed embedding against a build-time reference
+// vector stored (int8-quantized) in the manifest. Both sides are
+// L2-normalized, so the dot product is the similarity.
+function referenceSimilarity(queryVector, referenceVector) {
+  const scale = manifest.embeddings.scale || QUANT_SCALE;
+  let dot = 0;
+  for (let i = 0; i < queryVector.length; i += 1) {
+    dot += queryVector[i] * (referenceVector[i] / scale);
   }
+  return dot;
+}
 
-  let seedBlob;
-  try {
-    const response = await fetch(seedImagePath);
-    if (!response.ok) {
-      return true;
-    }
-    seedBlob = await response.blob();
-  } catch {
+// Image self-check: regenerate the deterministic synthetic probe image
+// (identical pixels in Node and every browser — integer math, no fetch, no
+// image decoder involved) and require near-perfect similarity against the
+// vector the build computed from it. Data without the reference (older
+// builds) skips the check.
+async function verifyImageBackend() {
+  const reference = manifest.self_check?.image_vector;
+  if (!reference || reference.length !== manifest.model.dim) {
     return true;
   }
 
   try {
-    const image = await transformers.RawImage.fromBlob(seedBlob);
-    const queryVector = await embedImage(embedder, image, manifest.preprocessing);
-    const { scores } = scoreQueryVector(queryVector);
-    if (hasDegenerateScores(scores)) {
-      return false;
-    }
-    return scores[0] >= SELF_CHECK_MIN_SCORE;
+    const probe = syntheticProbeImage(transformers.RawImage);
+    const queryVector = await embedImage(imageEmbedder, probe, manifest.preprocessing);
+    const score = referenceSimilarity(queryVector, reference);
+    return Number.isFinite(score) && score >= SELF_CHECK_MIN_SCORE;
   } catch {
     return false;
   }
 }
 
-async function disposeEmbedder() {
+// Text self-check: re-embed the manifest's reference probe string and require
+// near-perfect similarity against its build-time vector. Data without a
+// reference vector skips the check.
+async function verifyTextBackend() {
+  const reference = manifest.text_search?.reference;
+  if (!reference?.vector || reference.vector.length !== manifest.model.dim) {
+    return true;
+  }
+
   try {
-    await embedder?.model?.dispose();
+    const queryVector = await embedText(textEmbedder, reference.text);
+    const score = referenceSimilarity(queryVector, reference.vector);
+    return Number.isFinite(score) && score >= SELF_CHECK_MIN_SCORE;
+  } catch {
+    return false;
+  }
+}
+
+async function disposeImageEmbedder() {
+  try {
+    await imageEmbedder?.model?.dispose();
   } catch {
     // Best-effort: a backend broken enough to fail the self-check may also
     // fail to release its session cleanly.
   }
-  embedder = null;
+  imageEmbedder = null;
+  imageDevice = null;
 }
 
-async function ensureWorkingBackend() {
+async function disposeTextEmbedder() {
+  try {
+    await textEmbedder?.textModel?.dispose();
+  } catch {
+    // Best-effort, as above.
+  }
+  textEmbedder = null;
+  textDevice = null;
+}
+
+// Load a tower with WebGPU when available, verify it against known data, and
+// fall back to WASM (re-verifying) when the self-check fails. If the other
+// tower already fell back to WASM, skip WebGPU — the driver stack has shown
+// itself untrustworthy once already.
+async function ensureImageBackend() {
+  if (imageEmbedder) {
+    return;
+  }
+  const preference = textDevice === "wasm" ? "wasm" : "webgpu";
   let ok = false;
   try {
-    await loadModel("webgpu");
-    ok = await verifyBackend();
+    await loadImageModel(preference);
+    ok = await verifyImageBackend();
   } catch {
     // Session creation can fail outright on some driver stacks; a WASM
     // attempt may still succeed (and if backend state is truly poisoned,
@@ -266,16 +361,78 @@ async function ensureWorkingBackend() {
     return;
   }
 
-  setStatus("WebGPU backend produced unstable results, switching to WASM ...", "warning");
-  await disposeEmbedder();
-  await loadModel("wasm");
-  const wasmOk = await verifyBackend();
+  setStatus("The compute backend produced unstable results, switching to WASM ...", "warning");
+  await disposeImageEmbedder();
+  await loadImageModel("wasm");
+  const wasmOk = await verifyImageBackend();
   if (!wasmOk) {
-    throw new Error("model backend self-check failed; search results may be unreliable");
+    await disposeImageEmbedder();
+    throw new Error("image model backend self-check failed; search results may be unreliable");
   }
 }
 
-function renderResults(matches, elapsedMs) {
+async function ensureTextBackend() {
+  if (textEmbedder) {
+    return;
+  }
+  const preference = imageDevice === "wasm" ? "wasm" : "webgpu";
+  let ok = false;
+  try {
+    await loadTextModel(preference);
+    ok = await verifyTextBackend();
+  } catch {
+    ok = false;
+  }
+  if (ok) {
+    return;
+  }
+
+  setStatus("The compute backend produced unstable results, switching to WASM ...", "warning");
+  await disposeTextEmbedder();
+  await loadTextModel("wasm");
+  const wasmOk = await verifyTextBackend();
+  if (!wasmOk) {
+    await disposeTextEmbedder();
+    throw new Error("text model backend self-check failed; search results may be unreliable");
+  }
+}
+
+function updateModeUi() {
+  modeImageButton.classList.toggle("active", currentMode === "image");
+  modeTextButton.classList.toggle("active", currentMode === "text");
+  imagePanel.hidden = currentMode !== "image";
+  textPanel.hidden = currentMode !== "text";
+  imageEnable.hidden = Boolean(imageEmbedder);
+  imageControls.hidden = !imageEmbedder;
+  textEnable.hidden = Boolean(textEmbedder);
+  textControls.hidden = !textEmbedder;
+}
+
+function setReadyStatus() {
+  const count = manifest.embeddings.count;
+  if (currentMode === "text") {
+    setStatus(
+      `Ready for text search. ${count} images indexed with ${modelSpec.label} (backend: ${textDevice}).`,
+      "success",
+    );
+  } else {
+    setStatus(
+      `Ready for image search. ${count} images indexed with ${modelSpec.label}, "${manifest.preprocessing}" preprocessing (backend: ${imageDevice}).`,
+      "success",
+    );
+  }
+}
+
+function setMode(mode) {
+  currentMode = mode;
+  updateModeUi();
+  const loaded = mode === "text" ? Boolean(textEmbedder) : Boolean(imageEmbedder);
+  if (loaded) {
+    setReadyStatus();
+  }
+}
+
+function renderResults(matches, elapsedMs, badgeLabel = "match") {
   resultsGrid.replaceChildren();
   resultsMeta.textContent = `Top ${matches.length} of ${manifest.embeddings.count} images in ${elapsedMs.toFixed(0)} ms.`;
 
@@ -304,7 +461,7 @@ function renderResults(matches, elapsedMs) {
 
     const badge = document.createElement("span");
     badge.className = "badge text-bg-primary mb-1";
-    badge.textContent = `${match.percent.toFixed(0)}% match`;
+    badge.textContent = `${match.percent.toFixed(0)}% ${badgeLabel}`;
 
     const title = document.createElement("h3");
     title.className = "card-title fs-6 mb-1";
@@ -341,7 +498,7 @@ function renderResults(matches, elapsedMs) {
   }
 }
 
-async function runSearch() {
+async function runImageSearch() {
   if (!selectedFile) {
     setStatus("Select an image before searching.", "warning");
     return;
@@ -353,9 +510,8 @@ async function runSearch() {
 
   try {
     const image = await transformers.RawImage.fromBlob(selectedFile);
-    const queryVector = await embedImage(embedder, image, manifest.preprocessing);
-
-    const { matches } = scoreQueryVector(queryVector);
+    const queryVector = await embedImage(imageEmbedder, image, manifest.preprocessing);
+    const matches = rankMatches(computeScores(queryVector), manifest.score_calibration);
 
     renderResults(matches, performance.now() - start);
     setStatus("Done. Select another image to search again.", "success");
@@ -365,6 +521,35 @@ async function runSearch() {
     resultsGrid.replaceChildren();
   } finally {
     searchButton.disabled = false;
+  }
+}
+
+async function runTextSearch() {
+  const query = textInput.value.trim();
+  if (!query) {
+    setStatus("Type a few words describing what you are looking for.", "warning");
+    return;
+  }
+
+  textSearchButton.disabled = true;
+  setStatus("Computing text embedding ...", "info");
+  const start = performance.now();
+
+  try {
+    const queryVector = await embedText(textEmbedder, query);
+    const scores = computeScores(queryVector);
+    // "Relative match": how much better than the field, not the same scale
+    // as image-mode percentages.
+    const matches = rankMatches(scores, perQueryCalibration(scores));
+
+    renderResults(matches, performance.now() - start, "relative match");
+    setStatus(`Done. Results for "${query}" — edit the description to search again.`, "success");
+  } catch (error) {
+    setStatus(`Search failed: ${error.message}`, "danger");
+    resultsMeta.textContent = "Unable to compute results.";
+    resultsGrid.replaceChildren();
+  } finally {
+    textSearchButton.disabled = false;
   }
 }
 
@@ -390,30 +575,36 @@ function handleFileSelection(event) {
   searchButton.disabled = false;
 }
 
-// Post-start: fetch the collection index + embeddings and download the model.
-// On failure the intro card returns with the error and an enabled start
-// button, so a transient problem (network blip, CDN hiccup) is retryable
-// without reloading the page.
-async function startSearch() {
+// Post-start: fetch the collection index + embeddings once, then download
+// only the tower for the mode the visitor chose. On failure the intro card
+// returns with the error and enabled start buttons, so a transient problem
+// (network blip, CDN hiccup) is retryable without reloading the page.
+async function startMode(mode) {
   startButton.disabled = true;
+  startTextButton.disabled = true;
   introCard.hidden = true;
   searchUi.hidden = false;
   resultsSection.hidden = false;
+  currentMode = mode;
+  updateModeUi();
 
   try {
     setStatus("Loading collection data ...", "secondary");
     await loadArtifacts();
 
-    const spec = getModelSpec(manifest.model.key);
-    setStatus(`Loading ${spec.label} model (cached by your browser after the first visit) ...`, "secondary");
-    await ensureWorkingBackend();
+    if (mode === "text") {
+      setStatus(`Loading ${modelSpec.label} text model (cached by your browser after the first visit) ...`, "secondary");
+      await ensureTextBackend();
+      textInput.disabled = false;
+      textSearchButton.disabled = false;
+    } else {
+      setStatus(`Loading ${modelSpec.label} image model (cached by your browser after the first visit) ...`, "secondary");
+      await ensureImageBackend();
+      imageInput.disabled = false;
+    }
     hideProgress();
-
-    setStatus(
-      `Ready. ${manifest.embeddings.count} images indexed with ${spec.label}, "${manifest.preprocessing}" preprocessing (backend: ${activeDevice}).`,
-      "success",
-    );
-    imageInput.disabled = false;
+    updateModeUi();
+    setReadyStatus();
   } catch (error) {
     hideProgress();
     searchUi.hidden = true;
@@ -422,6 +613,42 @@ async function startSearch() {
     introStatus.textContent = `Startup failed: ${error.message} — you can try again.`;
     introStatus.hidden = false;
     startButton.disabled = false;
+    startTextButton.disabled = !textSearchAvailable();
+  }
+}
+
+// Lazy-enable the tower the visitor did not start with, from inside its
+// mode panel, with its own consent button.
+async function enableImageMode() {
+  imageEnableButton.disabled = true;
+  try {
+    setStatus(`Loading ${modelSpec.label} image model (cached by your browser after the first visit) ...`, "secondary");
+    await ensureImageBackend();
+    hideProgress();
+    imageInput.disabled = false;
+    updateModeUi();
+    setReadyStatus();
+  } catch (error) {
+    hideProgress();
+    setStatus(`Could not enable image search: ${error.message} — you can try again.`, "danger");
+    imageEnableButton.disabled = false;
+  }
+}
+
+async function enableTextMode() {
+  textEnableButton.disabled = true;
+  try {
+    setStatus(`Loading ${modelSpec.label} text model (cached by your browser after the first visit) ...`, "secondary");
+    await ensureTextBackend();
+    hideProgress();
+    textInput.disabled = false;
+    textSearchButton.disabled = false;
+    updateModeUi();
+    setReadyStatus();
+  } catch (error) {
+    hideProgress();
+    setStatus(`Could not enable text search: ${error.message} — you can try again.`, "danger");
+    textEnableButton.disabled = false;
   }
 }
 
@@ -439,15 +666,49 @@ async function init() {
       );
     }
 
-    downloadNote.textContent =
-      `Starting the search downloads the ${spec.label} image-analysis model ` +
+    const textAvailable = textSearchAvailable();
+    const textMb = manifest.text_search?.approx_download_mb;
+
+    let note =
+      `Starting the image search downloads the ${spec.label} image-analysis model ` +
       `(about ${spec.approx_download_mb} MB) and the collection index for ` +
-      `${manifest.embeddings.count} images to your browser. This happens once; ` +
-      `your browser caches the files for future visits.`;
+      `${manifest.embeddings.count} images to your browser.`;
+    if (textAvailable) {
+      note +=
+        ` Starting the text search instead downloads a smaller language model ` +
+        `(about ${textMb} MB) — only what you choose is downloaded.`;
+    }
+    note += ` Downloads happen once; your browser caches the files for future visits.`;
+    downloadNote.textContent = note;
+
+    imageEnableNote.textContent =
+      `Image search needs the ${spec.label} image-analysis model ` +
+      `(about ${spec.approx_download_mb} MB, downloaded once and cached by your browser).`;
+    textEnableNote.textContent =
+      `Text search needs the ${spec.label} language model ` +
+      `(about ${textMb} MB, downloaded once and cached by your browser).`;
+
+    if (textAvailable) {
+      startTextButton.hidden = false;
+      startTextButton.disabled = false;
+      modeTextButton.hidden = false;
+    }
+
     startButton.disabled = false;
-    startButton.addEventListener("click", startSearch);
+    startButton.addEventListener("click", () => startMode("image"));
+    startTextButton.addEventListener("click", () => startMode("text"));
+    modeImageButton.addEventListener("click", () => setMode("image"));
+    modeTextButton.addEventListener("click", () => setMode("text"));
+    imageEnableButton.addEventListener("click", enableImageMode);
+    textEnableButton.addEventListener("click", enableTextMode);
     imageInput.addEventListener("change", handleFileSelection);
-    searchButton.addEventListener("click", runSearch);
+    searchButton.addEventListener("click", runImageSearch);
+    textSearchButton.addEventListener("click", runTextSearch);
+    textInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !textSearchButton.disabled) {
+        runTextSearch();
+      }
+    });
   } catch (error) {
     introStatus.textContent = `This search is unavailable: ${error.message}`;
     introStatus.hidden = false;

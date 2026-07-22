@@ -8,39 +8,90 @@ permalink: /embeddings.html
 
     <h2>Image Embedding Search</h2>
     <p class="mb-4">
-        Upload an image to find similar items inside this collection.
+        Upload an image — or describe what you are looking for — to find similar items inside this collection.
     </p>
 
     <div id="rl-intro" class="card mb-4">
         <div class="card-body">
             <h3>About this search</h3>
             <p>
-            Select a photo, scan, or screenshot and this search will find the most visually similar marks in the collection using embeddings.
+            This search finds the most visually similar items in the collection using embeddings. You can search two ways: upload a photo, scan, or screenshot to find look-alike images, or type a short description to find images matching your words.
             </p>
             <p>
-            The search runs entirely in your web browser: it computes a visual "fingerprint" of your image and compares it against pre-computed fingerprints for every item in this collection. Your image is never uploaded — it stays on your device.
+            The search runs entirely in your web browser: it computes a "fingerprint" of your image or text and compares it against pre-computed fingerprints for every item in this collection. Your image or text is never uploaded — it stays on your device.
             </p>
             <p id="rl-download-note">
-            <strong>Please note:</strong> Starting the search downloads the image-analysis model and collection index to your browser. This happens once; your browser caches the files for future visits.
+            <strong>Please note:</strong> Starting a search downloads the analysis model and collection index to your browser. This happens once; your browser caches the files for future visits.
             </p>
-            <button id="rl-start-button" class="btn btn-primary" type="button" disabled>
-            Start image search
-            </button>
+            <div class="d-flex flex-wrap gap-2">
+                <button id="rl-start-button" class="btn btn-primary" type="button" disabled>
+                Start image search
+                </button>
+                <button id="rl-start-text-button" class="btn btn-outline-primary" type="button" disabled hidden>
+                Start text search
+                </button>
+            </div>
             <div id="rl-intro-status" class="alert alert-danger mt-3 mb-0 py-2" role="status" hidden></div>
         </div>
     </div>
 
     <div id="rl-search-ui" class="card mb-4" hidden>
         <div class="card-body">
-            <div class="row g-3 align-items-end">
-                <div class="col-md">
-                    <label for="rl-image-input" class="form-label">Choose an image</label>
-                    <input id="rl-image-input" class="form-control" type="file" accept="image/*" disabled />
-                </div>
-                <div class="col-md-auto">
-                    <button id="rl-search-button" class="btn btn-primary" type="button" disabled>
-                    Search Similar Images
+
+            <ul class="nav nav-pills mb-3" id="rl-mode-nav">
+                <li class="nav-item">
+                    <button id="rl-mode-image" class="nav-link active" type="button">Search by image</button>
+                </li>
+                <li class="nav-item">
+                    <button id="rl-mode-text" class="nav-link" type="button" hidden>Search by text</button>
+                </li>
+            </ul>
+
+            <div id="rl-image-panel">
+                <div id="rl-image-enable" class="alert alert-light border" hidden>
+                    <p id="rl-image-enable-note" class="mb-2"></p>
+                    <button id="rl-image-enable-button" class="btn btn-sm btn-primary" type="button">
+                    Download &amp; enable image search
                     </button>
+                </div>
+                <div id="rl-image-controls" hidden>
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md">
+                            <label for="rl-image-input" class="form-label">Choose an image</label>
+                            <input id="rl-image-input" class="form-control" type="file" accept="image/*" disabled />
+                        </div>
+                        <div class="col-md-auto">
+                            <button id="rl-search-button" class="btn btn-primary" type="button" disabled>
+                            Search Similar Images
+                            </button>
+                        </div>
+                    </div>
+                    <div id="rl-preview-wrap" class="mt-3" hidden>
+                        <span class="form-label d-block">Query preview</span>
+                        <img id="rl-preview" class="img-thumbnail" style="max-height: 160px" alt="Uploaded query preview" />
+                    </div>
+                </div>
+            </div>
+
+            <div id="rl-text-panel" hidden>
+                <div id="rl-text-enable" class="alert alert-light border" hidden>
+                    <p id="rl-text-enable-note" class="mb-2"></p>
+                    <button id="rl-text-enable-button" class="btn btn-sm btn-primary" type="button">
+                    Download &amp; enable text search
+                    </button>
+                </div>
+                <div id="rl-text-controls" hidden>
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md">
+                            <label for="rl-text-input" class="form-label">Describe what you are looking for</label>
+                            <input id="rl-text-input" class="form-control" type="text" maxlength="200" placeholder="e.g. mine tunnel interior" disabled />
+                        </div>
+                        <div class="col-md-auto">
+                            <button id="rl-text-search-button" class="btn btn-primary" type="button" disabled>
+                            Search by Text
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -51,10 +102,6 @@ permalink: /embeddings.html
                 <div id="rl-progress" class="progress-bar" style="width: 0%"></div>
             </div>
 
-            <div id="rl-preview-wrap" class="mt-3" hidden>
-                <span class="form-label d-block">Query preview</span>
-                <img id="rl-preview" class="img-thumbnail" style="max-height: 160px" alt="Uploaded query preview" />
-            </div>
         </div>
     </div>
 
