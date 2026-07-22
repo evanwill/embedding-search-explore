@@ -30,7 +30,11 @@ Your updated exclude will look like:
 
 `exclude: [embeddings/, docs/, Rakefile, rakelib/, README.md, LICENSE, CITATION.cff, CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md]`
 
-## how it works
+See [get-started.md](get-started.md) for setup and usage.
+
+-----------------
+
+## How it works
 
 ```
 embeddings/config-embeddings.yml + _config.yml(metadata)
@@ -46,9 +50,7 @@ pages/embeddings.html + assets/embeddings/app.js  ◀── reads manifest.json,
 
 Both the desktop pipeline and the browser run the same library ([Transformers.js](https://huggingface.co/docs/transformers.js)) and the same shared code (`assets/embeddings/embedding-core.mjs`) for preprocessing, embedding extraction, and scoring, so collection vectors and query vectors are guaranteed to live in the same embedding space. The build writes its configuration into `assets/embeddings/data/manifest.json`; the search page configures itself from that manifest, so switching models is a one-line `embeddings/config-embeddings.yml` edit plus a rebuild.
 
-See [get-started.md](get-started.md) for setup and usage.
-
-## model options
+## Model options
 
 Set in `embeddings/config-embeddings.yml`; all run fully client-side via ONNX (WebGPU when available, WASM otherwise):
 
@@ -59,43 +61,6 @@ Set in `embeddings/config-embeddings.yml`; all run fully client-side via ONNX (W
 | `mobilenet` | [MobileCLIP-S0](https://huggingface.co/Xenova/mobileclip_s0) | 512-dim | ~11 MB | lightest option (MobileNet-family image encoder); see eval caveat below |
 
 Three preprocessing profiles are available: `standard` (flatten transparency, pad to square), `lineart` (additionally grayscale + contrast-stretch), and `binary` (lineart steps, then Otsu-threshold to pure black-on-white). **Match the profile to the material.** For high-contrast material like printer's marks, `binary` collapses different renderings of the same mark — inked scan, photo, blind emboss — into one representation, which measurably improves retrieval when users photograph physical marks. For photographs and continuous-tone images, use `standard`: binarizing photos collapses the embedding space, making everything score as similar to everything else and destroying retrieval quality. (This repository's demo is a photograph collection, so it uses `clip` + `standard`; the original printer's-marks prototype used `clip` + `binary`.)
-
-### evaluation results (printer's-marks prototype collection)
-
-An evaluation harness (`scripts/eval_retrieval.mjs`) measures top-1/top-5 self-retrieval from perturbed queries so you can pick the configuration for your own collection empirically. The results below are from the 196-image printer's-marks collection this package was originally prototyped on (65 queries per perturbation; a "hit" requires the exact source file, so near-duplicate variants count as misses):
-
-| model | profile | crop 10% | rotate 5° | photo sim |
-|---|---|---|---|---|
-| `clip` | `binary` | 92% / 100% | 83% / 91% | 95% / 98% |
-| `clip` | `lineart` | 98% / 100% | 94% / 100% | 98% / 100% |
-| `clip` | `standard` | 98% / 100% | 97% / 100% | 97% / 100% |
-| `dinov2` | `binary` | 91% / 98% | 83% / 85% | 92% / 97% |
-| `dinov2` | `lineart` | 97% / 100% | 98% / 100% | 98% / 100% |
-| `dinov2` | `standard` | 97% / 100% | 98% / 100% | 98% / 100% |
-| `mobilenet` | `lineart` | 9% / 22% | 6% / 17% | 6% / 15% |
-| `mobilenet` | `standard` | 9% / 22% | 14% / 23% | 3% / 8% |
-
-(cells are top-1 / top-5 hit rates)
-
-**Cross-domain queries are the harder, more realistic test** — and synthetic perturbations miss it. A real-world probe (a photo of a blind-embossed mark, `docs/test/test.jpg`, whose inked line-art version is `docs/objects/10003.jpg`) reversed the picture the table above paints: with `lineart` preprocessing the target ranked #39 under `dinov2` and #15 under `clip`, while **`clip` + `binary` retrieved it at #1** (and `dinov2` + `binary` at #4). Binarization costs a few points of same-domain rotation robustness (thin binarized lines alias under rotation) but is decisively better when users photograph physical marks — hence the prototype's choice of `clip` + `binary` for that material.
-
-**Caveat on `mobilenet`**: MobileCLIP-S0 retrieves exact uploads perfectly but is very sensitive to crops and rotations on this line-art collection — choose it only when download size is critical and queries will be close copies of collection images. Run the harness on your own material before trusting any of these numbers elsewhere.
-
-#### future progress: extending the eval harness with real test sets
-
-The perturbation harness only measures same-domain robustness; the embossed-mark probe above shows real cross-domain performance can rank configurations very differently. As good test images accumulate (photos of physical marks whose collection counterpart is known), the harness should grow support for a labeled pair file — e.g. `docs/test/pairs.csv` with `query_file,target_filename` columns — and report rank/top-K hit rates over those real pairs alongside the synthetic perturbations. Model and preprocessing decisions should then weight the real-pair results over the synthetic ones. The one-off diagnostic that produced the cross-domain numbers above is `scripts/.diagnose-crossdomain.mjs` and can serve as the starting point.
-
-## data payload
-
-For the 496-image demo collection, the entire search dataset is about **390 KB** (248 KB `embeddings.bin` + 124 KB trimmed `index.json` + 12 KB manifest). Embeddings ship as a single binary blob of int8-quantized L2-normalized vectors; the dominant first-visit cost is the model download, which the browser caches.
-
-## demo use case
-
-The demo collection in this repository is the Carleton Watkins Mine Interiors Collection: 496 historic black-and-white photographs described by `_data/explore.csv`, with images in `objects/`. A user uploads a photo or screenshot and gets back the most visually similar collection images with metadata and links to their item pages. (The package was originally prototyped on a printer's-marks collection, which is why the evaluation section above focuses on line-art material; that standalone prototype lives on in `docs/`.)
-
-## integrating into a CollectionBuilder site
-
-The migrated implementation is deliberately minimal and uses stock [Bootstrap 5.3.8](https://getbootstrap.com/) components (CollectionBuilder already ships Bootstrap).
 
 ### configuration contract
 
@@ -112,15 +77,6 @@ The active metadata CSV must include these columns:
 - `object_location`
 
 Only rows where `display_template == image` are embedded. Image files are read from `object_location`.
-
-### generated item links
-
-`index.json` now includes `item_url` for each image record using CollectionBuilder item URL rules:
-
-- with `parentid`: `/items/<parentid>.html#<objectid>`
-- without `parentid`: `/items/<objectid>.html`
-
-This allows the search page to link directly to the collection item page (and to the child anchor for compound objects).
 
 ### page/app wiring
 
@@ -141,7 +97,7 @@ This guard exists because some browser/driver combinations can initialize an exe
 
 Result cards use `title` from metadata via `index.json` plus the generated `item_url`; adapt `indexRecord()` in `embeddings/scripts/build_embeddings.mjs` if you want to expose additional fields.
 
-## troubleshooting
+## Troubleshooting
 
 - Missing metadata key in `_config.yml`:
     - error: `_config.yml is missing required "metadata" key`
@@ -157,9 +113,3 @@ Result cards use `title` from metadata via `index.json` plus the generated `item
     - verify page wrapper has `data-site-root="{{ '/' | relative_url }}"`
 - Data/model mismatch after code changes:
     - rebuild artifacts with `rake build_embeddings` so `manifest.json`, `embeddings.bin`, and `index.json` are in sync
-
-## future ideas
-
-- **Zero-install build page**: since the model already runs in the browser, an admin-facing static page could accept a dragged-in folder of images + metadata CSV, compute all embeddings client-side, and download the `data/` artifacts — removing Ruby *and* Node from the workflow entirely ("open a page, drop a folder"). `embedding-core.mjs` is deliberately environment-neutral so such a page could reuse it unchanged.
-- **Text-to-image search**: with the `clip` model, free-text queries ("anchor and dolphin") only require adding the CLIP text tower in the browser.
-- **pHash prefilter** for exact-duplicate detection during preprocessing.

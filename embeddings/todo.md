@@ -61,3 +61,39 @@
 - add a small validation task or script to check metadata prerequisites before full embedding generation.
 - add a tiny fixture-based smoke test for URL generation logic (parent vs non-parent) to prevent regressions.
 - add a build summary line that reports total metadata rows, image rows kept, rows skipped, and embeddings written.
+
+--------
+
+## Future ideas
+
+- **Zero-install build page**: since the model already runs in the browser, an admin-facing static page could accept a dragged-in folder of images + metadata CSV, compute all embeddings client-side, and download the `data/` artifacts — removing Ruby *and* Node from the workflow entirely ("open a page, drop a folder"). `embedding-core.mjs` is deliberately environment-neutral so such a page could reuse it unchanged.
+- **Text-to-image search**: with the `clip` model, free-text queries ("anchor and dolphin") only require adding the CLIP text tower in the browser.
+
+#### future progress: extending the eval harness with real test sets
+
+The perturbation harness only measures same-domain robustness; the embossed-mark probe above shows real cross-domain performance can rank configurations very differently. As good test images accumulate (photos of physical marks whose collection counterpart is known), the harness should grow support for a labeled pair file — e.g. `docs/test/pairs.csv` with `query_file,target_filename` columns — and report rank/top-K hit rates over those real pairs alongside the synthetic perturbations. Model and preprocessing decisions should then weight the real-pair results over the synthetic ones. The one-off diagnostic that produced the cross-domain numbers above is `scripts/.diagnose-crossdomain.mjs` and can serve as the starting point.
+
+------
+
+# Testing
+
+## evaluation results (printer's-marks prototype collection)
+
+An evaluation harness (`scripts/eval_retrieval.mjs`) measures top-1/top-5 self-retrieval from perturbed queries so you can pick the configuration for your own collection empirically. The results below are from the 196-image printer's-marks collection this package was originally prototyped on (65 queries per perturbation; a "hit" requires the exact source file, so near-duplicate variants count as misses):
+
+| model | profile | crop 10% | rotate 5° | photo sim |
+|---|---|---|---|---|
+| `clip` | `binary` | 92% / 100% | 83% / 91% | 95% / 98% |
+| `clip` | `lineart` | 98% / 100% | 94% / 100% | 98% / 100% |
+| `clip` | `standard` | 98% / 100% | 97% / 100% | 97% / 100% |
+| `dinov2` | `binary` | 91% / 98% | 83% / 85% | 92% / 97% |
+| `dinov2` | `lineart` | 97% / 100% | 98% / 100% | 98% / 100% |
+| `dinov2` | `standard` | 97% / 100% | 98% / 100% | 98% / 100% |
+| `mobilenet` | `lineart` | 9% / 22% | 6% / 17% | 6% / 15% |
+| `mobilenet` | `standard` | 9% / 22% | 14% / 23% | 3% / 8% |
+
+(cells are top-1 / top-5 hit rates)
+
+**Cross-domain queries are the harder, more realistic test** — and synthetic perturbations miss it. A real-world probe (a photo of a blind-embossed mark, `docs/test/test.jpg`, whose inked line-art version is `docs/objects/10003.jpg`) reversed the picture the table above paints: with `lineart` preprocessing the target ranked #39 under `dinov2` and #15 under `clip`, while **`clip` + `binary` retrieved it at #1** (and `dinov2` + `binary` at #4). Binarization costs a few points of same-domain rotation robustness (thin binarized lines alias under rotation) but is decisively better when users photograph physical marks — hence the prototype's choice of `clip` + `binary` for that material.
+
+**Caveat on `mobilenet`**: MobileCLIP-S0 retrieves exact uploads perfectly but is very sensitive to crops and rotations on this line-art collection — choose it only when download size is critical and queries will be close copies of collection images. Run the harness on your own material before trusting any of these numbers elsewhere.
