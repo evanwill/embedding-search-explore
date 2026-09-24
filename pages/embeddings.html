@@ -84,13 +84,14 @@ permalink: /embeddings.html
                     <div class="row g-3 align-items-end">
                         <div class="col-md">
                             <label for="rl-text-input" class="form-label">Describe what you are looking for</label>
-                            <input id="rl-text-input" class="form-control" type="text" maxlength="200" placeholder="e.g. mine tunnel interior" disabled />
+                            <input id="rl-text-input" class="form-control" type="text" maxlength="200" placeholder="e.g. photograph of a mine tunnel interior" disabled />
                         </div>
                         <div class="col-md-auto">
                             <button id="rl-text-search-button" class="btn btn-primary" type="button" disabled>
                             Search by Text
                             </button>
                         </div>
+                        <div class="col-12"><small>Note: CLIP was trained on natural phrases, so results are more meaningful with longer search strings than single words. Adding a prefix such as "a photo of..." can improve results of some searches. </small></div>
                     </div>
                 </div>
             </div>
